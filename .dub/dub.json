@@ -1,0 +1,20 @@
+{
+	"dub": {
+		"lastUpgrade": "2018-11-23T20:55:46.1620976",
+		"cachedUpgrades": {
+			"stdx-allocator": "2.77.4",
+			"libevent": "2.0.2+2.0.16",
+			"diet-ng": "1.5.0",
+			"botan-math": "1.0.3",
+			"openssl": "1.1.6+1.0.1g",
+			"botan": "1.12.10",
+			"eventcore": "0.8.39",
+			"memutils": "0.4.13",
+			"vibe-d": "0.8.4",
+			"mir-linux-kernel": "1.0.1",
+			"vibe-core": "1.4.4",
+			"libasync": "0.8.3",
+			"taggedalgebraic": "0.10.12"
+		}
+	}
+}
