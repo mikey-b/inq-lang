@@ -1,0 +1,69 @@
+<html><head><meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head><body><pre>
+<table width=100% bgcolor=#CFCFE5><tr><td>
+	<font face=arial size=+3>Build Log</font>
+</table>
+<table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Building lib\diet-ng.lib
+</font></table>
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Command Line
+</font></table>
+set PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Windows Kits\10\bin;C:\D\dmd2\windows\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86;%PATH%
+
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\internal\html.d &gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\internal\string.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\defs.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\dom.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\html.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\input.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\parser.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\traits.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+
+&quot;C:\Program Files (x86)\VisualD\pipedmd.exe&quot; -deps obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.dep dmd -g -gf -debug -w -op -X -Xf&quot;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.json&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source&quot; -version=Have_diet_ng -c -odobj/debug/dummy/dummy/dummy/dummy/diet-ng @obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.build.rsp
+if %errorlevel% neq 0 goto reportError
+
+goto noError
+
+:reportError
+echo Building lib\diet-ng.lib failed!
+
+:noError
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Output
+</font></table>
+
+<table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Building lib\diet-ng.lib
+</font></table>
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Command Line
+</font></table>
+set PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Windows Kits\10\bin;C:\D\dmd2\windows\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86;%PATH%
+if %errorlevel% neq 0 goto reportError
+
+
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\internal\html.obj &gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\internal\string.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\defs.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\dom.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\html.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\input.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\parser.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/diet-ng\..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source\diet\traits.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+
+&quot;C:\Program Files (x86)\VisualD\pipedmd.exe&quot; -deps obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.lnkdep dmd -g -gf -debug -w -lib -op -I&quot;..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source&quot; -version=Have_diet_ng -oflib\diet-ng.lib -map &quot;obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.map&quot; -L/NOMAP @obj\debug\dummy\dummy\dummy\dummy\diet-ng\diet-ng.link.rsp
+if %errorlevel% neq 0 goto reportError
+if not exist lib\diet-ng.lib (echo lib\diet-ng.lib not created! &amp;&amp; goto reportError)
+
+goto noError
+
+:reportError
+echo Building lib\diet-ng.lib failed!
+
+:noError
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Output
+</font></table>
+
+</body></html>

@@ -1,0 +1,14 @@
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\auth\basic_auth.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\auth\digest_auth.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\client.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\common.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\dist.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\fileserver.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\form.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\log.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\proxy.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\router.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\server.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\session.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\status.d 
+..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http\vibe\http\websockets.d 

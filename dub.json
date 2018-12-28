@@ -1,14 +1,15 @@
 {
-	"name": "inq-lang",
-	"authors": [
-		"Mike Brown"
-	],
-	"description": "VM for the Inq language",
-	"copyright": "Copyright © 2018, Mike Brown",
-	"license": "proprietary",
-	"dependencies": {
-		"vibe-d": "~>0.8.4",
-		
-	},
-	"subConfigurations": {"vibe-d": "win32"},
+  "name" : "inq-lang",
+  "authors" : [
+    "Mike Brown"
+  ],
+  "description" : "VM for the Inq language",
+  "copyright" : "Copyright © 2018, Mike Brown",
+  "license" : "proprietary",
+  "dependencies" : {
+    "vibe-d" : "~>0.8.4"
+  },
+  "subConfigurations" : {
+    "vibe-d" : "win32"
+  }
 }

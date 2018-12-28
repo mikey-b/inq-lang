@@ -1,0 +1,132 @@
+<DProject>
+  <ProjectGuid>{E82B25EA-B770-4604-A993-87495CFD464C}</ProjectGuid>
+  <Config name="debug" platform="Win32">
+    <symdebug>1</symdebug>
+    <optimize>0</optimize>
+    <useInline>0</useInline>
+    <release>0</release>
+    <lib>1</lib>
+    <exefile>lib\stdx-allocator.lib</exefile>
+    <imppath>"..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source"</imppath>
+    <fileImppath></fileImppath>
+    <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+    <additionalOptions></additionalOptions>
+    <versionids>VibeWin32Driver Have_stdx_allocator</versionids>
+    <useUnitTests>0</useUnitTests>
+    <obj>0</obj>
+    <link>0</link>
+    <subsystem>0</subsystem>
+    <multiobj>0</multiobj>
+    <singleFileCompilation>2</singleFileCompilation>
+    <mscoff>0</mscoff>    <oneobj>0</oneobj>
+    <trace>0</trace>
+    <quiet>0</quiet>
+    <verbose>0</verbose>
+    <vtls>0</vtls>
+    <cpu>0</cpu>
+    <isX86_64>0</isX86_64>
+    <isLinux>0</isLinux>
+    <isOSX>0</isOSX>
+    <isWindows>0</isWindows>
+    <isFreeBSD>0</isFreeBSD>
+    <isSolaris>0</isSolaris>
+    <isDragonFlyBSD>0</isDragonFlyBSD>
+    <scheduler>0</scheduler>
+    <useDeprecated>0</useDeprecated>
+    <useAssert>0</useAssert>
+    <useInvariants>0</useInvariants>
+    <useIn>0</useIn>
+    <useOut>0</useOut>
+    <useArrayBounds>0</useArrayBounds>
+    <noboundscheck>0</noboundscheck>
+    <useSwitchError>0</useSwitchError>
+    <preservePaths>1</preservePaths>
+    <warnings>1</warnings>
+    <infowarnings>0</infowarnings>
+    <checkProperty>0</checkProperty>
+    <genStackFrame>0</genStackFrame>
+    <pic>0</pic>
+    <cov>0</cov>
+    <nofloat>0</nofloat>
+    <Dversion>2</Dversion>
+    <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+    <compiler>0</compiler>
+    <otherDMD>0</otherDMD>
+    <outdir>lib\</outdir>
+    <objdir>obj/debug/dummy/dummy/dummy/dummy/stdx-allocator</objdir>
+    <objname />
+    <libname />
+    <doDocComments>0</doDocComments>
+    <docdir />
+    <docname />
+    <modules_ddoc />
+    <ddocfiles />
+    <doHdrGeneration>0</doHdrGeneration>
+    <hdrdir />
+    <hdrname />
+    <doXGeneration>1</doXGeneration>
+    <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+    <debuglevel>0</debuglevel>
+    <versionlevel>0</versionlevel>
+    <debugids />
+    <dump_source>0</dump_source>
+    <mapverbosity>0</mapverbosity>
+    <createImplib>0</createImplib>
+    <defaultlibname />
+    <debuglibname />
+    <moduleDepsFile />
+    <run>0</run>
+    <runargs />
+    <runCv2pdb>1</runCv2pdb>
+    <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+    <cv2pdbPre2043>0</cv2pdbPre2043>
+    <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+    <cv2pdbEnumType>0</cv2pdbEnumType>
+    <cv2pdbOptions />
+    <objfiles />
+    <linkswitches />
+    <libpaths />
+    <deffile />
+    <resfile />
+    <debugworkingdir>..</debugworkingdir>
+    <preBuildCommand />
+    <postBuildCommand />
+    <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
+  </Config>
+  <Folder name="stdx-allocator">
+    <Folder name="stdx-allocator">
+    <Folder name="source">
+    <Folder name="stdx">
+    <Folder name="allocator">
+    <Folder name="building_blocks">
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\affix_allocator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\allocator_list.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\bitmapped_block.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\bucketizer.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\fallback_allocator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\free_list.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\free_tree.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\kernighan_ritchie.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\null_allocator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\package.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\quantizer.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\region.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\scoped_allocator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\segregator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\building_blocks\stats_collector.d" />
+    </Folder>
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\common.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\gc_allocator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\internal.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\mallocator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\mmap_allocator.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\package.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\showcase.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source\stdx\allocator\typed.d" />
+    </Folder>
+    </Folder>
+    </Folder>
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\dub.json" />
+    </Folder>
+  </Folder>
+</DProject>

@@ -1,0 +1,6866 @@
+[
+ {
+  "name" : "vibe.stream.botan",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\tls\\vibe\\stream\\botan.d",
+  "members" : [
+   {
+    "name" : "botan.constants",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.cert.x509.x509cert",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.cert.x509.certstor",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.cert.x509.x509path",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.math.bigint.bigint",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.blocking",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.channel",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.credentials_manager",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.exceptn",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.server",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.session_manager",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.server_info",
+    "kind" : "import",
+    "line" : 23,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.tls.ciphersuite",
+    "kind" : "import",
+    "line" : 24,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "botan.rng.auto_rng",
+    "kind" : "import",
+    "line" : 25,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 26,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.stream.tls",
+    "kind" : "import",
+    "line" : 27,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.net",
+    "kind" : "import",
+    "line" : 28,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 29,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "InterfaceProxy"
+    ]
+   },
+   {
+    "name" : "std.datetime",
+    "kind" : "import",
+    "line" : 30,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 31,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "BotanTLSStream",
+    "kind" : "class",
+    "line" : 33,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "m_stream",
+      "kind" : "variable",
+      "line" : 38,
+      "char" : 25,
+      "type" : "InterfaceProxy!Stream"
+     },
+     {
+      "name" : "m_tlsChannel",
+      "kind" : "variable",
+      "line" : 39,
+      "char" : 22,
+      "type" : "TLSBlockingChannel"
+     },
+     {
+      "name" : "m_ctx",
+      "kind" : "variable",
+      "line" : 40,
+      "char" : 19,
+      "type" : "BotanTLSContext"
+     },
+     {
+      "name" : "m_alertCB",
+      "kind" : "variable",
+      "line" : 42,
+      "char" : 11,
+      "type" : "OnAlert"
+     },
+     {
+      "name" : "m_handshakeComplete",
+      "kind" : "variable",
+      "line" : 43,
+      "char" : 23,
+      "type" : "OnHandshakeComplete"
+     },
+     {
+      "name" : "m_cipher",
+      "kind" : "variable",
+      "line" : 44,
+      "char" : 18,
+      "type" : "TLSCiphersuite"
+     },
+     {
+      "name" : "m_ver",
+      "kind" : "variable",
+      "line" : 45,
+      "char" : 22,
+      "type" : "TLSProtocolVersion"
+     },
+     {
+      "name" : "m_session_age",
+      "kind" : "variable",
+      "line" : 46,
+      "char" : 11,
+      "type" : "SysTime"
+     },
+     {
+      "name" : "m_peer_cert",
+      "kind" : "variable",
+      "line" : 47,
+      "char" : 19,
+      "type" : "X509Certificate"
+     },
+     {
+      "name" : "m_cert_compat",
+      "kind" : "variable",
+      "line" : 48,
+      "char" : 29,
+      "type" : "TLSCertificateInformation"
+     },
+     {
+      "name" : "m_sess_id",
+      "kind" : "variable",
+      "line" : 49,
+      "char" : 11,
+      "type" : "ubyte[]"
+     },
+     {
+      "name" : "m_ex",
+      "kind" : "variable",
+      "line" : 50,
+      "char" : 13,
+      "type" : "Exception"
+     },
+     {
+      "name" : "started",
+      "kind" : "function",
+      "line" : 54,
+      "char" : 20,
+      "type" : "const @property SysTime()",
+      "endline" : 54,
+      "endchar" : 60
+     },
+     {
+      "name" : "sessionId",
+      "kind" : "function",
+      "line" : 57,
+      "char" : 27,
+      "type" : "@property const(ubyte[])()",
+      "endline" : 57,
+      "endchar" : 59
+     },
+     {
+      "name" : "x509Certificate",
+      "kind" : "function",
+      "line" : 60,
+      "char" : 35,
+      "type" : "const @property @system const(X509Certificate)()",
+      "endline" : 60,
+      "endchar" : 89
+     },
+     {
+      "name" : "protocol",
+      "kind" : "function",
+      "line" : 63,
+      "char" : 31,
+      "type" : "const @property TLSProtocolVersion()",
+      "endline" : 63,
+      "endchar" : 64
+     },
+     {
+      "name" : "cipher",
+      "kind" : "function",
+      "line" : 66,
+      "char" : 27,
+      "type" : "const @property TLSCiphersuite()",
+      "endline" : 66,
+      "endchar" : 61
+     },
+     {
+      "name" : "alpn",
+      "kind" : "function",
+      "line" : 68,
+      "char" : 19,
+      "type" : "const @property @trusted string()",
+      "endline" : 68,
+      "endchar" : 106
+     },
+     {
+      "name" : "peerCertificate",
+      "kind" : "function",
+      "line" : 70,
+      "char" : 38,
+      "type" : "@property TLSCertificateInformation()",
+      "endline" : 78,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 81,
+      "char" : 2,
+      "type" : "@trusted (InterfaceProxy!Stream underlying, BotanTLSContext ctx, void delegate(in TLSAlert alert, in ubyte[] ub) alert_cb, bool delegate(in TLSSession session) hs_cb, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "type" : "InterfaceProxy!Stream"
+       },
+       {
+        "name" : "ctx",
+        "type" : "BotanTLSContext"
+       },
+       {
+        "name" : "alert_cb",
+        "type" : "void delegate(in TLSAlert alert, in ubyte[] ub)"
+       },
+       {
+        "name" : "hs_cb",
+        "type" : "bool delegate(in TLSSession session)"
+       },
+       {
+        "name" : "peer_name",
+        "type" : "string",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "type" : "NetworkAddress",
+        "default" : "NetworkAddress.init"
+       }
+      ],
+      "endline" : 100,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 103,
+      "char" : 2,
+      "type" : "@trusted (InterfaceProxy!Stream underlying, BotanTLSContext ctx, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "type" : "InterfaceProxy!Stream"
+       },
+       {
+        "name" : "ctx",
+        "type" : "BotanTLSContext"
+       },
+       {
+        "name" : "state",
+        "type" : "TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "type" : "string",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "type" : "NetworkAddress",
+        "default" : "NetworkAddress.init"
+       }
+      ],
+      "endline" : 129,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 131,
+      "char" : 2,
+      "storageClass" : [
+       "@trusted"
+      ],
+      "endline" : 136,
+      "endchar" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 138,
+      "char" : 7,
+      "type" : "void()",
+      "endline" : 142,
+      "endchar" : 2
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 144,
+      "char" : 7,
+      "type" : "void()",
+      "endline" : 155,
+      "endchar" : 2
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 157,
+      "char" : 9,
+      "type" : "size_t(scope ubyte[] dst, IOMode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "type" : "IOMode"
+       }
+      ],
+      "endline" : 164,
+      "endchar" : 2
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 166,
+      "char" : 2,
+      "type" : "Stream.read"
+     },
+     {
+      "name" : "readChunk",
+      "kind" : "function",
+      "line" : 168,
+      "char" : 10,
+      "type" : "ubyte[](ubyte[] buf)",
+      "parameters" : [
+       {
+        "name" : "buf",
+        "type" : "ubyte[]"
+       }
+      ],
+      "endline" : 174,
+      "endchar" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 176,
+      "char" : 9,
+      "type" : "size_t(in ubyte[] src, IOMode)",
+      "parameters" : [
+       {
+        "name" : "src",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "type" : "IOMode"
+       }
+      ],
+      "endline" : 183,
+      "endchar" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 185,
+      "char" : 2,
+      "type" : "Stream.write"
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 187,
+      "char" : 17,
+      "type" : "@property bool()",
+      "endline" : 191,
+      "endchar" : 2
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 193,
+      "char" : 18,
+      "type" : "@property ulong()",
+      "endline" : 203,
+      "endchar" : 2
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 205,
+      "char" : 17,
+      "type" : "@property bool()",
+      "endline" : 212,
+      "endchar" : 2
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 214,
+      "char" : 17,
+      "type" : "const(ubyte)[]()",
+      "endline" : 221,
+      "endchar" : 2
+     },
+     {
+      "name" : "setAlertCallback",
+      "kind" : "function",
+      "line" : 223,
+      "char" : 7,
+      "type" : "@system void(OnAlert alert_cb)",
+      "parameters" : [
+       {
+        "name" : "alert_cb",
+        "type" : "OnAlert"
+       }
+      ],
+      "endline" : 227,
+      "endchar" : 2
+     },
+     {
+      "name" : "setHandshakeCallback",
+      "kind" : "function",
+      "line" : 229,
+      "char" : 7,
+      "type" : "@system void(OnHandshakeComplete hs_cb)",
+      "parameters" : [
+       {
+        "name" : "hs_cb",
+        "type" : "OnHandshakeComplete"
+       }
+      ],
+      "endline" : 233,
+      "endchar" : 2
+     },
+     {
+      "name" : "processException",
+      "kind" : "function",
+      "line" : 235,
+      "char" : 15,
+      "type" : "@safe void()",
+      "endline" : 241,
+      "endchar" : 2
+     },
+     {
+      "name" : "onAlert",
+      "kind" : "function",
+      "line" : 243,
+      "char" : 15,
+      "type" : "@trusted void(in TLSAlert alert, in ubyte[] data)",
+      "parameters" : [
+       {
+        "name" : "alert",
+        "type" : "TLSAlert",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "data",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 249,
+      "endchar" : 2
+     },
+     {
+      "name" : "onHandhsakeComplete",
+      "kind" : "function",
+      "line" : 251,
+      "char" : 15,
+      "type" : "@trusted bool(in TLSSession session)",
+      "parameters" : [
+       {
+        "name" : "session",
+        "type" : "TLSSession",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 262,
+      "endchar" : 2
+     },
+     {
+      "name" : "onRead",
+      "kind" : "function",
+      "line" : 264,
+      "char" : 18,
+      "type" : "ubyte[](ubyte[] buf)",
+      "parameters" : [
+       {
+        "name" : "buf",
+        "type" : "ubyte[]"
+       }
+      ],
+      "endline" : 278,
+      "endchar" : 2
+     },
+     {
+      "name" : "onWrite",
+      "kind" : "function",
+      "line" : 280,
+      "char" : 15,
+      "type" : "void(in ubyte[] src)",
+      "parameters" : [
+       {
+        "name" : "src",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 283,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "BotanTLSContext",
+    "kind" : "class",
+    "line" : 286,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "m_sessionManager",
+      "kind" : "variable",
+      "line" : 288,
+      "char" : 21,
+      "type" : "TLSSessionManager"
+     },
+     {
+      "name" : "m_policy",
+      "kind" : "variable",
+      "line" : 289,
+      "char" : 13,
+      "type" : "TLSPolicy"
+     },
+     {
+      "name" : "m_credentials",
+      "kind" : "variable",
+      "line" : 290,
+      "char" : 25,
+      "type" : "TLSCredentialsManager"
+     },
+     {
+      "name" : "m_kind",
+      "kind" : "variable",
+      "line" : 291,
+      "char" : 18,
+      "type" : "TLSContextKind"
+     },
+     {
+      "name" : "m_rng",
+      "kind" : "variable",
+      "line" : 292,
+      "char" : 17,
+      "type" : "AutoSeededRNG"
+     },
+     {
+      "name" : "m_offer_version",
+      "kind" : "variable",
+      "line" : 293,
+      "char" : 22,
+      "type" : "TLSProtocolVersion"
+     },
+     {
+      "name" : "m_sniCallback",
+      "kind" : "variable",
+      "line" : 294,
+      "char" : 25,
+      "type" : "TLSServerNameCallback"
+     },
+     {
+      "name" : "m_serverCb",
+      "kind" : "variable",
+      "line" : 295,
+      "char" : 19,
+      "type" : "TLSALPNCallback"
+     },
+     {
+      "name" : "m_clientOffers",
+      "kind" : "variable",
+      "line" : 296,
+      "char" : 17,
+      "type" : "Vector!string"
+     },
+     {
+      "name" : "m_is_datagram",
+      "kind" : "variable",
+      "line" : 297,
+      "char" : 8,
+      "deco" : "b"
+     },
+     {
+      "name" : "m_certChecked",
+      "kind" : "variable",
+      "line" : 298,
+      "char" : 8,
+      "deco" : "b"
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 301,
+      "char" : 2,
+      "type" : "@trusted (TLSContextKind kind, TLSCredentialsManager credentials = null, TLSPolicy policy = null, TLSSessionManager session_manager = null, bool is_datagram = false)",
+      "parameters" : [
+       {
+        "name" : "kind",
+        "type" : "TLSContextKind"
+       },
+       {
+        "name" : "credentials",
+        "type" : "TLSCredentialsManager",
+        "default" : "null"
+       },
+       {
+        "name" : "policy",
+        "type" : "TLSPolicy",
+        "default" : "null"
+       },
+       {
+        "name" : "session_manager",
+        "type" : "TLSSessionManager",
+        "default" : "null"
+       },
+       {
+        "name" : "is_datagram",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 329,
+      "endchar" : 2
+     },
+     {
+      "name" : "kind",
+      "kind" : "function",
+      "line" : 332,
+      "char" : 27,
+      "type" : "const @property TLSContextKind()",
+      "endline" : 334,
+      "endchar" : 2
+     },
+     {
+      "name" : "defaultProtocolOffer",
+      "kind" : "function",
+      "line" : 337,
+      "char" : 17,
+      "type" : "@property void(TLSProtocolVersion ver)",
+      "parameters" : [
+       {
+        "name" : "ver",
+        "type" : "TLSProtocolVersion"
+       }
+      ],
+      "endline" : 337,
+      "endchar" : 87
+     },
+     {
+      "name" : "defaultProtocolOffer",
+      "kind" : "function",
+      "line" : 339,
+      "char" : 31,
+      "type" : "@property TLSProtocolVersion()",
+      "endline" : 339,
+      "endchar" : 80
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 341,
+      "char" : 17,
+      "type" : "@property void(TLSServerNameCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "type" : "TLSServerNameCallback"
+       }
+      ],
+      "endline" : 344,
+      "endchar" : 2
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 345,
+      "char" : 41,
+      "type" : "inout @property inout(TLSServerNameCallback)()",
+      "endline" : 345,
+      "endchar" : 85
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 348,
+      "char" : 17,
+      "type" : "@property void(TLSALPNCallback alpn_chooser)",
+      "parameters" : [
+       {
+        "name" : "alpn_chooser",
+        "type" : "TLSALPNCallback"
+       }
+      ],
+      "endline" : 351,
+      "endchar" : 2
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 354,
+      "char" : 28,
+      "type" : "const @property TLSALPNCallback()",
+      "endline" : 354,
+      "endchar" : 70
+     },
+     {
+      "name" : "setClientALPN",
+      "kind" : "function",
+      "line" : 357,
+      "char" : 17,
+      "type" : "@property void(string[] alpn_list)",
+      "parameters" : [
+       {
+        "name" : "alpn_list",
+        "type" : "string[]"
+       }
+      ],
+      "endline" : 362,
+      "endchar" : 2
+     },
+     {
+      "name" : "createStream",
+      "kind" : "function",
+      "line" : 366,
+      "char" : 12,
+      "type" : "TLSStream(InterfaceProxy!Stream underlying, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "type" : "InterfaceProxy!Stream"
+       },
+       {
+        "name" : "state",
+        "type" : "TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "type" : "string",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "type" : "NetworkAddress",
+        "default" : "NetworkAddress.init"
+       }
+      ],
+      "endline" : 371,
+      "endchar" : 2
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 379,
+      "char" : 17,
+      "type" : "@property void(TLSPeerValidationMode mode)",
+      "parameters" : [
+       {
+        "name" : "mode",
+        "type" : "TLSPeerValidationMode"
+       }
+      ],
+      "endline" : 385,
+      "endchar" : 2
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 387,
+      "char" : 34,
+      "type" : "const @property TLSPeerValidationMode()",
+      "endline" : 392,
+      "endchar" : 2
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 398,
+      "char" : 17,
+      "type" : "@property void(TLSPeerValidationCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "type" : "TLSPeerValidationCallback"
+       }
+      ],
+      "endline" : 398,
+      "endchar" : 202
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 400,
+      "char" : 45,
+      "type" : "inout @property inout(TLSPeerValidationCallback)()",
+      "endline" : 400,
+      "endchar" : 117
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 409,
+      "char" : 17,
+      "type" : "@property void(int val)",
+      "parameters" : [
+       {
+        "name" : "val",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 416,
+      "endchar" : 2
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 418,
+      "char" : 16,
+      "type" : "const @property int()",
+      "endline" : 423,
+      "endchar" : 2
+     },
+     {
+      "name" : "setCipherList",
+      "kind" : "function",
+      "line" : 425,
+      "char" : 7,
+      "type" : "void(string list = null)",
+      "parameters" : [
+       {
+        "name" : "list",
+        "type" : "string",
+        "default" : "null"
+       }
+      ],
+      "endline" : 425,
+      "endchar" : 101
+     },
+     {
+      "name" : "setDHParams",
+      "kind" : "function",
+      "line" : 435,
+      "char" : 7,
+      "type" : "void(string pem_file = null)",
+      "parameters" : [
+       {
+        "name" : "pem_file",
+        "type" : "string",
+        "default" : "null"
+       }
+      ],
+      "endline" : 435,
+      "endchar" : 101
+     },
+     {
+      "name" : "setECDHCurve",
+      "kind" : "function",
+      "line" : 446,
+      "char" : 7,
+      "type" : "void(string curve = null)",
+      "parameters" : [
+       {
+        "name" : "curve",
+        "type" : "string",
+        "default" : "null"
+       }
+      ],
+      "endline" : 446,
+      "endchar" : 99
+     },
+     {
+      "name" : "useCertificateChainFile",
+      "kind" : "function",
+      "line" : 449,
+      "char" : 7,
+      "type" : "void(string path)",
+      "parameters" : [
+       {
+        "name" : "path",
+        "type" : "string"
+       }
+      ],
+      "endline" : 456,
+      "endchar" : 2
+     },
+     {
+      "name" : "usePrivateKeyFile",
+      "kind" : "function",
+      "line" : 461,
+      "char" : 7,
+      "type" : "void(string path)",
+      "parameters" : [
+       {
+        "name" : "path",
+        "type" : "string"
+       }
+      ],
+      "endline" : 468,
+      "endchar" : 2
+     },
+     {
+      "name" : "useTrustedCertificateFile",
+      "kind" : "function",
+      "line" : 479,
+      "char" : 7,
+      "type" : "void(string path)",
+      "parameters" : [
+       {
+        "name" : "path",
+        "type" : "string"
+       }
+      ],
+      "endline" : 488,
+      "endchar" : 2
+     },
+     {
+      "name" : "sniHandler",
+      "kind" : "function",
+      "line" : 490,
+      "char" : 31,
+      "type" : "SNIContextSwitchInfo(string hostname)",
+      "parameters" : [
+       {
+        "name" : "hostname",
+        "type" : "string"
+       }
+      ],
+      "endline" : 501,
+      "endchar" : 2
+     },
+     {
+      "name" : "nextProtocolHandler",
+      "kind" : "function",
+      "line" : 503,
+      "char" : 17,
+      "type" : "string(in Vector!string offers)",
+      "parameters" : [
+       {
+        "name" : "offers",
+        "type" : "Vector!string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 508,
+      "endchar" : 2
+     },
+     {
+      "name" : "onSNI",
+      "kind" : "function",
+      "line" : 510,
+      "char" : 26,
+      "type" : "BotanTLSContext(string hostname)",
+      "parameters" : [
+       {
+        "name" : "hostname",
+        "type" : "string"
+       }
+      ],
+      "endline" : 522,
+      "endchar" : 2
+     },
+     {
+      "name" : "checkCert",
+      "kind" : "function",
+      "line" : 524,
+      "char" : 15,
+      "type" : "void()",
+      "endline" : 544,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "CustomTLSPolicy",
+    "kind" : "class",
+    "line" : 550,
+    "char" : 9,
+    "members" : [
+     {
+      "name" : "m_min_ver",
+      "kind" : "variable",
+      "line" : 553,
+      "char" : 22,
+      "type" : "TLSProtocolVersion",
+      "init" : "TLSProtocolVersion.TLS_V10"
+     },
+     {
+      "name" : "m_min_dh_group_size",
+      "kind" : "variable",
+      "line" : 554,
+      "char" : 7,
+      "deco" : "i",
+      "init" : "1024"
+     },
+     {
+      "name" : "m_pri_ciphersuites",
+      "kind" : "variable",
+      "line" : 555,
+      "char" : 25,
+      "type" : "Vector!TLSCiphersuite"
+     },
+     {
+      "name" : "m_pri_ecc_curves",
+      "kind" : "variable",
+      "line" : 556,
+      "char" : 17,
+      "type" : "Vector!string"
+     },
+     {
+      "name" : "m_session_lifetime",
+      "kind" : "variable",
+      "line" : 557,
+      "char" : 12,
+      "type" : "Duration",
+      "init" : "24.hours"
+     },
+     {
+      "name" : "m_pri_ciphers_exclusive",
+      "kind" : "variable",
+      "line" : 558,
+      "char" : 8,
+      "deco" : "b"
+     },
+     {
+      "name" : "m_pri_curves_exclusive",
+      "kind" : "variable",
+      "line" : 559,
+      "char" : 8,
+      "deco" : "b"
+     },
+     {
+      "name" : "minProtocolVersion",
+      "kind" : "function",
+      "line" : 563,
+      "char" : 17,
+      "type" : "@property void(TLSProtocolVersion ver)",
+      "parameters" : [
+       {
+        "name" : "ver",
+        "type" : "TLSProtocolVersion"
+       }
+      ],
+      "endline" : 563,
+      "endchar" : 79
+     },
+     {
+      "name" : "minProtocolVersion",
+      "kind" : "function",
+      "line" : 566,
+      "char" : 31,
+      "type" : "@property TLSProtocolVersion()",
+      "endline" : 566,
+      "endchar" : 72
+     },
+     {
+      "name" : "minDHGroupSize",
+      "kind" : "function",
+      "line" : 568,
+      "char" : 17,
+      "type" : "@property void(int sz)",
+      "parameters" : [
+       {
+        "name" : "sz",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 568,
+      "endchar" : 68
+     },
+     {
+      "name" : "minDHGroupSize",
+      "kind" : "function",
+      "line" : 569,
+      "char" : 16,
+      "type" : "@property int()",
+      "endline" : 569,
+      "endchar" : 63
+     },
+     {
+      "name" : "addPriorityCiphersuites",
+      "kind" : "function",
+      "line" : 572,
+      "char" : 7,
+      "type" : "void(TLSCiphersuite[] suites)",
+      "parameters" : [
+       {
+        "name" : "suites",
+        "type" : "TLSCiphersuite[]"
+       }
+      ],
+      "endline" : 572,
+      "endchar" : 88
+     },
+     {
+      "name" : "ciphers",
+      "kind" : "function",
+      "line" : 574,
+      "char" : 29,
+      "type" : "@property TLSCiphersuite[]()",
+      "endline" : 574,
+      "endchar" : 70
+     },
+     {
+      "name" : "priorityCiphersOnly",
+      "kind" : "function",
+      "line" : 577,
+      "char" : 17,
+      "type" : "@property void(bool b)",
+      "parameters" : [
+       {
+        "name" : "b",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 577,
+      "endchar" : 76
+     },
+     {
+      "name" : "priorityCiphersOnly",
+      "kind" : "function",
+      "line" : 578,
+      "char" : 17,
+      "type" : "@property bool()",
+      "endline" : 578,
+      "endchar" : 73
+     },
+     {
+      "name" : "addPriorityCurves",
+      "kind" : "function",
+      "line" : 580,
+      "char" : 7,
+      "type" : "void(string[] curves)",
+      "parameters" : [
+       {
+        "name" : "curves",
+        "type" : "string[]"
+       }
+      ],
+      "endline" : 582,
+      "endchar" : 2
+     },
+     {
+      "name" : "priorityCurves",
+      "kind" : "function",
+      "line" : 583,
+      "char" : 21,
+      "type" : "@property string[]()",
+      "endline" : 583,
+      "endchar" : 67
+     },
+     {
+      "name" : "priorityCurvesOnly",
+      "kind" : "function",
+      "line" : 586,
+      "char" : 17,
+      "type" : "@property void(bool b)",
+      "parameters" : [
+       {
+        "name" : "b",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 586,
+      "endchar" : 74
+     },
+     {
+      "name" : "priorityCurvesOnly",
+      "kind" : "function",
+      "line" : 587,
+      "char" : 17,
+      "type" : "@property bool()",
+      "endline" : 587,
+      "endchar" : 71
+     },
+     {
+      "name" : "chooseCurve",
+      "kind" : "function",
+      "line" : 589,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "const string(in Vector!string curve_names)",
+      "parameters" : [
+       {
+        "name" : "curve_names",
+        "type" : "Vector!string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 600,
+      "endchar" : 2
+     },
+     {
+      "name" : "allowedEccCurves",
+      "kind" : "function",
+      "line" : 602,
+      "char" : 25,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "const Vector!string()",
+      "endline" : 609,
+      "endchar" : 2
+     },
+     {
+      "name" : "ciphersuiteList",
+      "kind" : "function",
+      "line" : 611,
+      "char" : 25,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "const Vector!ushort(TLSProtocolVersion _version, bool have_srp)",
+      "parameters" : [
+       {
+        "name" : "_version",
+        "type" : "TLSProtocolVersion"
+       },
+       {
+        "name" : "have_srp",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 624,
+      "endchar" : 2
+     },
+     {
+      "name" : "acceptableProtocolVersion",
+      "kind" : "function",
+      "line" : 626,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "const bool(TLSProtocolVersion _version)",
+      "parameters" : [
+       {
+        "name" : "_version",
+        "type" : "TLSProtocolVersion"
+       }
+      ],
+      "endline" : 631,
+      "endchar" : 2
+     },
+     {
+      "name" : "sessionTicketLifetime",
+      "kind" : "function",
+      "line" : 633,
+      "char" : 20,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "const Duration()",
+      "endline" : 635,
+      "endchar" : 2
+     },
+     {
+      "name" : "minimumDhGroupSize",
+      "kind" : "function",
+      "line" : 637,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "const size_t()",
+      "endline" : 639,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "CustomTLSCredentials",
+    "kind" : "class",
+    "line" : 643,
+    "char" : 9,
+    "members" : [
+     {
+      "name" : "m_validationMode",
+      "kind" : "variable",
+      "line" : 646,
+      "char" : 25,
+      "type" : "TLSPeerValidationMode",
+      "init" : "TLSPeerValidationMode.none"
+     },
+     {
+      "name" : "m_max_cert_chain_length",
+      "kind" : "variable",
+      "line" : 647,
+      "char" : 7,
+      "deco" : "i",
+      "init" : "9"
+     },
+     {
+      "name" : "m_server_cert",
+      "kind" : "variable",
+      "line" : 651,
+      "char" : 19,
+      "type" : "X509Certificate"
+     },
+     {
+      "name" : "m_ca_cert",
+      "kind" : "variable",
+      "line" : 651,
+      "char" : 34,
+      "type" : "X509Certificate"
+     },
+     {
+      "name" : "m_key",
+      "kind" : "variable",
+      "line" : 652,
+      "char" : 14,
+      "type" : "PrivateKey"
+     },
+     {
+      "name" : "m_stores",
+      "kind" : "variable",
+      "line" : 653,
+      "char" : 27,
+      "type" : "Vector!CertificateStore"
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 656,
+      "char" : 2,
+      "type" : "()",
+      "endline" : 656,
+      "endchar" : 11
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 659,
+      "char" : 2,
+      "type" : "(TLSPeerValidationMode validation_mode = TLSPeerValidationMode.checkPeer)",
+      "parameters" : [
+       {
+        "name" : "validation_mode",
+        "type" : "TLSPeerValidationMode",
+        "default" : "TLSPeerValidationMode.checkPeer"
+       }
+      ],
+      "endline" : 661,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 664,
+      "char" : 2,
+      "type" : "(X509Certificate server_cert, X509Certificate ca_cert, PrivateKey server_key)",
+      "parameters" : [
+       {
+        "name" : "server_cert",
+        "type" : "X509Certificate"
+       },
+       {
+        "name" : "ca_cert",
+        "type" : "X509Certificate"
+       },
+       {
+        "name" : "server_key",
+        "type" : "PrivateKey"
+       }
+      ],
+      "endline" : 674,
+      "endchar" : 2
+     },
+     {
+      "name" : "trustedCertificateAuthorities",
+      "kind" : "function",
+      "line" : 676,
+      "char" : 35,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "Vector!CertificateStore(in string, in string)",
+      "parameters" : [
+       {
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 681,
+      "endchar" : 2
+     },
+     {
+      "name" : "certChain",
+      "kind" : "function",
+      "line" : 683,
+      "char" : 34,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "Vector!X509Certificate(ref const Vector!string cert_key_types, in string type, in string)",
+      "parameters" : [
+       {
+        "name" : "cert_key_types",
+        "type" : "Vector!string",
+        "storageClass" : [
+         "const",
+         "ref"
+        ]
+       },
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 705,
+      "endchar" : 2
+     },
+     {
+      "name" : "verifyCertificateChain",
+      "kind" : "function",
+      "line" : 707,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "void(in string type, in string purported_hostname, ref const Vector!X509Certificate cert_chain)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "purported_hostname",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "cert_chain",
+        "type" : "Vector!X509Certificate",
+        "storageClass" : [
+         "const",
+         "ref"
+        ]
+       }
+      ],
+      "endline" : 767,
+      "endchar" : 2
+     },
+     {
+      "name" : "privateKeyFor",
+      "kind" : "function",
+      "line" : 769,
+      "char" : 22,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "PrivateKey(in X509Certificate, in string, in string)",
+      "parameters" : [
+       {
+        "type" : "X509Certificate",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 772,
+      "endchar" : 2
+     },
+     {
+      "name" : "certChainSingleType",
+      "kind" : "function",
+      "line" : 775,
+      "char" : 34,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "Vector!X509Certificate(in string cert_key_type, in string type, in string context)",
+      "parameters" : [
+       {
+        "name" : "cert_key_type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 780,
+      "endchar" : 2
+     },
+     {
+      "name" : "attemptSrp",
+      "kind" : "function",
+      "line" : 782,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "bool(in string type, in string context)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 785,
+      "endchar" : 2
+     },
+     {
+      "name" : "srpIdentifier",
+      "kind" : "function",
+      "line" : 787,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "string(in string type, in string context)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 790,
+      "endchar" : 2
+     },
+     {
+      "name" : "srpPassword",
+      "kind" : "function",
+      "line" : 792,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "string(in string type, in string context, in string identifier)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "identifier",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 795,
+      "endchar" : 2
+     },
+     {
+      "name" : "srpVerifier",
+      "kind" : "function",
+      "line" : 797,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "bool(in string type, in string context, in string identifier, ref string group_name, ref BigInt verifier, ref Vector!ubyte salt, bool generate_fake_on_unknown)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "identifier",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "group_name",
+        "type" : "string",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "verifier",
+        "type" : "BigInt",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "salt",
+        "type" : "Vector!ubyte",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "generate_fake_on_unknown",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 806,
+      "endchar" : 2
+     },
+     {
+      "name" : "pskIdentityHint",
+      "kind" : "function",
+      "line" : 808,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "string(in string type, in string context)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 811,
+      "endchar" : 2
+     },
+     {
+      "name" : "pskIdentity",
+      "kind" : "function",
+      "line" : 813,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "string(in string type, in string context, in string identity_hint)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "identity_hint",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 816,
+      "endchar" : 2
+     },
+     {
+      "name" : "psk",
+      "kind" : "function",
+      "line" : 818,
+      "char" : 24,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "SymmetricKey(in string type, in string context, in string identity)",
+      "parameters" : [
+       {
+        "name" : "type",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "context",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "identity",
+        "type" : "string",
+        "storageClass" : [
+         "in"
+        ]
+       }
+      ],
+      "endline" : 821,
+      "endchar" : 2
+     },
+     {
+      "name" : "hasPsk",
+      "kind" : "function",
+      "line" : 823,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "type" : "bool()",
+      "endline" : 826,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "createCreds",
+    "kind" : "function",
+    "line" : 829,
+    "char" : 30,
+    "type" : "CustomTLSCredentials()",
+    "endline" : 868,
+    "endchar" : 1
+   },
+   {
+    "name" : "gs_default_policy",
+    "kind" : "variable",
+    "line" : 871,
+    "char" : 28,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "type" : "CustomTLSPolicy"
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.openssl",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\tls\\vibe\\stream\\openssl.d",
+  "members" : [
+   {
+    "name" : "vibe.core.log",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.net",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.sync",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.stream.tls",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "InterfaceProxy"
+    ]
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.array",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.socket",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 24,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "strlen"
+    ]
+   },
+   {
+    "name" : "core.sync.mutex",
+    "kind" : "import",
+    "line" : 25,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.thread",
+    "kind" : "import",
+    "line" : 26,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.bio",
+    "kind" : "import",
+    "line" : 32,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.err",
+    "kind" : "import",
+    "line" : 33,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.rand",
+    "kind" : "import",
+    "line" : 34,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.ssl",
+    "kind" : "import",
+    "line" : 35,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.stack",
+    "kind" : "import",
+    "line" : 36,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.x509v3",
+    "kind" : "import",
+    "line" : 37,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "haveECDH",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 45,
+    "char" : 19,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "true"
+   },
+   {
+    "name" : "haveECDH",
+    "kind" : "variable",
+    "line" : 44,
+    "char" : 42,
+    "storageClass" : [
+     "enum"
+    ],
+    "init" : "false"
+   },
+   {
+    "name" : "alpn_forced",
+    "kind" : "variable",
+    "line" : 47,
+    "char" : 11,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "alpn_forced",
+    "kind" : "variable",
+    "line" : 46,
+    "char" : 29,
+    "storageClass" : [
+     "enum"
+    ],
+    "init" : "true"
+   },
+   {
+    "name" : "haveALPN",
+    "kind" : "variable",
+    "line" : 48,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "TLS_client_method",
+    "kind" : "function",
+    "line" : 52,
+    "char" : 31,
+    "type" : "extern (C) const(SSL_METHOD)*()"
+   },
+   {
+    "name" : "SSLv23_client_method",
+    "kind" : "alias",
+    "line" : 53,
+    "char" : 2,
+    "type" : "TLS_client_method"
+   },
+   {
+    "name" : "TLS_server_method",
+    "kind" : "function",
+    "line" : 55,
+    "char" : 31,
+    "type" : "extern (C) const(SSL_METHOD)*()"
+   },
+   {
+    "name" : "SSLv23_server_method",
+    "kind" : "alias",
+    "line" : 56,
+    "char" : 2,
+    "type" : "TLS_server_method"
+   },
+   {
+    "name" : "SSL_load_error_strings",
+    "kind" : "function",
+    "line" : 59,
+    "char" : 7,
+    "type" : "void()",
+    "endline" : 59,
+    "endchar" : 33
+   },
+   {
+    "name" : "OPENSSL_init_ssl",
+    "kind" : "function",
+    "line" : 61,
+    "char" : 17,
+    "type" : "extern (C) int(ulong opts, const void* settings)",
+    "parameters" : [
+     {
+      "name" : "opts",
+      "deco" : "m"
+     },
+     {
+      "name" : "settings",
+      "type" : "void*",
+      "storageClass" : [
+       "const"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "SSL_library_init",
+    "kind" : "function",
+    "line" : 64,
+    "char" : 6,
+    "type" : "int()",
+    "endline" : 66,
+    "endchar" : 2
+   },
+   {
+    "name" : "CRYPTO_num_locks",
+    "kind" : "function",
+    "line" : 69,
+    "char" : 6,
+    "type" : "int()",
+    "endline" : 71,
+    "endchar" : 2
+   },
+   {
+    "kind" : "template",
+    "line" : 73,
+    "char" : 7,
+    "name" : "CRYPTO_set_id_callback",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "CRYPTO_set_id_callback",
+      "kind" : "function",
+      "line" : 73,
+      "char" : 7,
+      "type" : "void(T t)",
+      "parameters" : [
+       {
+        "name" : "t",
+        "type" : "T"
+       }
+      ],
+      "endline" : 74,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 76,
+    "char" : 7,
+    "name" : "CRYPTO_set_locking_callback",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "CRYPTO_set_locking_callback",
+      "kind" : "function",
+      "line" : 76,
+      "char" : 7,
+      "type" : "void(T t)",
+      "parameters" : [
+       {
+        "name" : "t",
+        "type" : "T"
+       }
+      ],
+      "endline" : 77,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "CRYPTO_get_ex_new_index",
+    "kind" : "function",
+    "line" : 82,
+    "char" : 16,
+    "type" : "extern (C) int(int class_index, long argl, void* argp, CRYPTO_EX_new* new_func, CRYPTO_EX_dup* dup_func, CRYPTO_EX_free* free_func)",
+    "parameters" : [
+     {
+      "name" : "class_index",
+      "deco" : "i"
+     },
+     {
+      "name" : "argl",
+      "deco" : "l"
+     },
+     {
+      "name" : "argp",
+      "type" : "void*"
+     },
+     {
+      "name" : "new_func",
+      "type" : "CRYPTO_EX_new*"
+     },
+     {
+      "name" : "dup_func",
+      "type" : "CRYPTO_EX_dup*"
+     },
+     {
+      "name" : "free_func",
+      "type" : "CRYPTO_EX_free*"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_get_ex_new_index",
+    "kind" : "function",
+    "line" : 86,
+    "char" : 6,
+    "type" : "int(long argl, void* argp, CRYPTO_EX_new* new_func, CRYPTO_EX_dup* dup_func, CRYPTO_EX_free* free_func)",
+    "parameters" : [
+     {
+      "name" : "argl",
+      "deco" : "l"
+     },
+     {
+      "name" : "argp",
+      "type" : "void*"
+     },
+     {
+      "name" : "new_func",
+      "type" : "CRYPTO_EX_new*"
+     },
+     {
+      "name" : "dup_func",
+      "type" : "CRYPTO_EX_dup*"
+     },
+     {
+      "name" : "free_func",
+      "type" : "CRYPTO_EX_free*"
+     }
+    ],
+    "endline" : 92,
+    "endchar" : 2
+   },
+   {
+    "name" : "BN_get_rfc3526_prime_2048",
+    "kind" : "function",
+    "line" : 94,
+    "char" : 20,
+    "type" : "extern (C) BIGNUM*(BIGNUM* bn)",
+    "parameters" : [
+     {
+      "name" : "bn",
+      "type" : "BIGNUM*"
+     }
+    ]
+   },
+   {
+    "name" : "get_rfc3526_prime_2048",
+    "kind" : "alias",
+    "line" : 96,
+    "char" : 2,
+    "type" : "BN_get_rfc3526_prime_2048"
+   },
+   {
+    "name" : "OPENSSL_sk_num",
+    "kind" : "function",
+    "line" : 99,
+    "char" : 16,
+    "type" : "extern (C) int(const void*)",
+    "parameters" : [
+     {
+      "type" : "void*",
+      "storageClass" : [
+       "const"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "sk_num",
+    "kind" : "function",
+    "line" : 100,
+    "char" : 16,
+    "type" : "extern (C) int(const(_STACK)* p)",
+    "parameters" : [
+     {
+      "name" : "p",
+      "type" : "const(_STACK)*"
+     }
+    ],
+    "endline" : 100,
+    "endchar" : 69
+   },
+   {
+    "name" : "OPENSSL_sk_value",
+    "kind" : "function",
+    "line" : 103,
+    "char" : 18,
+    "type" : "extern (C) void*(const void*, int)",
+    "parameters" : [
+     {
+      "type" : "void*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "deco" : "i"
+     }
+    ]
+   },
+   {
+    "name" : "sk_value",
+    "kind" : "function",
+    "line" : 104,
+    "char" : 18,
+    "type" : "extern (C) void*(const(_STACK)* p, int i)",
+    "parameters" : [
+     {
+      "name" : "p",
+      "type" : "const(_STACK)*"
+     },
+     {
+      "name" : "i",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 104,
+    "endchar" : 85
+   },
+   {
+    "name" : "OpenSSLStream",
+    "kind" : "class",
+    "line" : 113,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.stream.tls.TLSStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_stream",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 117,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream6Stream",
+      "originalType" : "InterfaceProxy!Stream",
+      "offset" : 16
+     },
+     {
+      "name" : "m_tlsCtx",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 118,
+      "char" : 14,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe6stream3tls10TLSContext",
+      "originalType" : "TLSContext",
+      "offset" : 20
+     },
+     {
+      "name" : "m_state",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 119,
+      "char" : 18,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls14TLSStreamState",
+      "offset" : 24
+     },
+     {
+      "name" : "m_tls",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 120,
+      "char" : 12,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl3ssl6ssl_st",
+      "originalType" : "SSLState",
+      "offset" : 28
+     },
+     {
+      "name" : "m_bio",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 121,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl3bio6bio_st",
+      "originalType" : "BIO*",
+      "offset" : 32
+     },
+     {
+      "name" : "m_peekBuffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 122,
+      "char" : 13,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "G64h",
+      "offset" : 36
+     },
+     {
+      "name" : "m_peerCertificateInfo",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 123,
+      "char" : 29,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S4vibe6stream3tls25TLSCertificateInformation",
+      "offset" : 100
+     },
+     {
+      "name" : "m_peerCertificate",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 124,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl4x5097x509_st",
+      "originalType" : "X509*",
+      "offset" : 244
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 127,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream6StreamCQzQr7openssl14OpenSSLContextEQCcQBv3tls14TLSStreamStateAyaSQDgQDe3net14NetworkAddressAQBfZCQEmQEfQDp13OpenSSLStream",
+      "originalType" : "@safe (InterfaceProxy!Stream underlying, OpenSSLContext ctx, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init, string[] alpn = null)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "ctx",
+        "deco" : "C4vibe6stream7openssl14OpenSSLContext"
+       },
+       {
+        "name" : "state",
+        "deco" : "E4vibe6stream3tls14TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "deco" : "Aya",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "deco" : "S4vibe4core3net14NetworkAddress",
+        "default" : "NetworkAddress(sockaddr(cast(short)0, [cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u]), , )"
+       },
+       {
+        "name" : "alpn",
+        "deco" : "AAya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 210,
+      "endchar" : 2
+     },
+     {
+      "name" : "readPeerCertInfo",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 213,
+      "char" : 15,
+      "deco" : "FNfZv",
+      "endline" : 229,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 231,
+      "char" : 2,
+      "deco" : "FNfZv",
+      "endline" : 235,
+      "endchar" : 2
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 237,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 240,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 242,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 248,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 250,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 253,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 255,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 259,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 261,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 277,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 279,
+      "char" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 281,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] bytes_, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes_",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 299,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 301,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 303,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 306,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 308,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 320,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     },
+     {
+      "name" : "checkSSLRet",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 322,
+      "char" : 14,
+      "deco" : "FNfiAyaZi",
+      "parameters" : [
+       {
+        "name" : "ret",
+        "deco" : "i"
+       },
+       {
+        "name" : "what",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 358,
+      "endchar" : 2
+     },
+     {
+      "name" : "enforceSSL",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 360,
+      "char" : 14,
+      "deco" : "FNfiAyaZi",
+      "parameters" : [
+       {
+        "name" : "ret",
+        "deco" : "i"
+       },
+       {
+        "name" : "message",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 382,
+      "endchar" : 2
+     },
+     {
+      "name" : "peerCertificate",
+      "kind" : "function",
+      "line" : 384,
+      "char" : 38,
+      "deco" : "FNdNfZS4vibe6stream3tls25TLSCertificateInformation",
+      "endline" : 387,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSStream.peerCertificate"
+      ]
+     },
+     {
+      "name" : "peerCertificateX509",
+      "kind" : "function",
+      "line" : 389,
+      "char" : 18,
+      "deco" : "FNdNfZPS6deimos7openssl4x5097x509_st",
+      "originalType" : "@property @safe X509*()",
+      "endline" : 392,
+      "endchar" : 2
+     },
+     {
+      "name" : "alpn",
+      "kind" : "function",
+      "line" : 394,
+      "char" : 19,
+      "deco" : "xFNdNfZAya",
+      "endline" : 407,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSStream.alpn"
+      ]
+     },
+     {
+      "name" : "setClientALPN",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 410,
+      "char" : 15,
+      "deco" : "FNfAAyaZv",
+      "parameters" : [
+       {
+        "name" : "alpn_list",
+        "deco" : "AAya"
+       }
+      ],
+      "endline" : 433,
+      "endchar" : 2
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "OpenSSLContext",
+    "kind" : "class",
+    "line" : 445,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.stream.tls.TLSContext"
+    ],
+    "members" : [
+     {
+      "name" : "m_kind",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 449,
+      "char" : 18,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls14TLSContextKind",
+      "offset" : 12
+     },
+     {
+      "name" : "m_ctx",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 450,
+      "char" : 15,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl3ssl10ssl_ctx_st",
+      "offset" : 16
+     },
+     {
+      "name" : "m_peerValidationCallback",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 451,
+      "char" : 29,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb",
+      "originalType" : "TLSPeerValidationCallback",
+      "offset" : 20
+     },
+     {
+      "name" : "m_validationMode",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 452,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls21TLSPeerValidationMode",
+      "offset" : 28
+     },
+     {
+      "name" : "m_verifyDepth",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 453,
+      "char" : 7,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "i",
+      "offset" : 32
+     },
+     {
+      "name" : "m_sniCallback",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 454,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfAyaZC4vibe6stream3tls10TLSContext",
+      "originalType" : "TLSServerNameCallback",
+      "offset" : 36
+     },
+     {
+      "name" : "m_alpnCallback",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 455,
+      "char" : 19,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfAAyaZQe",
+      "originalType" : "TLSALPNCallback",
+      "offset" : 44
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 458,
+      "char" : 2,
+      "deco" : "FNfE4vibe6stream3tls14TLSContextKindEQBhQBfQBb10TLSVersionZCQCeQCc7openssl14OpenSSLContext",
+      "originalType" : "@safe (TLSContextKind kind, TLSVersion ver = TLSVersion.any)",
+      "parameters" : [
+       {
+        "name" : "kind",
+        "deco" : "E4vibe6stream3tls14TLSContextKind"
+       },
+       {
+        "name" : "ver",
+        "deco" : "E4vibe6stream3tls10TLSVersion",
+        "default" : "cast(TLSVersion)0"
+       }
+      ],
+      "endline" : 537,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 539,
+      "char" : 2,
+      "deco" : "FNfZv",
+      "endline" : 543,
+      "endchar" : 2
+     },
+     {
+      "name" : "kind",
+      "kind" : "function",
+      "line" : 547,
+      "char" : 27,
+      "deco" : "xFNdNfZE4vibe6stream3tls14TLSContextKind",
+      "endline" : 547,
+      "endchar" : 57,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.kind"
+      ]
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 550,
+      "char" : 17,
+      "deco" : "FNdNfDFNfAAyaZQeZv",
+      "originalType" : "@property @safe void(TLSALPNCallback alpn_chooser)",
+      "parameters" : [
+       {
+        "name" : "alpn_chooser",
+        "deco" : "DFNfAAyaZQe"
+       }
+      ],
+      "endline" : 558,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.alpnCallback"
+      ]
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 561,
+      "char" : 28,
+      "deco" : "xFNdNfZDFNfAAyaZQe",
+      "originalType" : "const @property @safe TLSALPNCallback()",
+      "endline" : 561,
+      "endchar" : 74,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.alpnCallback"
+      ]
+     },
+     {
+      "name" : "setClientALPN",
+      "kind" : "function",
+      "line" : 564,
+      "char" : 7,
+      "deco" : "FNfAAyaZv",
+      "parameters" : [
+       {
+        "name" : "alpn_list",
+        "deco" : "AAya"
+       }
+      ],
+      "endline" : 588,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setClientALPN"
+      ]
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 596,
+      "char" : 17,
+      "deco" : "FNdNfE4vibe6stream3tls21TLSPeerValidationModeZv",
+      "parameters" : [
+       {
+        "name" : "mode",
+        "deco" : "E4vibe6stream3tls21TLSPeerValidationMode"
+       }
+      ],
+      "endline" : 611,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationMode"
+      ]
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 613,
+      "char" : 34,
+      "deco" : "xFNdNfZE4vibe6stream3tls21TLSPeerValidationMode",
+      "endline" : 613,
+      "endchar" : 88,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationMode"
+      ]
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 623,
+      "char" : 17,
+      "deco" : "FNdNfiZv",
+      "parameters" : [
+       {
+        "name" : "val",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 628,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.maxCertChainLength"
+      ]
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 631,
+      "char" : 16,
+      "deco" : "xFNdNfZi",
+      "endline" : 631,
+      "endchar" : 67,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.maxCertChainLength"
+      ]
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 642,
+      "char" : 17,
+      "deco" : "FNdNfDFNfMS4vibe6stream3tls21TLSPeerValidationDataZbZv",
+      "originalType" : "@property @safe void(TLSPeerValidationCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb"
+       }
+      ],
+      "endline" : 642,
+      "endchar" : 115,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationCallback"
+      ]
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 644,
+      "char" : 45,
+      "deco" : "NgFNdNfZNgDFNfMS4vibe6stream3tls21TLSPeerValidationDataZb",
+      "originalType" : "inout @property @safe inout(TLSPeerValidationCallback)()",
+      "endline" : 644,
+      "endchar" : 111,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationCallback"
+      ]
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 646,
+      "char" : 17,
+      "deco" : "FNdNfDFNfAyaZC4vibe6stream3tls10TLSContextZv",
+      "originalType" : "@property @safe void(TLSServerNameCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "deco" : "DFNfAyaZC4vibe6stream3tls10TLSContext"
+       }
+      ],
+      "endline" : 655,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.sniCallback"
+      ]
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 656,
+      "char" : 41,
+      "deco" : "NgFNdNfZNgDFNfAyaZC4vibe6stream3tls10TLSContext",
+      "originalType" : "inout @property @safe inout(TLSServerNameCallback)()",
+      "endline" : 656,
+      "endchar" : 85,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.sniCallback"
+      ]
+     },
+     {
+      "name" : "OSSLCallback",
+      "kind" : "alias",
+      "protection" : "private",
+      "line" : 658,
+      "char" : 20,
+      "deco" : "PUNfZv"
+     },
+     {
+      "name" : "onContextForServerName",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 659,
+      "char" : 31,
+      "storageClass" : [
+       "static"
+      ],
+      "linkage" : "c",
+      "deco" : "UNfPS6deimos7openssl3ssl6ssl_stPiPvZi",
+      "originalType" : "@safe extern (C) int(SSL* s, int* ad, void* arg)",
+      "parameters" : [
+       {
+        "name" : "s",
+        "deco" : "PS6deimos7openssl3ssl6ssl_st"
+       },
+       {
+        "name" : "ad",
+        "deco" : "Pi"
+       },
+       {
+        "name" : "arg",
+        "deco" : "Pv"
+       }
+      ],
+      "endline" : 668,
+      "endchar" : 2
+     },
+     {
+      "name" : "createStream",
+      "kind" : "function",
+      "line" : 670,
+      "char" : 16,
+      "deco" : "FNfC4vibe4core6stream6StreamEQzQr3tls14TLSStreamStateAyaSQCbQBz3net14NetworkAddressZCQDdQCw7openssl13OpenSSLStream",
+      "originalType" : "@safe OpenSSLStream(InterfaceProxy!Stream underlying, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "state",
+        "deco" : "E4vibe6stream3tls14TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "deco" : "Aya",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "deco" : "S4vibe4core3net14NetworkAddress",
+        "default" : "NetworkAddress(sockaddr(cast(short)0, [cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u]), , )"
+       }
+      ],
+      "endline" : 673,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.createStream"
+      ]
+     },
+     {
+      "name" : "setCipherList",
+      "kind" : "function",
+      "line" : 683,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "list",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 692,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setCipherList"
+      ]
+     },
+     {
+      "name" : "guessSessionIDContext",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 703,
+      "char" : 15,
+      "deco" : "FNeZv",
+      "endline" : 708,
+      "endchar" : 2
+     },
+     {
+      "name" : "setDHParams",
+      "kind" : "function",
+      "line" : 718,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "pem_file",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 737,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setDHParams"
+      ]
+     },
+     {
+      "name" : "setECDHCurve",
+      "kind" : "function",
+      "line" : 748,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "curve",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 771,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setECDHCurve"
+      ]
+     },
+     {
+      "name" : "useCertificateChainFile",
+      "kind" : "function",
+      "line" : 774,
+      "char" : 7,
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 777,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.useCertificateChainFile"
+      ]
+     },
+     {
+      "name" : "usePrivateKeyFile",
+      "kind" : "function",
+      "line" : 781,
+      "char" : 7,
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 784,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.usePrivateKeyFile"
+      ]
+     },
+     {
+      "name" : "useTrustedCertificateFile",
+      "kind" : "function",
+      "line" : 795,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 806,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.useTrustedCertificateFile"
+      ]
+     },
+     {
+      "name" : "createClientCtx",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 808,
+      "char" : 19,
+      "deco" : "FNfZPS6deimos7openssl3ssl6ssl_st",
+      "originalType" : "@safe SSLState()",
+      "endline" : 811,
+      "endchar" : 2
+     },
+     {
+      "name" : "VerifyData",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 813,
+      "char" : 17,
+      "members" : [
+       {
+        "name" : "verifyDepth",
+        "kind" : "variable",
+        "line" : 814,
+        "char" : 7,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "i",
+        "offset" : 0
+       },
+       {
+        "name" : "validationMode",
+        "kind" : "variable",
+        "line" : 815,
+        "char" : 25,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "E4vibe6stream3tls21TLSPeerValidationMode",
+        "offset" : 4
+       },
+       {
+        "name" : "callback",
+        "kind" : "variable",
+        "line" : 816,
+        "char" : 29,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb",
+        "originalType" : "TLSPeerValidationCallback",
+        "offset" : 8
+       },
+       {
+        "name" : "peerName",
+        "kind" : "variable",
+        "line" : 817,
+        "char" : 10,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "Aya",
+        "offset" : 16
+       },
+       {
+        "name" : "peerAddress",
+        "kind" : "variable",
+        "line" : 818,
+        "char" : 18,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "S4vibe4core3net14NetworkAddress",
+        "offset" : 24
+       }
+      ]
+     },
+     {
+      "name" : "verify_callback",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 822,
+      "char" : 6,
+      "storageClass" : [
+       "static"
+      ],
+      "linkage" : "c",
+      "deco" : "UNbNeiPS6deimos7openssl8x509_vfy17x509_store_ctx_stZi",
+      "originalType" : "nothrow @trusted extern (C) int(int valid, X509_STORE_CTX* ctx)",
+      "parameters" : [
+       {
+        "name" : "valid",
+        "deco" : "i"
+       },
+       {
+        "name" : "ctx",
+        "deco" : "PS6deimos7openssl8x509_vfy17x509_store_ctx_st"
+       }
+      ],
+      "endline" : 897,
+      "endchar" : 2
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "SSLState",
+    "kind" : "alias",
+    "line" : 900,
+    "char" : 1,
+    "deco" : "PS6deimos7openssl3ssl6ssl_st"
+   },
+   {
+    "name" : "g_cryptoMutexes",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 907,
+    "char" : 37,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "deco" : "AC4vibe4core4sync22InterruptibleTaskMutex"
+   },
+   {
+    "name" : "gs_verifyDataIndex",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 908,
+    "char" : 16,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "deco" : "i"
+   },
+   {
+    "name" : "_sharedStaticCtor_L911_C1",
+    "kind" : "function",
+    "line" : 911,
+    "char" : 1,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FZv",
+    "endline" : 932,
+    "endchar" : 1
+   },
+   {
+    "name" : "verifyCertName",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 934,
+    "char" : 14,
+    "deco" : "FNePS6deimos7openssl4x5097x509_stixAabZb",
+    "originalType" : "@trusted bool(X509* cert, int field, in char[] value, bool allow_wildcards = true)",
+    "parameters" : [
+     {
+      "name" : "cert",
+      "deco" : "PS6deimos7openssl4x5097x509_st"
+     },
+     {
+      "name" : "field",
+      "deco" : "i"
+     },
+     {
+      "name" : "value",
+      "deco" : "xAa"
+     },
+     {
+      "name" : "allow_wildcards",
+      "deco" : "b",
+      "default" : "true"
+     }
+    ],
+    "endline" : 990,
+    "endchar" : 1
+   },
+   {
+    "name" : "matchWildcard",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 992,
+    "char" : 14,
+    "deco" : "FNfAxaQdZb",
+    "parameters" : [
+     {
+      "name" : "str",
+      "deco" : "Axa"
+     },
+     {
+      "name" : "pattern",
+      "deco" : "Axa"
+     }
+    ],
+    "endline" : 1018,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L1020_C1",
+    "kind" : "function",
+    "line" : 1020,
+    "char" : 1,
+    "endline" : 1034,
+    "endchar" : 1
+   },
+   {
+    "name" : "core.stdc.config",
+    "kind" : "import",
+    "line" : 1036,
+    "char" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "chooser",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1039,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3ssl6ssl_stPPxaPhQfkPvZi",
+    "originalType" : "nothrow @safe extern (C) int(SSL* ssl, const(char)** output, ubyte* outlen, const(char)* input_, uint inlen, void* arg)",
+    "parameters" : [
+     {
+      "name" : "ssl",
+      "deco" : "PS6deimos7openssl3ssl6ssl_st"
+     },
+     {
+      "name" : "output",
+      "deco" : "PPxa"
+     },
+     {
+      "name" : "outlen",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "input_",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "inlen",
+      "deco" : "k"
+     },
+     {
+      "name" : "arg",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 1083,
+    "endchar" : 2
+   },
+   {
+    "name" : "onCryptoGetThreadID",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1085,
+    "char" : 10,
+    "linkage" : "c",
+    "deco" : "UNbNfZk",
+    "originalType" : "nothrow @safe extern (C) c_ulong()",
+    "endline" : 1093,
+    "endchar" : 2
+   },
+   {
+    "name" : "onCryptoLock",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1095,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNbNfiiPxaiZv",
+    "parameters" : [
+     {
+      "name" : "mode",
+      "deco" : "i"
+     },
+     {
+      "name" : "n",
+      "deco" : "i"
+     },
+     {
+      "name" : "file",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "line",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1106,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioNew",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1108,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     }
+    ],
+    "endline" : 1115,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioFree",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1117,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     }
+    ],
+    "endline" : 1127,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioRead",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1129,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stPaiZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b, char* outb, int outlen)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "outb",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "outlen",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1141,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioWrite",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1143,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stPxaiZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b, const(char)* inb, int inlen)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "inb",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "inlen",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1153,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioCtrl",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1155,
+    "char" : 9,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stiiPvZi",
+    "originalType" : "nothrow @safe extern (C) c_long(BIO* b, int cmd, c_long num, void* ptr)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "cmd",
+      "deco" : "i"
+     },
+     {
+      "name" : "num",
+      "deco" : "i"
+     },
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 1184,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioPuts",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1186,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stPxaZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b, const(char)* s)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "s",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 1189,
+    "endchar" : 2
+   },
+   {
+    "name" : "setSSLError",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1192,
+    "char" : 14,
+    "deco" : "FNbNeAyaQdiQgZv",
+    "parameters" : [
+     {
+      "name" : "msg",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "submsg",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "line",
+      "deco" : "i",
+      "default" : "__LINE__"
+     },
+     {
+      "name" : "file",
+      "deco" : "Aya",
+      "default" : "__FILE__"
+     }
+    ],
+    "endline" : 1197,
+    "endchar" : 1
+   },
+   {
+    "name" : "s_bio_methods",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 1199,
+    "char" : 20,
+    "deco" : "S6deimos7openssl3bio13bio_method_st",
+    "originalType" : "BIO_METHOD",
+    "init" : "bio_method_st(57, \"SslStream\", & onBioWrite, & onBioRead, & onBioPuts, null, & onBioCtrl, & onBioNew, & onBioFree, null)"
+   },
+   {
+    "name" : "ALPNCallback",
+    "kind" : "alias",
+    "line" : 1213,
+    "char" : 2,
+    "type" : "extern (C) int function(SSL* ssl, const(char)** output, ubyte* outlen, const(char)* input, uint inlen, void* arg)"
+   },
+   {
+    "name" : "SSL_CTX_set_alpn_select_cb",
+    "kind" : "function",
+    "line" : 1214,
+    "char" : 7,
+    "type" : "extern (C) void(SSL_CTX* ctx, ALPNCallback cb, void* arg)",
+    "parameters" : [
+     {
+      "name" : "ctx",
+      "type" : "SSL_CTX*"
+     },
+     {
+      "name" : "cb",
+      "type" : "ALPNCallback"
+     },
+     {
+      "name" : "arg",
+      "type" : "void*"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_set_alpn_protos",
+    "kind" : "function",
+    "line" : 1215,
+    "char" : 6,
+    "type" : "extern (C) int(SSL* ssl, const char* data, uint len)",
+    "parameters" : [
+     {
+      "name" : "ssl",
+      "type" : "SSL*"
+     },
+     {
+      "name" : "data",
+      "type" : "char*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "len",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_CTX_set_alpn_protos",
+    "kind" : "function",
+    "line" : 1216,
+    "char" : 6,
+    "type" : "extern (C) int(SSL_CTX* ctx, const char* protos, uint protos_len)",
+    "parameters" : [
+     {
+      "name" : "ctx",
+      "type" : "SSL_CTX*"
+     },
+     {
+      "name" : "protos",
+      "type" : "char*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "protos_len",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_get0_alpn_selected",
+    "kind" : "function",
+    "line" : 1217,
+    "char" : 7,
+    "type" : "extern (C) void(const SSL* ssl, const char* data, uint* len)",
+    "parameters" : [
+     {
+      "name" : "ssl",
+      "type" : "SSL*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "data",
+      "type" : "char*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "len",
+      "type" : "uint*"
+     }
+    ]
+   },
+   {
+    "name" : "TLSv1_2_server_method",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1219,
+    "char" : 23,
+    "linkage" : "c",
+    "deco" : "UNbZPxS6deimos7openssl3ssl13ssl_method_st"
+   },
+   {
+    "name" : "vibe.core.log",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.net",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.sync",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.stream.tls",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "InterfaceProxy"
+    ]
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.array",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.socket",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 24,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "strlen"
+    ]
+   },
+   {
+    "name" : "core.sync.mutex",
+    "kind" : "import",
+    "line" : 25,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.thread",
+    "kind" : "import",
+    "line" : 26,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.bio",
+    "kind" : "import",
+    "line" : 32,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.err",
+    "kind" : "import",
+    "line" : 33,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.rand",
+    "kind" : "import",
+    "line" : 34,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.ssl",
+    "kind" : "import",
+    "line" : 35,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.stack",
+    "kind" : "import",
+    "line" : 36,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "deimos.openssl.x509v3",
+    "kind" : "import",
+    "line" : 37,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "haveECDH",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 45,
+    "char" : 19,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "true"
+   },
+   {
+    "name" : "haveECDH",
+    "kind" : "variable",
+    "line" : 44,
+    "char" : 42,
+    "storageClass" : [
+     "enum"
+    ],
+    "init" : "false"
+   },
+   {
+    "name" : "alpn_forced",
+    "kind" : "variable",
+    "line" : 47,
+    "char" : 11,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "alpn_forced",
+    "kind" : "variable",
+    "line" : 46,
+    "char" : 29,
+    "storageClass" : [
+     "enum"
+    ],
+    "init" : "true"
+   },
+   {
+    "name" : "haveALPN",
+    "kind" : "variable",
+    "line" : 48,
+    "char" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "TLS_client_method",
+    "kind" : "function",
+    "line" : 52,
+    "char" : 31,
+    "type" : "extern (C) const(SSL_METHOD)*()"
+   },
+   {
+    "name" : "SSLv23_client_method",
+    "kind" : "alias",
+    "line" : 53,
+    "char" : 2,
+    "type" : "TLS_client_method"
+   },
+   {
+    "name" : "TLS_server_method",
+    "kind" : "function",
+    "line" : 55,
+    "char" : 31,
+    "type" : "extern (C) const(SSL_METHOD)*()"
+   },
+   {
+    "name" : "SSLv23_server_method",
+    "kind" : "alias",
+    "line" : 56,
+    "char" : 2,
+    "type" : "TLS_server_method"
+   },
+   {
+    "name" : "SSL_load_error_strings",
+    "kind" : "function",
+    "line" : 59,
+    "char" : 7,
+    "type" : "void()",
+    "endline" : 59,
+    "endchar" : 33
+   },
+   {
+    "name" : "OPENSSL_init_ssl",
+    "kind" : "function",
+    "line" : 61,
+    "char" : 17,
+    "type" : "extern (C) int(ulong opts, const void* settings)",
+    "parameters" : [
+     {
+      "name" : "opts",
+      "deco" : "m"
+     },
+     {
+      "name" : "settings",
+      "type" : "void*",
+      "storageClass" : [
+       "const"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "SSL_library_init",
+    "kind" : "function",
+    "line" : 64,
+    "char" : 6,
+    "type" : "int()",
+    "endline" : 66,
+    "endchar" : 2
+   },
+   {
+    "name" : "CRYPTO_num_locks",
+    "kind" : "function",
+    "line" : 69,
+    "char" : 6,
+    "type" : "int()",
+    "endline" : 71,
+    "endchar" : 2
+   },
+   {
+    "kind" : "template",
+    "line" : 73,
+    "char" : 7,
+    "name" : "CRYPTO_set_id_callback",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "CRYPTO_set_id_callback",
+      "kind" : "function",
+      "line" : 73,
+      "char" : 7,
+      "type" : "void(T t)",
+      "parameters" : [
+       {
+        "name" : "t",
+        "type" : "T"
+       }
+      ],
+      "endline" : 74,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 76,
+    "char" : 7,
+    "name" : "CRYPTO_set_locking_callback",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "CRYPTO_set_locking_callback",
+      "kind" : "function",
+      "line" : 76,
+      "char" : 7,
+      "type" : "void(T t)",
+      "parameters" : [
+       {
+        "name" : "t",
+        "type" : "T"
+       }
+      ],
+      "endline" : 77,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "CRYPTO_get_ex_new_index",
+    "kind" : "function",
+    "line" : 82,
+    "char" : 16,
+    "type" : "extern (C) int(int class_index, long argl, void* argp, CRYPTO_EX_new* new_func, CRYPTO_EX_dup* dup_func, CRYPTO_EX_free* free_func)",
+    "parameters" : [
+     {
+      "name" : "class_index",
+      "deco" : "i"
+     },
+     {
+      "name" : "argl",
+      "deco" : "l"
+     },
+     {
+      "name" : "argp",
+      "type" : "void*"
+     },
+     {
+      "name" : "new_func",
+      "type" : "CRYPTO_EX_new*"
+     },
+     {
+      "name" : "dup_func",
+      "type" : "CRYPTO_EX_dup*"
+     },
+     {
+      "name" : "free_func",
+      "type" : "CRYPTO_EX_free*"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_get_ex_new_index",
+    "kind" : "function",
+    "line" : 86,
+    "char" : 6,
+    "type" : "int(long argl, void* argp, CRYPTO_EX_new* new_func, CRYPTO_EX_dup* dup_func, CRYPTO_EX_free* free_func)",
+    "parameters" : [
+     {
+      "name" : "argl",
+      "deco" : "l"
+     },
+     {
+      "name" : "argp",
+      "type" : "void*"
+     },
+     {
+      "name" : "new_func",
+      "type" : "CRYPTO_EX_new*"
+     },
+     {
+      "name" : "dup_func",
+      "type" : "CRYPTO_EX_dup*"
+     },
+     {
+      "name" : "free_func",
+      "type" : "CRYPTO_EX_free*"
+     }
+    ],
+    "endline" : 92,
+    "endchar" : 2
+   },
+   {
+    "name" : "BN_get_rfc3526_prime_2048",
+    "kind" : "function",
+    "line" : 94,
+    "char" : 20,
+    "type" : "extern (C) BIGNUM*(BIGNUM* bn)",
+    "parameters" : [
+     {
+      "name" : "bn",
+      "type" : "BIGNUM*"
+     }
+    ]
+   },
+   {
+    "name" : "get_rfc3526_prime_2048",
+    "kind" : "alias",
+    "line" : 96,
+    "char" : 2,
+    "type" : "BN_get_rfc3526_prime_2048"
+   },
+   {
+    "name" : "OPENSSL_sk_num",
+    "kind" : "function",
+    "line" : 99,
+    "char" : 16,
+    "type" : "extern (C) int(const void*)",
+    "parameters" : [
+     {
+      "type" : "void*",
+      "storageClass" : [
+       "const"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "sk_num",
+    "kind" : "function",
+    "line" : 100,
+    "char" : 16,
+    "type" : "extern (C) int(const(_STACK)* p)",
+    "parameters" : [
+     {
+      "name" : "p",
+      "type" : "const(_STACK)*"
+     }
+    ],
+    "endline" : 100,
+    "endchar" : 69
+   },
+   {
+    "name" : "OPENSSL_sk_value",
+    "kind" : "function",
+    "line" : 103,
+    "char" : 18,
+    "type" : "extern (C) void*(const void*, int)",
+    "parameters" : [
+     {
+      "type" : "void*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "deco" : "i"
+     }
+    ]
+   },
+   {
+    "name" : "sk_value",
+    "kind" : "function",
+    "line" : 104,
+    "char" : 18,
+    "type" : "extern (C) void*(const(_STACK)* p, int i)",
+    "parameters" : [
+     {
+      "name" : "p",
+      "type" : "const(_STACK)*"
+     },
+     {
+      "name" : "i",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 104,
+    "endchar" : 85
+   },
+   {
+    "name" : "OpenSSLStream",
+    "kind" : "class",
+    "line" : 113,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.stream.tls.TLSStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_stream",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 117,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream6Stream",
+      "originalType" : "InterfaceProxy!Stream",
+      "offset" : 16
+     },
+     {
+      "name" : "m_tlsCtx",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 118,
+      "char" : 14,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe6stream3tls10TLSContext",
+      "originalType" : "TLSContext",
+      "offset" : 20
+     },
+     {
+      "name" : "m_state",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 119,
+      "char" : 18,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls14TLSStreamState",
+      "offset" : 24
+     },
+     {
+      "name" : "m_tls",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 120,
+      "char" : 12,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl3ssl6ssl_st",
+      "originalType" : "SSLState",
+      "offset" : 28
+     },
+     {
+      "name" : "m_bio",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 121,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl3bio6bio_st",
+      "originalType" : "BIO*",
+      "offset" : 32
+     },
+     {
+      "name" : "m_peekBuffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 122,
+      "char" : 13,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "G64h",
+      "offset" : 36
+     },
+     {
+      "name" : "m_peerCertificateInfo",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 123,
+      "char" : 29,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S4vibe6stream3tls25TLSCertificateInformation",
+      "offset" : 100
+     },
+     {
+      "name" : "m_peerCertificate",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 124,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl4x5097x509_st",
+      "originalType" : "X509*",
+      "offset" : 244
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 127,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream6StreamCQzQr7openssl14OpenSSLContextEQCcQBv3tls14TLSStreamStateAyaSQDgQDe3net14NetworkAddressAQBfZCQEmQEfQDp13OpenSSLStream",
+      "originalType" : "@safe (InterfaceProxy!Stream underlying, OpenSSLContext ctx, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init, string[] alpn = null)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "ctx",
+        "deco" : "C4vibe6stream7openssl14OpenSSLContext"
+       },
+       {
+        "name" : "state",
+        "deco" : "E4vibe6stream3tls14TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "deco" : "Aya",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "deco" : "S4vibe4core3net14NetworkAddress",
+        "default" : "NetworkAddress(sockaddr(cast(short)0, [cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u]), , )"
+       },
+       {
+        "name" : "alpn",
+        "deco" : "AAya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 210,
+      "endchar" : 2
+     },
+     {
+      "name" : "readPeerCertInfo",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 213,
+      "char" : 15,
+      "deco" : "FNfZv",
+      "endline" : 229,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 231,
+      "char" : 2,
+      "deco" : "FNfZv",
+      "endline" : 235,
+      "endchar" : 2
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 237,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 240,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 242,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 248,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 250,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 253,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 255,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 259,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 261,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 277,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 279,
+      "char" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 281,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] bytes_, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes_",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 299,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 301,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 303,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 306,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 308,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 320,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     },
+     {
+      "name" : "checkSSLRet",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 322,
+      "char" : 14,
+      "deco" : "FNfiAyaZi",
+      "parameters" : [
+       {
+        "name" : "ret",
+        "deco" : "i"
+       },
+       {
+        "name" : "what",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 358,
+      "endchar" : 2
+     },
+     {
+      "name" : "enforceSSL",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 360,
+      "char" : 14,
+      "deco" : "FNfiAyaZi",
+      "parameters" : [
+       {
+        "name" : "ret",
+        "deco" : "i"
+       },
+       {
+        "name" : "message",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 382,
+      "endchar" : 2
+     },
+     {
+      "name" : "peerCertificate",
+      "kind" : "function",
+      "line" : 384,
+      "char" : 38,
+      "deco" : "FNdNfZS4vibe6stream3tls25TLSCertificateInformation",
+      "endline" : 387,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSStream.peerCertificate"
+      ]
+     },
+     {
+      "name" : "peerCertificateX509",
+      "kind" : "function",
+      "line" : 389,
+      "char" : 18,
+      "deco" : "FNdNfZPS6deimos7openssl4x5097x509_st",
+      "originalType" : "@property @safe X509*()",
+      "endline" : 392,
+      "endchar" : 2
+     },
+     {
+      "name" : "alpn",
+      "kind" : "function",
+      "line" : 394,
+      "char" : 19,
+      "deco" : "xFNdNfZAya",
+      "endline" : 407,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSStream.alpn"
+      ]
+     },
+     {
+      "name" : "setClientALPN",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 410,
+      "char" : 15,
+      "deco" : "FNfAAyaZv",
+      "parameters" : [
+       {
+        "name" : "alpn_list",
+        "deco" : "AAya"
+       }
+      ],
+      "endline" : 433,
+      "endchar" : 2
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "OpenSSLContext",
+    "kind" : "class",
+    "line" : 445,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.stream.tls.TLSContext"
+    ],
+    "members" : [
+     {
+      "name" : "m_kind",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 449,
+      "char" : 18,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls14TLSContextKind",
+      "offset" : 12
+     },
+     {
+      "name" : "m_ctx",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 450,
+      "char" : 15,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS6deimos7openssl3ssl10ssl_ctx_st",
+      "offset" : 16
+     },
+     {
+      "name" : "m_peerValidationCallback",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 451,
+      "char" : 29,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb",
+      "originalType" : "TLSPeerValidationCallback",
+      "offset" : 20
+     },
+     {
+      "name" : "m_validationMode",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 452,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls21TLSPeerValidationMode",
+      "offset" : 28
+     },
+     {
+      "name" : "m_verifyDepth",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 453,
+      "char" : 7,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "i",
+      "offset" : 32
+     },
+     {
+      "name" : "m_sniCallback",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 454,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfAyaZC4vibe6stream3tls10TLSContext",
+      "originalType" : "TLSServerNameCallback",
+      "offset" : 36
+     },
+     {
+      "name" : "m_alpnCallback",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 455,
+      "char" : 19,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfAAyaZQe",
+      "originalType" : "TLSALPNCallback",
+      "offset" : 44
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 458,
+      "char" : 2,
+      "deco" : "FNfE4vibe6stream3tls14TLSContextKindEQBhQBfQBb10TLSVersionZCQCeQCc7openssl14OpenSSLContext",
+      "originalType" : "@safe (TLSContextKind kind, TLSVersion ver = TLSVersion.any)",
+      "parameters" : [
+       {
+        "name" : "kind",
+        "deco" : "E4vibe6stream3tls14TLSContextKind"
+       },
+       {
+        "name" : "ver",
+        "deco" : "E4vibe6stream3tls10TLSVersion",
+        "default" : "cast(TLSVersion)0"
+       }
+      ],
+      "endline" : 537,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 539,
+      "char" : 2,
+      "deco" : "FNfZv",
+      "endline" : 543,
+      "endchar" : 2
+     },
+     {
+      "name" : "kind",
+      "kind" : "function",
+      "line" : 547,
+      "char" : 27,
+      "deco" : "xFNdNfZE4vibe6stream3tls14TLSContextKind",
+      "endline" : 547,
+      "endchar" : 57,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.kind"
+      ]
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 550,
+      "char" : 17,
+      "deco" : "FNdNfDFNfAAyaZQeZv",
+      "originalType" : "@property @safe void(TLSALPNCallback alpn_chooser)",
+      "parameters" : [
+       {
+        "name" : "alpn_chooser",
+        "deco" : "DFNfAAyaZQe"
+       }
+      ],
+      "endline" : 558,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.alpnCallback"
+      ]
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 561,
+      "char" : 28,
+      "deco" : "xFNdNfZDFNfAAyaZQe",
+      "originalType" : "const @property @safe TLSALPNCallback()",
+      "endline" : 561,
+      "endchar" : 74,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.alpnCallback"
+      ]
+     },
+     {
+      "name" : "setClientALPN",
+      "kind" : "function",
+      "line" : 564,
+      "char" : 7,
+      "deco" : "FNfAAyaZv",
+      "parameters" : [
+       {
+        "name" : "alpn_list",
+        "deco" : "AAya"
+       }
+      ],
+      "endline" : 588,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setClientALPN"
+      ]
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 596,
+      "char" : 17,
+      "deco" : "FNdNfE4vibe6stream3tls21TLSPeerValidationModeZv",
+      "parameters" : [
+       {
+        "name" : "mode",
+        "deco" : "E4vibe6stream3tls21TLSPeerValidationMode"
+       }
+      ],
+      "endline" : 611,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationMode"
+      ]
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 613,
+      "char" : 34,
+      "deco" : "xFNdNfZE4vibe6stream3tls21TLSPeerValidationMode",
+      "endline" : 613,
+      "endchar" : 88,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationMode"
+      ]
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 623,
+      "char" : 17,
+      "deco" : "FNdNfiZv",
+      "parameters" : [
+       {
+        "name" : "val",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 628,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.maxCertChainLength"
+      ]
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 631,
+      "char" : 16,
+      "deco" : "xFNdNfZi",
+      "endline" : 631,
+      "endchar" : 67,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.maxCertChainLength"
+      ]
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 642,
+      "char" : 17,
+      "deco" : "FNdNfDFNfMS4vibe6stream3tls21TLSPeerValidationDataZbZv",
+      "originalType" : "@property @safe void(TLSPeerValidationCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb"
+       }
+      ],
+      "endline" : 642,
+      "endchar" : 115,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationCallback"
+      ]
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 644,
+      "char" : 45,
+      "deco" : "NgFNdNfZNgDFNfMS4vibe6stream3tls21TLSPeerValidationDataZb",
+      "originalType" : "inout @property @safe inout(TLSPeerValidationCallback)()",
+      "endline" : 644,
+      "endchar" : 111,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.peerValidationCallback"
+      ]
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 646,
+      "char" : 17,
+      "deco" : "FNdNfDFNfAyaZC4vibe6stream3tls10TLSContextZv",
+      "originalType" : "@property @safe void(TLSServerNameCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "deco" : "DFNfAyaZC4vibe6stream3tls10TLSContext"
+       }
+      ],
+      "endline" : 655,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.sniCallback"
+      ]
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 656,
+      "char" : 41,
+      "deco" : "NgFNdNfZNgDFNfAyaZC4vibe6stream3tls10TLSContext",
+      "originalType" : "inout @property @safe inout(TLSServerNameCallback)()",
+      "endline" : 656,
+      "endchar" : 85,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.sniCallback"
+      ]
+     },
+     {
+      "name" : "OSSLCallback",
+      "kind" : "alias",
+      "protection" : "private",
+      "line" : 658,
+      "char" : 20,
+      "deco" : "PUNfZv"
+     },
+     {
+      "name" : "onContextForServerName",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 659,
+      "char" : 31,
+      "storageClass" : [
+       "static"
+      ],
+      "linkage" : "c",
+      "deco" : "UNfPS6deimos7openssl3ssl6ssl_stPiPvZi",
+      "originalType" : "@safe extern (C) int(SSL* s, int* ad, void* arg)",
+      "parameters" : [
+       {
+        "name" : "s",
+        "deco" : "PS6deimos7openssl3ssl6ssl_st"
+       },
+       {
+        "name" : "ad",
+        "deco" : "Pi"
+       },
+       {
+        "name" : "arg",
+        "deco" : "Pv"
+       }
+      ],
+      "endline" : 668,
+      "endchar" : 2
+     },
+     {
+      "name" : "createStream",
+      "kind" : "function",
+      "line" : 670,
+      "char" : 16,
+      "deco" : "FNfC4vibe4core6stream6StreamEQzQr3tls14TLSStreamStateAyaSQCbQBz3net14NetworkAddressZCQDdQCw7openssl13OpenSSLStream",
+      "originalType" : "@safe OpenSSLStream(InterfaceProxy!Stream underlying, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "state",
+        "deco" : "E4vibe6stream3tls14TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "deco" : "Aya",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "deco" : "S4vibe4core3net14NetworkAddress",
+        "default" : "NetworkAddress(sockaddr(cast(short)0, [cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u]), , )"
+       }
+      ],
+      "endline" : 673,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.createStream"
+      ]
+     },
+     {
+      "name" : "setCipherList",
+      "kind" : "function",
+      "line" : 683,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "list",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 692,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setCipherList"
+      ]
+     },
+     {
+      "name" : "guessSessionIDContext",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 703,
+      "char" : 15,
+      "deco" : "FNeZv",
+      "endline" : 708,
+      "endchar" : 2
+     },
+     {
+      "name" : "setDHParams",
+      "kind" : "function",
+      "line" : 718,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "pem_file",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 737,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setDHParams"
+      ]
+     },
+     {
+      "name" : "setECDHCurve",
+      "kind" : "function",
+      "line" : 748,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "curve",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ],
+      "endline" : 771,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.setECDHCurve"
+      ]
+     },
+     {
+      "name" : "useCertificateChainFile",
+      "kind" : "function",
+      "line" : 774,
+      "char" : 7,
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 777,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.useCertificateChainFile"
+      ]
+     },
+     {
+      "name" : "usePrivateKeyFile",
+      "kind" : "function",
+      "line" : 781,
+      "char" : 7,
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 784,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.usePrivateKeyFile"
+      ]
+     },
+     {
+      "name" : "useTrustedCertificateFile",
+      "kind" : "function",
+      "line" : 795,
+      "char" : 7,
+      "deco" : "FNeAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 806,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.stream.tls.TLSContext.useTrustedCertificateFile"
+      ]
+     },
+     {
+      "name" : "createClientCtx",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 808,
+      "char" : 19,
+      "deco" : "FNfZPS6deimos7openssl3ssl6ssl_st",
+      "originalType" : "@safe SSLState()",
+      "endline" : 811,
+      "endchar" : 2
+     },
+     {
+      "name" : "VerifyData",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 813,
+      "char" : 17,
+      "members" : [
+       {
+        "name" : "verifyDepth",
+        "kind" : "variable",
+        "line" : 814,
+        "char" : 7,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "i",
+        "offset" : 0
+       },
+       {
+        "name" : "validationMode",
+        "kind" : "variable",
+        "line" : 815,
+        "char" : 25,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "E4vibe6stream3tls21TLSPeerValidationMode",
+        "offset" : 4
+       },
+       {
+        "name" : "callback",
+        "kind" : "variable",
+        "line" : 816,
+        "char" : 29,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb",
+        "originalType" : "TLSPeerValidationCallback",
+        "offset" : 8
+       },
+       {
+        "name" : "peerName",
+        "kind" : "variable",
+        "line" : 817,
+        "char" : 10,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "Aya",
+        "offset" : 16
+       },
+       {
+        "name" : "peerAddress",
+        "kind" : "variable",
+        "line" : 818,
+        "char" : 18,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "S4vibe4core3net14NetworkAddress",
+        "offset" : 24
+       }
+      ]
+     },
+     {
+      "name" : "verify_callback",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 822,
+      "char" : 6,
+      "storageClass" : [
+       "static"
+      ],
+      "linkage" : "c",
+      "deco" : "UNbNeiPS6deimos7openssl8x509_vfy17x509_store_ctx_stZi",
+      "originalType" : "nothrow @trusted extern (C) int(int valid, X509_STORE_CTX* ctx)",
+      "parameters" : [
+       {
+        "name" : "valid",
+        "deco" : "i"
+       },
+       {
+        "name" : "ctx",
+        "deco" : "PS6deimos7openssl8x509_vfy17x509_store_ctx_st"
+       }
+      ],
+      "endline" : 897,
+      "endchar" : 2
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "SSLState",
+    "kind" : "alias",
+    "line" : 900,
+    "char" : 1,
+    "deco" : "PS6deimos7openssl3ssl6ssl_st"
+   },
+   {
+    "name" : "g_cryptoMutexes",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 907,
+    "char" : 37,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "deco" : "AC4vibe4core4sync22InterruptibleTaskMutex"
+   },
+   {
+    "name" : "gs_verifyDataIndex",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 908,
+    "char" : 16,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "deco" : "i"
+   },
+   {
+    "name" : "_sharedStaticCtor_L911_C1",
+    "kind" : "function",
+    "line" : 911,
+    "char" : 1,
+    "storageClass" : [
+     "static"
+    ],
+    "deco" : "FZv",
+    "endline" : 932,
+    "endchar" : 1
+   },
+   {
+    "name" : "verifyCertName",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 934,
+    "char" : 14,
+    "deco" : "FNePS6deimos7openssl4x5097x509_stixAabZb",
+    "originalType" : "@trusted bool(X509* cert, int field, in char[] value, bool allow_wildcards = true)",
+    "parameters" : [
+     {
+      "name" : "cert",
+      "deco" : "PS6deimos7openssl4x5097x509_st"
+     },
+     {
+      "name" : "field",
+      "deco" : "i"
+     },
+     {
+      "name" : "value",
+      "deco" : "xAa"
+     },
+     {
+      "name" : "allow_wildcards",
+      "deco" : "b",
+      "default" : "true"
+     }
+    ],
+    "endline" : 990,
+    "endchar" : 1
+   },
+   {
+    "name" : "matchWildcard",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 992,
+    "char" : 14,
+    "deco" : "FNfAxaQdZb",
+    "parameters" : [
+     {
+      "name" : "str",
+      "deco" : "Axa"
+     },
+     {
+      "name" : "pattern",
+      "deco" : "Axa"
+     }
+    ],
+    "endline" : 1018,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L1020_C1",
+    "kind" : "function",
+    "line" : 1020,
+    "char" : 1,
+    "endline" : 1034,
+    "endchar" : 1
+   },
+   {
+    "name" : "core.stdc.config",
+    "kind" : "import",
+    "line" : 1036,
+    "char" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "chooser",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1039,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3ssl6ssl_stPPxaPhQfkPvZi",
+    "originalType" : "nothrow @safe extern (C) int(SSL* ssl, const(char)** output, ubyte* outlen, const(char)* input_, uint inlen, void* arg)",
+    "parameters" : [
+     {
+      "name" : "ssl",
+      "deco" : "PS6deimos7openssl3ssl6ssl_st"
+     },
+     {
+      "name" : "output",
+      "deco" : "PPxa"
+     },
+     {
+      "name" : "outlen",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "input_",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "inlen",
+      "deco" : "k"
+     },
+     {
+      "name" : "arg",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 1083,
+    "endchar" : 2
+   },
+   {
+    "name" : "onCryptoGetThreadID",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1085,
+    "char" : 10,
+    "linkage" : "c",
+    "deco" : "UNbNfZk",
+    "originalType" : "nothrow @safe extern (C) c_ulong()",
+    "endline" : 1093,
+    "endchar" : 2
+   },
+   {
+    "name" : "onCryptoLock",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1095,
+    "char" : 7,
+    "linkage" : "c",
+    "deco" : "UNbNfiiPxaiZv",
+    "parameters" : [
+     {
+      "name" : "mode",
+      "deco" : "i"
+     },
+     {
+      "name" : "n",
+      "deco" : "i"
+     },
+     {
+      "name" : "file",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "line",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1106,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioNew",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1108,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     }
+    ],
+    "endline" : 1115,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioFree",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1117,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     }
+    ],
+    "endline" : 1127,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioRead",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1129,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stPaiZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b, char* outb, int outlen)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "outb",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "outlen",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1141,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioWrite",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1143,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stPxaiZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b, const(char)* inb, int inlen)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "inb",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "inlen",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 1153,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioCtrl",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1155,
+    "char" : 9,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stiiPvZi",
+    "originalType" : "nothrow @safe extern (C) c_long(BIO* b, int cmd, c_long num, void* ptr)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "cmd",
+      "deco" : "i"
+     },
+     {
+      "name" : "num",
+      "deco" : "i"
+     },
+     {
+      "name" : "ptr",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 1184,
+    "endchar" : 2
+   },
+   {
+    "name" : "onBioPuts",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1186,
+    "char" : 6,
+    "linkage" : "c",
+    "deco" : "UNbNfPS6deimos7openssl3bio6bio_stPxaZi",
+    "originalType" : "nothrow @safe extern (C) int(BIO* b, const(char)* s)",
+    "parameters" : [
+     {
+      "name" : "b",
+      "deco" : "PS6deimos7openssl3bio6bio_st"
+     },
+     {
+      "name" : "s",
+      "deco" : "Pxa"
+     }
+    ],
+    "endline" : 1189,
+    "endchar" : 2
+   },
+   {
+    "name" : "setSSLError",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1192,
+    "char" : 14,
+    "deco" : "FNbNeAyaQdiQgZv",
+    "parameters" : [
+     {
+      "name" : "msg",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "submsg",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "line",
+      "deco" : "i",
+      "default" : "__LINE__"
+     },
+     {
+      "name" : "file",
+      "deco" : "Aya",
+      "default" : "__FILE__"
+     }
+    ],
+    "endline" : 1197,
+    "endchar" : 1
+   },
+   {
+    "name" : "s_bio_methods",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 1199,
+    "char" : 20,
+    "deco" : "S6deimos7openssl3bio13bio_method_st",
+    "originalType" : "BIO_METHOD",
+    "init" : "bio_method_st(57, \"SslStream\", & onBioWrite, & onBioRead, & onBioPuts, null, & onBioCtrl, & onBioNew, & onBioFree, null)"
+   },
+   {
+    "name" : "ALPNCallback",
+    "kind" : "alias",
+    "line" : 1213,
+    "char" : 2,
+    "type" : "extern (C) int function(SSL* ssl, const(char)** output, ubyte* outlen, const(char)* input, uint inlen, void* arg)"
+   },
+   {
+    "name" : "SSL_CTX_set_alpn_select_cb",
+    "kind" : "function",
+    "line" : 1214,
+    "char" : 7,
+    "type" : "extern (C) void(SSL_CTX* ctx, ALPNCallback cb, void* arg)",
+    "parameters" : [
+     {
+      "name" : "ctx",
+      "type" : "SSL_CTX*"
+     },
+     {
+      "name" : "cb",
+      "type" : "ALPNCallback"
+     },
+     {
+      "name" : "arg",
+      "type" : "void*"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_set_alpn_protos",
+    "kind" : "function",
+    "line" : 1215,
+    "char" : 6,
+    "type" : "extern (C) int(SSL* ssl, const char* data, uint len)",
+    "parameters" : [
+     {
+      "name" : "ssl",
+      "type" : "SSL*"
+     },
+     {
+      "name" : "data",
+      "type" : "char*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "len",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_CTX_set_alpn_protos",
+    "kind" : "function",
+    "line" : 1216,
+    "char" : 6,
+    "type" : "extern (C) int(SSL_CTX* ctx, const char* protos, uint protos_len)",
+    "parameters" : [
+     {
+      "name" : "ctx",
+      "type" : "SSL_CTX*"
+     },
+     {
+      "name" : "protos",
+      "type" : "char*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "protos_len",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "SSL_get0_alpn_selected",
+    "kind" : "function",
+    "line" : 1217,
+    "char" : 7,
+    "type" : "extern (C) void(const SSL* ssl, const char* data, uint* len)",
+    "parameters" : [
+     {
+      "name" : "ssl",
+      "type" : "SSL*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "data",
+      "type" : "char*",
+      "storageClass" : [
+       "const"
+      ]
+     },
+     {
+      "name" : "len",
+      "type" : "uint*"
+     }
+    ]
+   },
+   {
+    "name" : "TLSv1_2_server_method",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 1219,
+    "char" : 23,
+    "linkage" : "c",
+    "deco" : "UNbZPxS6deimos7openssl3ssl13ssl_method_st"
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.tls",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\tls\\vibe\\stream\\tls.d",
+  "members" : [
+   {
+    "name" : "vibe.core.log",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.net",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.path",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "NativePath"
+    ]
+   },
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.sync",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.utils.dictionarylist",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 23,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.array",
+    "kind" : "import",
+    "line" : 24,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 25,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 26,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 27,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 29,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "strlen"
+    ]
+   },
+   {
+    "name" : "core.sync.mutex",
+    "kind" : "import",
+    "line" : 30,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.thread",
+    "kind" : "import",
+    "line" : 31,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "__unittest_L39_C1",
+    "kind" : "function",
+    "line" : 39,
+    "char" : 1,
+    "endline" : 55,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L55_C1",
+    "kind" : "function",
+    "line" : 55,
+    "char" : 1,
+    "endline" : 82,
+    "endchar" : 1
+   },
+   {
+    "name" : "createTLSContext",
+    "kind" : "function",
+    "line" : 91,
+    "char" : 12,
+    "deco" : "FNeE4vibe6stream3tls14TLSContextKindEQBhQBfQBb10TLSVersionZCQCeQCcQBy10TLSContext",
+    "originalType" : "@trusted TLSContext(TLSContextKind kind, TLSVersion ver = TLSVersion.any)",
+    "parameters" : [
+     {
+      "name" : "kind",
+      "deco" : "E4vibe6stream3tls14TLSContextKind"
+     },
+     {
+      "name" : "ver",
+      "deco" : "E4vibe6stream3tls10TLSVersion",
+      "default" : "cast(TLSVersion)0"
+     }
+    ],
+    "endline" : 110,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "line" : 123,
+    "char" : 11,
+    "name" : "createTLSStream",
+    "parameters" : [
+     {
+      "name" : "Stream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isStream!Stream",
+    "members" : [
+     {
+      "name" : "createTLSStream",
+      "kind" : "function",
+      "line" : 123,
+      "char" : 11,
+      "type" : "TLSStream(Stream underlying, TLSContext ctx, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "type" : "Stream"
+       },
+       {
+        "name" : "ctx",
+        "type" : "TLSContext"
+       },
+       {
+        "name" : "peer_name",
+        "type" : "string",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "type" : "NetworkAddress",
+        "default" : "NetworkAddress.init"
+       }
+      ],
+      "endline" : 128,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 142,
+    "char" : 11,
+    "name" : "createTLSStream",
+    "parameters" : [
+     {
+      "name" : "Stream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isStream!Stream",
+    "members" : [
+     {
+      "name" : "createTLSStream",
+      "kind" : "function",
+      "line" : 142,
+      "char" : 11,
+      "type" : "TLSStream(Stream underlying, TLSContext ctx, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "type" : "Stream"
+       },
+       {
+        "name" : "ctx",
+        "type" : "TLSContext"
+       },
+       {
+        "name" : "state",
+        "type" : "TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "type" : "string",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "type" : "NetworkAddress",
+        "default" : "NetworkAddress.init"
+       }
+      ],
+      "endline" : 146,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 151,
+    "char" : 6,
+    "name" : "createTLSStreamFL",
+    "parameters" : [
+     {
+      "name" : "Stream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isStream!Stream",
+    "members" : [
+     {
+      "name" : "createTLSStreamFL",
+      "kind" : "function",
+      "line" : 151,
+      "char" : 6,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "(Stream underlying, TLSContext ctx, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "type" : "Stream"
+       },
+       {
+        "name" : "ctx",
+        "type" : "TLSContext"
+       },
+       {
+        "name" : "state",
+        "type" : "TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "type" : "string",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "type" : "NetworkAddress",
+        "default" : "NetworkAddress.init"
+       }
+      ],
+      "endline" : 169,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "setTLSContextFactory",
+    "kind" : "function",
+    "line" : 171,
+    "char" : 6,
+    "deco" : "FNfPFNfE4vibe6stream3tls14TLSContextKindEQBhQBfQBb10TLSVersionZCQCeQCcQBy10TLSContextZv",
+    "parameters" : [
+     {
+      "name" : "factory",
+      "deco" : "PFNfE4vibe6stream3tls14TLSContextKindEQBhQBfQBb10TLSVersionZCQCeQCcQBy10TLSContext"
+     }
+    ],
+    "endline" : 174,
+    "endchar" : 1
+   },
+   {
+    "name" : "TLSStream",
+    "kind" : "interface",
+    "line" : 187,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.Stream"
+    ],
+    "members" : [
+     {
+      "name" : "peerCertificate",
+      "kind" : "function",
+      "line" : 190,
+      "char" : 38,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNdNfZS4vibe6stream3tls25TLSCertificateInformation"
+     },
+     {
+      "name" : "alpn",
+      "kind" : "function",
+      "line" : 199,
+      "char" : 19,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "xFNdNfZAya"
+     }
+    ]
+   },
+   {
+    "name" : "TLSStreamState",
+    "kind" : "enum",
+    "line" : 202,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "connecting",
+      "kind" : "enum member",
+      "value" : "0",
+      "line" : 203,
+      "char" : 2
+     },
+     {
+      "name" : "accepting",
+      "kind" : "enum member",
+      "value" : "1",
+      "line" : 204,
+      "char" : 2
+     },
+     {
+      "name" : "connected",
+      "kind" : "enum member",
+      "value" : "2",
+      "line" : 205,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "TLSContext",
+    "kind" : "interface",
+    "line" : 217,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "kind",
+      "kind" : "function",
+      "line" : 221,
+      "char" : 27,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "xFNdNfZE4vibe6stream3tls14TLSContextKind"
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 229,
+      "char" : 17,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNdNfE4vibe6stream3tls21TLSPeerValidationModeZv",
+      "parameters" : [
+       {
+        "name" : "mode",
+        "deco" : "E4vibe6stream3tls21TLSPeerValidationMode"
+       }
+      ]
+     },
+     {
+      "name" : "peerValidationMode",
+      "kind" : "function",
+      "line" : 231,
+      "char" : 34,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "xFNdNfZE4vibe6stream3tls21TLSPeerValidationMode"
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 240,
+      "char" : 17,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNdNfiZv",
+      "parameters" : [
+       {
+        "name" : "val",
+        "deco" : "i"
+       }
+      ]
+     },
+     {
+      "name" : "maxCertChainLength",
+      "kind" : "function",
+      "line" : 242,
+      "char" : 16,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "xFNdNfZi"
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 253,
+      "char" : 17,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNdNfDFNfMS4vibe6stream3tls21TLSPeerValidationDataZbZv",
+      "originalType" : "@property @safe void(TLSPeerValidationCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb"
+       }
+      ]
+     },
+     {
+      "name" : "peerValidationCallback",
+      "kind" : "function",
+      "line" : 255,
+      "char" : 45,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "NgFNdNfZNgDFNfMS4vibe6stream3tls21TLSPeerValidationDataZb",
+      "originalType" : "inout @property @safe inout(TLSPeerValidationCallback)()"
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 261,
+      "char" : 17,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNdNfDFNfAyaZC4vibe6stream3tls10TLSContextZv",
+      "originalType" : "@property @safe void(TLSServerNameCallback callback)",
+      "parameters" : [
+       {
+        "name" : "callback",
+        "deco" : "DFNfAyaZC4vibe6stream3tls10TLSContext"
+       }
+      ]
+     },
+     {
+      "name" : "sniCallback",
+      "kind" : "function",
+      "line" : 263,
+      "char" : 41,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "NgFNdNfZNgDFNfAyaZC4vibe6stream3tls10TLSContext",
+      "originalType" : "inout @property @safe inout(TLSServerNameCallback)()"
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 266,
+      "char" : 17,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNdNfDFNfAAyaZQeZv",
+      "originalType" : "@property @safe void(TLSALPNCallback alpn_chooser)",
+      "parameters" : [
+       {
+        "name" : "alpn_chooser",
+        "deco" : "DFNfAAyaZQe"
+       }
+      ]
+     },
+     {
+      "name" : "alpnCallback",
+      "kind" : "function",
+      "line" : 268,
+      "char" : 28,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "xFNdNfZDFNfAAyaZQe",
+      "originalType" : "const @property @safe TLSALPNCallback()"
+     },
+     {
+      "name" : "setClientALPN",
+      "kind" : "function",
+      "line" : 271,
+      "char" : 7,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfAAyaZv",
+      "parameters" : [
+       {
+        "name" : "alpn",
+        "deco" : "AAya"
+       }
+      ]
+     },
+     {
+      "name" : "createStream",
+      "kind" : "function",
+      "line" : 275,
+      "char" : 12,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfC4vibe4core6stream6StreamEQzQr3tls14TLSStreamStateAyaSQCbQBz3net14NetworkAddressZCQDdQCwQCg9TLSStream",
+      "originalType" : "@safe TLSStream(InterfaceProxy!Stream underlying, TLSStreamState state, string peer_name = null, NetworkAddress peer_address = NetworkAddress.init)",
+      "parameters" : [
+       {
+        "name" : "underlying",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "state",
+        "deco" : "E4vibe6stream3tls14TLSStreamState"
+       },
+       {
+        "name" : "peer_name",
+        "deco" : "Aya",
+        "default" : "null"
+       },
+       {
+        "name" : "peer_address",
+        "deco" : "S4vibe4core3net14NetworkAddress",
+        "default" : "NetworkAddress(sockaddr(cast(short)0, [cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u, cast(ubyte)0u]), , )"
+       }
+      ]
+     },
+     {
+      "name" : "setCipherList",
+      "kind" : "function",
+      "line" : 285,
+      "char" : 7,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "list",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ]
+     },
+     {
+      "name" : "setDHParams",
+      "kind" : "function",
+      "line" : 295,
+      "char" : 7,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "pem_file",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ]
+     },
+     {
+      "name" : "setECDHCurve",
+      "kind" : "function",
+      "line" : 306,
+      "char" : 7,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "curve",
+        "deco" : "Aya",
+        "default" : "null"
+       }
+      ]
+     },
+     {
+      "name" : "useCertificateChainFile",
+      "kind" : "function",
+      "line" : 309,
+      "char" : 7,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ]
+     },
+     {
+      "name" : "useCertificateChainFile",
+      "kind" : "function",
+      "line" : 311,
+      "char" : 13,
+      "storageClass" : [
+       "final",
+       "abstract"
+      ],
+      "deco" : "FNfS4vibe4core4path4PathZv",
+      "originalType" : "@safe void(NativePath path)",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "S4vibe4core4path4Path"
+       }
+      ],
+      "endline" : 311,
+      "endchar" : 98
+     },
+     {
+      "name" : "usePrivateKeyFile",
+      "kind" : "function",
+      "line" : 315,
+      "char" : 7,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ]
+     },
+     {
+      "name" : "usePrivateKeyFile",
+      "kind" : "function",
+      "line" : 317,
+      "char" : 13,
+      "storageClass" : [
+       "final",
+       "abstract"
+      ],
+      "deco" : "FNfS4vibe4core4path4PathZv",
+      "originalType" : "@safe void(NativePath path)",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "S4vibe4core4path4Path"
+       }
+      ],
+      "endline" : 317,
+      "endchar" : 86
+     },
+     {
+      "name" : "useTrustedCertificateFile",
+      "kind" : "function",
+      "line" : 328,
+      "char" : 7,
+      "storageClass" : [
+       "abstract"
+      ],
+      "deco" : "FNfAyaZv",
+      "parameters" : [
+       {
+        "name" : "path",
+        "deco" : "Aya"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "TLSContextKind",
+    "kind" : "enum",
+    "line" : 331,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "client",
+      "kind" : "enum member",
+      "value" : "0",
+      "line" : 332,
+      "char" : 2
+     },
+     {
+      "name" : "server",
+      "kind" : "enum member",
+      "value" : "1",
+      "line" : 333,
+      "char" : 2
+     },
+     {
+      "name" : "serverSNI",
+      "kind" : "enum member",
+      "value" : "2",
+      "line" : 334,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "TLSVersion",
+    "kind" : "enum",
+    "line" : 337,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "any",
+      "kind" : "enum member",
+      "value" : "0",
+      "line" : 338,
+      "char" : 2
+     },
+     {
+      "name" : "ssl3",
+      "kind" : "enum member",
+      "value" : "1",
+      "line" : 339,
+      "char" : 2
+     },
+     {
+      "name" : "tls1",
+      "kind" : "enum member",
+      "value" : "2",
+      "line" : 340,
+      "char" : 2
+     },
+     {
+      "name" : "tls1_1",
+      "kind" : "enum member",
+      "value" : "3",
+      "line" : 341,
+      "char" : 2
+     },
+     {
+      "name" : "tls1_2",
+      "kind" : "enum member",
+      "value" : "4",
+      "line" : 342,
+      "char" : 2
+     },
+     {
+      "name" : "dtls1",
+      "kind" : "enum member",
+      "value" : "5",
+      "line" : 343,
+      "char" : 2
+     },
+     {
+      "name" : "ssl23",
+      "kind" : "enum member",
+      "value" : "0",
+      "line" : 345,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "TLSPeerValidationMode",
+    "kind" : "enum",
+    "line" : 354,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "none",
+      "kind" : "enum member",
+      "value" : "0",
+      "line" : 360,
+      "char" : 2
+     },
+     {
+      "name" : "requireCert",
+      "kind" : "enum member",
+      "value" : "1",
+      "line" : 368,
+      "char" : 2
+     },
+     {
+      "name" : "checkCert",
+      "kind" : "enum member",
+      "value" : "2",
+      "line" : 376,
+      "char" : 2
+     },
+     {
+      "name" : "checkPeer",
+      "kind" : "enum member",
+      "value" : "4",
+      "line" : 385,
+      "char" : 2
+     },
+     {
+      "name" : "checkTrust",
+      "kind" : "enum member",
+      "value" : "8",
+      "line" : 394,
+      "char" : 2
+     },
+     {
+      "name" : "validCert",
+      "kind" : "enum member",
+      "value" : "7",
+      "line" : 409,
+      "char" : 2
+     },
+     {
+      "name" : "trustedCert",
+      "kind" : "enum member",
+      "value" : "15",
+      "line" : 421,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "TLSCertificateInformation",
+    "kind" : "struct",
+    "line" : 425,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "subjectName",
+      "kind" : "variable",
+      "line" : 432,
+      "char" : 36,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S4vibe5utils14dictionarylist__T14DictionaryListTAyaVbi0Vki8Vbi0ZQBh",
+      "originalType" : "DictionaryList!(string, false, 8)",
+      "offset" : 0
+     },
+     {
+      "name" : "_x509",
+      "kind" : "variable",
+      "line" : 443,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Pv",
+      "offset" : 140
+     },
+     {
+      "name" : "opAssign",
+      "kind" : "generated function",
+      "line" : 425,
+      "char" : 1,
+      "deco" : "FNaNbNcNiNjNfS4vibe6stream3tls25TLSCertificateInformationZQBt",
+      "originalType" : "ref TLSCertificateInformation(TLSCertificateInformation p) return",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "S4vibe6stream3tls25TLSCertificateInformation"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "TLSPeerValidationData",
+    "kind" : "struct",
+    "line" : 446,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "certName",
+      "kind" : "variable",
+      "line" : 447,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Aa",
+      "offset" : 0
+     },
+     {
+      "name" : "errorString",
+      "kind" : "variable",
+      "line" : 448,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Aya",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "TLSPeerValidationCallback",
+    "kind" : "alias",
+    "line" : 454,
+    "char" : 1,
+    "deco" : "DFNfMS4vibe6stream3tls21TLSPeerValidationDataZb"
+   },
+   {
+    "name" : "TLSServerNameCallback",
+    "kind" : "alias",
+    "line" : 456,
+    "char" : 1,
+    "deco" : "DFNfAyaZC4vibe6stream3tls10TLSContext"
+   },
+   {
+    "name" : "TLSALPNCallback",
+    "kind" : "alias",
+    "line" : 457,
+    "char" : 1,
+    "deco" : "DFNfAAyaZQe"
+   },
+   {
+    "name" : "gs_sslContextFactory",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 460,
+    "char" : 60,
+    "storageClass" : [
+     "__gshared",
+     "@safe"
+    ],
+    "deco" : "PFNfE4vibe6stream3tls14TLSContextKindEQBhQBfQBb10TLSVersionZCQCeQCcQBy10TLSContext",
+    "originalType" : "TLSContext function(TLSContextKind, TLSVersion)"
+   }
+  ]
+ }
+]

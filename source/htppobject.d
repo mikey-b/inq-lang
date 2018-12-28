@@ -38,7 +38,6 @@ final class WebInterface {
 	}
 }
 		
-
 class HTTPObject: physical_object {
 	
 	this(string id) {

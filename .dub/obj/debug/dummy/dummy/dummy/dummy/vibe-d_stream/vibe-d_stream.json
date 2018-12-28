@@ -1,0 +1,6273 @@
+[
+ {
+  "name" : "vibe.stream.base64",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\base64.d",
+  "members" : [
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.base64",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "line" : 24,
+    "char" : 55,
+    "name" : "createBase64OutputStream",
+    "parameters" : [
+     {
+      "name" : "C62",
+      "kind" : "value",
+      "deco" : "a",
+      "defaultValue" : "'+'"
+     },
+     {
+      "name" : "C63",
+      "kind" : "value",
+      "deco" : "a",
+      "defaultValue" : "'/'"
+     },
+     {
+      "name" : "CPAD",
+      "kind" : "value",
+      "deco" : "a",
+      "defaultValue" : "'='"
+     },
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createBase64OutputStream",
+      "kind" : "function",
+      "line" : 24,
+      "char" : 55,
+      "type" : "Base64OutputStreamImpl!(C62, C63, CPAD, OutputStream)(OutputStream output, ulong max_bytes_per_line = 57)",
+      "parameters" : [
+       {
+        "name" : "output",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "max_bytes_per_line",
+        "deco" : "m",
+        "default" : "57"
+       }
+      ],
+      "endline" : 28,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 38,
+    "char" : 54,
+    "name" : "createBase64URLOutputStream",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createBase64URLOutputStream",
+      "kind" : "function",
+      "line" : 38,
+      "char" : 54,
+      "type" : "Base64OutputStreamImpl!('-', '_', '=', OutputStream)(OutputStream output, ulong max_bytes_per_line = 57)",
+      "parameters" : [
+       {
+        "name" : "output",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "max_bytes_per_line",
+        "deco" : "m",
+        "default" : "57"
+       }
+      ],
+      "endline" : 42,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "Base64OutputStream",
+    "kind" : "alias",
+    "line" : 48,
+    "char" : 1,
+    "deco" : "C4vibe6stream6base64__T22Base64OutputStreamImplVai43Vai47Vai61TCQCl4coreQCo12OutputStreamZQCp"
+   },
+   {
+    "name" : "Base64URLOutputStream",
+    "kind" : "alias",
+    "line" : 53,
+    "char" : 1,
+    "deco" : "C4vibe6stream6base64__T22Base64OutputStreamImplVai45Vai95Vai61TCQCl4coreQCo12OutputStreamZQCp"
+   },
+   {
+    "kind" : "template",
+    "line" : 62,
+    "char" : 7,
+    "name" : "Base64OutputStreamImpl",
+    "parameters" : [
+     {
+      "name" : "C62",
+      "kind" : "value",
+      "deco" : "a"
+     },
+     {
+      "name" : "C63",
+      "kind" : "value",
+      "deco" : "a"
+     },
+     {
+      "name" : "CPAD",
+      "kind" : "value",
+      "deco" : "a",
+      "defaultValue" : "'='"
+     },
+     {
+      "name" : "OutputStream",
+      "kind" : "type",
+      "default" : ".OutputStream"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "Base64OutputStreamImpl",
+      "kind" : "class",
+      "line" : 62,
+      "char" : 7,
+      "members" : [
+       {
+        "name" : "m_out",
+        "kind" : "variable",
+        "line" : 66,
+        "char" : 16,
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "m_maxBytesPerLine",
+        "kind" : "variable",
+        "line" : 67,
+        "char" : 9,
+        "deco" : "m"
+       },
+       {
+        "name" : "m_bytesInCurrentLine",
+        "kind" : "variable",
+        "line" : 68,
+        "char" : 9,
+        "deco" : "m",
+        "init" : "0"
+       },
+       {
+        "name" : "B64",
+        "kind" : "alias",
+        "line" : 71,
+        "char" : 10,
+        "type" : "Base64Impl!(C62, C63, CPAD)"
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 74,
+        "char" : 2,
+        "type" : "(OutputStream output, ulong max_bytes_per_line = 57)",
+        "parameters" : [
+         {
+          "name" : "output",
+          "type" : "OutputStream"
+         },
+         {
+          "name" : "max_bytes_per_line",
+          "deco" : "m",
+          "default" : "57"
+         }
+        ],
+        "endline" : 77,
+        "endchar" : 2
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 80,
+        "char" : 2,
+        "type" : "(OutputStream output, ulong max_bytes_per_line, bool dummy)",
+        "parameters" : [
+         {
+          "name" : "output",
+          "type" : "OutputStream"
+         },
+         {
+          "name" : "max_bytes_per_line",
+          "deco" : "m"
+         },
+         {
+          "name" : "dummy",
+          "deco" : "b"
+         }
+        ],
+        "endline" : 84,
+        "endchar" : 2
+       },
+       {
+        "name" : "write",
+        "kind" : "function",
+        "line" : 87,
+        "char" : 9,
+        "type" : "@trusted size_t(in ubyte[] bytes_, IOMode)",
+        "parameters" : [
+         {
+          "name" : "bytes_",
+          "type" : "ubyte[]",
+          "storageClass" : [
+           "in"
+          ]
+         },
+         {
+          "type" : "IOMode"
+         }
+        ],
+        "endline" : 114,
+        "endchar" : 2
+       },
+       {
+        "name" : "write",
+        "kind" : "alias",
+        "line" : 116,
+        "char" : 2,
+        "type" : ".OutputStream.write"
+       },
+       {
+        "name" : "flush",
+        "kind" : "function",
+        "line" : 118,
+        "char" : 7,
+        "type" : "void()",
+        "endline" : 121,
+        "endchar" : 2
+       },
+       {
+        "name" : "finalize",
+        "kind" : "function",
+        "line" : 123,
+        "char" : 7,
+        "type" : "void()",
+        "endline" : 126,
+        "endchar" : 2
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L190_C1",
+    "kind" : "function",
+    "line" : 190,
+    "char" : 1,
+    "endline" : 214,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.counting",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\counting.d",
+  "members" : [
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 15
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.freelistref",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "FreeListRef"
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 26,
+    "char" : 20,
+    "name" : "createLimitedInputStream",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createLimitedInputStream",
+      "kind" : "function",
+      "line" : 26,
+      "char" : 20,
+      "type" : "LimitedInputStream(InputStream stream, ulong byte_limit, bool silent_limit = false)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "byte_limit",
+        "deco" : "m"
+       },
+       {
+        "name" : "silent_limit",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 30,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 33,
+    "char" : 32,
+    "name" : "createLimitedInputStreamFL",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createLimitedInputStreamFL",
+      "kind" : "function",
+      "line" : 33,
+      "char" : 32,
+      "type" : "FreeListRef!LimitedInputStream(InputStream stream, ulong byte_limit, bool silent_limit = false)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "byte_limit",
+        "deco" : "m"
+       },
+       {
+        "name" : "silent_limit",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 37,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 45,
+    "char" : 22,
+    "name" : "createCountingOutputStream",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createCountingOutputStream",
+      "kind" : "function",
+      "line" : 45,
+      "char" : 22,
+      "type" : "CountingOutputStream(OutputStream output, ulong byte_limit = (ulong).max)",
+      "parameters" : [
+       {
+        "name" : "output",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "byte_limit",
+        "deco" : "m",
+        "default" : "(ulong).max"
+       }
+      ],
+      "endline" : 49,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 52,
+    "char" : 34,
+    "name" : "createCountingOutputStreamFL",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createCountingOutputStreamFL",
+      "kind" : "function",
+      "line" : 52,
+      "char" : 34,
+      "type" : "FreeListRef!CountingOutputStream(OutputStream output, ulong byte_limit = (ulong).max)",
+      "parameters" : [
+       {
+        "name" : "output",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "byte_limit",
+        "deco" : "m",
+        "default" : "(ulong).max"
+       }
+      ],
+      "endline" : 56,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 65,
+    "char" : 24,
+    "name" : "createEndCallbackInputStream",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createEndCallbackInputStream",
+      "kind" : "function",
+      "line" : 65,
+      "char" : 24,
+      "type" : "EndCallbackInputStream(InputStream input, void delegate() @safe callback)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "callback",
+        "type" : "void delegate() @safe"
+       }
+      ],
+      "endline" : 69,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 72,
+    "char" : 36,
+    "name" : "createEndCallbackInputStreamFL",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createEndCallbackInputStreamFL",
+      "kind" : "function",
+      "line" : 72,
+      "char" : 36,
+      "type" : "FreeListRef!EndCallbackInputStream(InputStream input, void delegate() @safe callback)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "callback",
+        "type" : "void delegate() @safe"
+       }
+      ],
+      "endline" : 76,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "LimitedInputStream",
+    "kind" : "class",
+    "line" : 82,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.InputStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_input",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 86,
+      "char" : 30,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream11InputStream",
+      "originalType" : "InterfaceProxy!InputStream",
+      "offset" : 12
+     },
+     {
+      "name" : "m_sizeLimit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 87,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "m",
+      "offset" : 16
+     },
+     {
+      "name" : "m_silentLimit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 88,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "b",
+      "offset" : 24
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 92,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream11InputStreammbZCQBiQBb8counting18LimitedInputStream",
+      "originalType" : "@safe (InputStream stream, ulong byte_limit, bool silent_limit = false)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "byte_limit",
+        "deco" : "m"
+       },
+       {
+        "name" : "silent_limit",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 95,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 98,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream11InputStreammbbZCQBjQBc8counting18LimitedInputStream",
+      "originalType" : "@safe (InterfaceProxy!InputStream stream, ulong byte_limit, bool silent_limit, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "byte_limit",
+        "deco" : "m"
+       },
+       {
+        "name" : "silent_limit",
+        "deco" : "b"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 104,
+      "endchar" : 2
+     },
+     {
+      "name" : "sourceStream",
+      "kind" : "function",
+      "line" : 107,
+      "char" : 46,
+      "deco" : "NgFNdNfZNgC4vibe4core6stream11InputStream",
+      "originalType" : "inout @property @safe inout(InterfaceProxy!InputStream)()",
+      "endline" : 107,
+      "endchar" : 85
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 109,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 109,
+      "endchar" : 86,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 111,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 111,
+      "endchar" : 98,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 113,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 113,
+      "endchar" : 79,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "increment",
+      "kind" : "function",
+      "line" : 115,
+      "char" : 7,
+      "deco" : "FNfmZv",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 119,
+      "endchar" : 2
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 121,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 121,
+      "endchar" : 49,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 123,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 129,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 131,
+      "char" : 2
+     },
+     {
+      "name" : "onSizeLimitReached",
+      "kind" : "function",
+      "protection" : "protected",
+      "line" : 133,
+      "char" : 17,
+      "deco" : "FNfZv",
+      "endline" : 135,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "CountingOutputStream",
+    "kind" : "class",
+    "line" : 142,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.OutputStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_bytesWritten",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 146,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "m",
+      "offset" : 16
+     },
+     {
+      "name" : "m_writeLimit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 147,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "m",
+      "offset" : 24
+     },
+     {
+      "name" : "m_out",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 148,
+      "char" : 31,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream12OutputStream",
+      "originalType" : "InterfaceProxy!OutputStream",
+      "offset" : 32
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 152,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream12OutputStreammZCQBiQBb8counting20CountingOutputStream",
+      "originalType" : "@safe (OutputStream stream, ulong write_limit = (ulong).max)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       },
+       {
+        "name" : "write_limit",
+        "deco" : "m",
+        "default" : "18446744073709551615LU"
+       }
+      ],
+      "endline" : 155,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 158,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream12OutputStreammbZCQBjQBc8counting20CountingOutputStream",
+      "originalType" : "@safe (InterfaceProxy!OutputStream stream, ulong write_limit, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       },
+       {
+        "name" : "write_limit",
+        "deco" : "m"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 163,
+      "endchar" : 2
+     },
+     {
+      "name" : "bytesWritten",
+      "kind" : "function",
+      "line" : 166,
+      "char" : 18,
+      "deco" : "xFNdNfZm",
+      "endline" : 166,
+      "endchar" : 64
+     },
+     {
+      "name" : "writeLimit",
+      "kind" : "function",
+      "line" : 169,
+      "char" : 18,
+      "deco" : "xFNdNfZm",
+      "endline" : 169,
+      "endchar" : 60
+     },
+     {
+      "name" : "writeLimit",
+      "kind" : "function",
+      "line" : 171,
+      "char" : 17,
+      "deco" : "FNdNfmZv",
+      "parameters" : [
+       {
+        "name" : "value",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 171,
+      "endchar" : 65
+     },
+     {
+      "name" : "increment",
+      "kind" : "function",
+      "line" : 175,
+      "char" : 7,
+      "deco" : "FNfmZv",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 179,
+      "endchar" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 181,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] bytes, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 188,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 190,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 192,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 192,
+      "endchar" : 32,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 193,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 193,
+      "endchar" : 35,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "CountingInputStream",
+    "kind" : "class",
+    "line" : 200,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.InputStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_bytesRead",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 204,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "m",
+      "offset" : 16
+     },
+     {
+      "name" : "m_in",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 205,
+      "char" : 30,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream11InputStream",
+      "originalType" : "InterfaceProxy!InputStream",
+      "offset" : 24
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 209,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream11InputStreamZCQBgQz8counting19CountingInputStream",
+      "originalType" : "@safe (InputStream stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream11InputStream"
+       }
+      ],
+      "endline" : 212,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 215,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream11InputStreambZCQBhQBa8counting19CountingInputStream",
+      "originalType" : "@safe (InterfaceProxy!InputStream stream, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 219,
+      "endchar" : 2
+     },
+     {
+      "name" : "bytesRead",
+      "kind" : "function",
+      "line" : 221,
+      "char" : 18,
+      "deco" : "xFNdNfZm",
+      "endline" : 221,
+      "endchar" : 58
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 223,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 223,
+      "endchar" : 48,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 224,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 224,
+      "endchar" : 58,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 225,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 225,
+      "endchar" : 76,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "increment",
+      "kind" : "function",
+      "line" : 227,
+      "char" : 7,
+      "deco" : "FNfmZv",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 230,
+      "endchar" : 2
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 232,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 232,
+      "endchar" : 46,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 234,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 239,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 241,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "EndCallbackInputStream",
+    "kind" : "class",
+    "line" : 255,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.InputStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_in",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 259,
+      "char" : 30,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream11InputStream",
+      "originalType" : "InterfaceProxy!InputStream",
+      "offset" : 12
+     },
+     {
+      "name" : "m_eof",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 260,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 16
+     },
+     {
+      "name" : "m_callback",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 261,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfZv",
+      "offset" : 20
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 265,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream11InputStreamDFNfZvZCQBmQBf8counting22EndCallbackInputStream",
+      "originalType" : "@safe (InputStream input, void delegate() @safe callback)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "callback",
+        "deco" : "DFNfZv"
+       }
+      ],
+      "endline" : 268,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 271,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream11InputStreamDFNfZvbZCQBnQBg8counting22EndCallbackInputStream",
+      "originalType" : "@safe (InterfaceProxy!InputStream input, void delegate() @safe callback, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "callback",
+        "deco" : "DFNfZv"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 276,
+      "endchar" : 2
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 278,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 282,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 284,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 289,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 291,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 295,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 297,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 301,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 303,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 309,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 311,
+      "char" : 2
+     },
+     {
+      "name" : "checkEOF",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 313,
+      "char" : 15,
+      "deco" : "FNfZv",
+      "endline" : 320,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "LimitException",
+    "kind" : "class",
+    "line" : 323,
+    "char" : 1,
+    "base" : "object.Exception",
+    "members" : [
+     {
+      "name" : "m_limit",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 326,
+      "char" : 16,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "m",
+      "offset" : 40
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 328,
+      "char" : 2,
+      "deco" : "FNfAyamC6object9ThrowableQwiZC4vibe6stream8counting14LimitException",
+      "originalType" : "@safe (string message, ulong limit, Throwable next = null, string file = __FILE__, int line = __LINE__)",
+      "parameters" : [
+       {
+        "name" : "message",
+        "deco" : "Aya"
+       },
+       {
+        "name" : "limit",
+        "deco" : "m"
+       },
+       {
+        "name" : "next",
+        "deco" : "C6object9Throwable",
+        "default" : "null"
+       },
+       {
+        "name" : "file",
+        "deco" : "Aya",
+        "default" : "__FILE__"
+       },
+       {
+        "name" : "line",
+        "deco" : "i",
+        "default" : "__LINE__"
+       }
+      ],
+      "endline" : 331,
+      "endchar" : 2
+     },
+     {
+      "name" : "limit",
+      "kind" : "function",
+      "line" : 334,
+      "char" : 18,
+      "deco" : "xFNdNfZm",
+      "endline" : 334,
+      "endchar" : 50
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.memory",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\memory.d",
+  "members" : [
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.utils.array",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.allocator",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.array",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.typecons",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "createMemoryOutputStream",
+    "kind" : "function",
+    "line" : 19,
+    "char" : 20,
+    "deco" : "FNbNfC4stdx9allocator10IAllocatorZC4vibe6stream6memory18MemoryOutputStream",
+    "parameters" : [
+     {
+      "name" : "alloc",
+      "deco" : "C4stdx9allocator10IAllocator",
+      "default" : "vibeThreadAllocator()"
+     }
+    ],
+    "endline" : 22,
+    "endchar" : 1
+   },
+   {
+    "name" : "createMemoryStream",
+    "kind" : "function",
+    "line" : 31,
+    "char" : 14,
+    "deco" : "FNbNfAhbkZC4vibe6stream6memory12MemoryStream",
+    "originalType" : "nothrow @safe MemoryStream(ubyte[] data, bool writable = true, size_t initial_size = size_t.max)",
+    "parameters" : [
+     {
+      "name" : "data",
+      "deco" : "Ah"
+     },
+     {
+      "name" : "writable",
+      "deco" : "b",
+      "default" : "true"
+     },
+     {
+      "name" : "initial_size",
+      "deco" : "k",
+      "default" : "4294967295u"
+     }
+    ],
+    "endline" : 34,
+    "endchar" : 1
+   },
+   {
+    "name" : "MemoryOutputStream",
+    "kind" : "class",
+    "line" : 40,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.core.stream.OutputStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_destination",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 44,
+      "char" : 27,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S4vibe5utils5array__T13AllocAppenderHTAhThZQw",
+      "originalType" : "AllocAppender!(ubyte[])",
+      "offset" : 12
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 48,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4stdx9allocator10IAllocatorZC4vibe6stream6memory18MemoryOutputStream",
+      "originalType" : "@safe (IAllocator alloc = vibeThreadAllocator())",
+      "parameters" : [
+       {
+        "name" : "alloc",
+        "deco" : "C4stdx9allocator10IAllocator",
+        "default" : "vibeThreadAllocator()"
+       }
+      ],
+      "endline" : 51,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 54,
+      "char" : 2,
+      "deco" : "FNbNfC4stdx9allocator10IAllocatorbZC4vibe6stream6memory18MemoryOutputStream",
+      "originalType" : "nothrow @safe (IAllocator alloc, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "alloc",
+        "deco" : "C4stdx9allocator10IAllocator"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 57,
+      "endchar" : 2
+     },
+     {
+      "name" : "data",
+      "kind" : "function",
+      "line" : 60,
+      "char" : 20,
+      "deco" : "FNbNdNfZAh",
+      "endline" : 60,
+      "endchar" : 66
+     },
+     {
+      "name" : "reset",
+      "kind" : "function",
+      "line" : 63,
+      "char" : 7,
+      "deco" : "FE4vibe5utils5array17AppenderResetModeZv",
+      "originalType" : "@system void(AppenderResetMode mode = AppenderResetMode.keepData)",
+      "parameters" : [
+       {
+        "name" : "mode",
+        "deco" : "E4vibe5utils5array17AppenderResetMode",
+        "default" : "cast(AppenderResetMode)0"
+       }
+      ],
+      "endline" : 66,
+      "endchar" : 2
+     },
+     {
+      "name" : "reserve",
+      "kind" : "function",
+      "line" : 69,
+      "char" : 7,
+      "deco" : "FNfkZv",
+      "originalType" : "@safe void(size_t nbytes)",
+      "parameters" : [
+       {
+        "name" : "nbytes",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 72,
+      "endchar" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 74,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] bytes, IOMode)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "_param_1",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 78,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 80,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 82,
+      "char" : 7,
+      "deco" : "FNbNfZv",
+      "endline" : 84,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 86,
+      "char" : 7,
+      "deco" : "FNbNfZv",
+      "endline" : 88,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "validateOutputStream!(MemoryOutputStream)",
+    "kind" : "mixin",
+    "line" : 91,
+    "char" : 1
+   },
+   {
+    "name" : "MemoryStream",
+    "kind" : "class",
+    "line" : 97,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.core.stream.RandomAccessStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_data",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 101,
+      "char" : 11,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Ah",
+      "offset" : 16
+     },
+     {
+      "name" : "m_size",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 102,
+      "char" : 10,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "k",
+      "originalType" : "size_t",
+      "offset" : 24
+     },
+     {
+      "name" : "m_writable",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 103,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "b",
+      "offset" : 28
+     },
+     {
+      "name" : "m_ptr",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 104,
+      "char" : 10,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "k",
+      "originalType" : "size_t",
+      "init" : "0u",
+      "offset" : 32
+     },
+     {
+      "name" : "m_peekWindow",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 105,
+      "char" : 10,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "k",
+      "originalType" : "size_t",
+      "offset" : 36
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 109,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfAhbkZC4vibe6stream6memory12MemoryStream",
+      "originalType" : "@safe (ubyte[] data, bool writable = true, size_t initial_size = size_t.max)",
+      "parameters" : [
+       {
+        "name" : "data",
+        "deco" : "Ah"
+       },
+       {
+        "name" : "writable",
+        "deco" : "b",
+        "default" : "true"
+       },
+       {
+        "name" : "initial_size",
+        "deco" : "k",
+        "default" : "4294967295u"
+       }
+      ],
+      "endline" : 112,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 115,
+      "char" : 2,
+      "deco" : "FNbNfAhbkbZC4vibe6stream6memory12MemoryStream",
+      "originalType" : "nothrow @safe (ubyte[] data, bool writable, size_t initial_size, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "data",
+        "deco" : "Ah"
+       },
+       {
+        "name" : "writable",
+        "deco" : "b"
+       },
+       {
+        "name" : "initial_size",
+        "deco" : "k"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 121,
+      "endchar" : 2
+     },
+     {
+      "name" : "peekWindow",
+      "kind" : "function",
+      "line" : 127,
+      "char" : 17,
+      "deco" : "FNdNfkZv",
+      "originalType" : "@property @safe void(size_t size)",
+      "parameters" : [
+       {
+        "name" : "size",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 127,
+      "endchar" : 64
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 129,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 129,
+      "endchar" : 52,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 130,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 130,
+      "endchar" : 55,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 131,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 131,
+      "endchar" : 66,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "size",
+      "kind" : "function",
+      "line" : 132,
+      "char" : 18,
+      "deco" : "xFNbNdNfZm",
+      "endline" : 132,
+      "endchar" : 56,
+      "overrides" : [
+       "vibe.core.stream.RandomAccessStream.size"
+      ]
+     },
+     {
+      "name" : "capacity",
+      "kind" : "function",
+      "line" : 133,
+      "char" : 19,
+      "deco" : "xFNbNdNfZk",
+      "originalType" : "const nothrow @property @safe size_t()",
+      "endline" : 133,
+      "endchar" : 68
+     },
+     {
+      "name" : "readable",
+      "kind" : "function",
+      "line" : 134,
+      "char" : 17,
+      "deco" : "xFNbNdNfZb",
+      "endline" : 134,
+      "endchar" : 57,
+      "overrides" : [
+       "vibe.core.stream.RandomAccessStream.readable"
+      ]
+     },
+     {
+      "name" : "writable",
+      "kind" : "function",
+      "line" : 135,
+      "char" : 17,
+      "deco" : "xFNbNdNfZb",
+      "endline" : 135,
+      "endchar" : 63,
+      "overrides" : [
+       "vibe.core.stream.RandomAccessStream.writable"
+      ]
+     },
+     {
+      "name" : "seek",
+      "kind" : "function",
+      "line" : 137,
+      "char" : 7,
+      "deco" : "FNfmZv",
+      "parameters" : [
+       {
+        "name" : "offset",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 137,
+      "endchar" : 82,
+      "overrides" : [
+       "vibe.core.stream.RandomAccessStream.seek"
+      ]
+     },
+     {
+      "name" : "tell",
+      "kind" : "function",
+      "line" : 138,
+      "char" : 8,
+      "deco" : "FNbNfZm",
+      "endline" : 138,
+      "endchar" : 39,
+      "overrides" : [
+       "vibe.core.stream.RandomAccessStream.tell"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 139,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 139,
+      "endchar" : 83,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 141,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 148,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 150,
+      "char" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 152,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] bytes, IOMode)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "_param_1",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 160,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 162,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 164,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 164,
+      "endchar" : 16,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 165,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 165,
+      "endchar" : 19,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "validateRandomAccessStream!(MemoryStream)",
+    "kind" : "mixin",
+    "line" : 168,
+    "char" : 1
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.multicast",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\multicast.d",
+  "members" : [
+   {
+    "name" : "vibe.core.core",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "createMulticastStream",
+    "kind" : "function",
+    "line" : 15,
+    "char" : 17,
+    "deco" : "FMAC4vibe4core6stream12OutputStreamXCQBhQBa9multicast15MulticastStream",
+    "parameters" : [
+     {
+      "name" : "outputs",
+      "deco" : "AC4vibe4core6stream12OutputStream",
+      "storageClass" : [
+       "scope"
+      ]
+     }
+    ],
+    "endline" : 18,
+    "endchar" : 1
+   },
+   {
+    "name" : "MulticastStream",
+    "kind" : "class",
+    "line" : 21,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.OutputStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_outputs",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 23,
+      "char" : 18,
+      "deco" : "AC4vibe4core6stream12OutputStream",
+      "offset" : 12
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 27,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FAC4vibe4core6stream12OutputStreamXCQBhQBa9multicast15MulticastStream",
+      "originalType" : "(OutputStream[] outputs...)",
+      "parameters" : [
+       {
+        "name" : "outputs",
+        "deco" : "AC4vibe4core6stream12OutputStream"
+       }
+      ],
+      "endline" : 30,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 33,
+      "char" : 2,
+      "deco" : "FMAC4vibe4core6stream12OutputStreambZCQBiQBb9multicast15MulticastStream",
+      "originalType" : "(scope OutputStream[] outputs, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "outputs",
+        "deco" : "AC4vibe4core6stream12OutputStream",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 37,
+      "endchar" : 2
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 39,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 42,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 44,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 48,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 50,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "size_t(in ubyte[] bytes, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 60,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 62,
+      "char" : 2
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.operations",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\operations.d",
+  "members" : [
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 15
+   },
+   {
+    "name" : "vibe.core.log",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.utils.array",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "AllocAppender"
+    ]
+   },
+   {
+    "name" : "vibe.internal.allocator",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.freelistref",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.stream.wrapper",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "ProxyStream"
+    ]
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.array",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.range",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "isOutputRange"
+    ]
+   },
+   {
+    "name" : "core.time",
+    "kind" : "import",
+    "line" : 22,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "Duration",
+     "seconds"
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 36,
+    "char" : 9,
+    "name" : "readLine",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "readLine",
+      "kind" : "function",
+      "line" : 36,
+      "char" : 9,
+      "type" : "ubyte[](InputStream stream, size_t max_bytes = size_t.max, string linesep = \"\\x0d\\x0a\", IAllocator alloc = vibeThreadAllocator())",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "max_bytes",
+        "type" : "size_t",
+        "default" : "size_t.max"
+       },
+       {
+        "name" : "linesep",
+        "type" : "string",
+        "default" : "\"\\x0d\\x0a\""
+       },
+       {
+        "name" : "alloc",
+        "type" : "IAllocator",
+        "default" : "vibeThreadAllocator()"
+       }
+      ],
+      "endline" : 43,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 45,
+    "char" : 6,
+    "name" : "readLine",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     },
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream && isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "readLine",
+      "kind" : "function",
+      "line" : 45,
+      "char" : 6,
+      "type" : "void(InputStream stream, OutputStream dst, size_t max_bytes = size_t.max, string linesep = \"\\x0d\\x0a\")",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "dst",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "max_bytes",
+        "type" : "size_t",
+        "default" : "size_t.max"
+       },
+       {
+        "name" : "linesep",
+        "type" : "string",
+        "default" : "\"\\x0d\\x0a\""
+       }
+      ],
+      "endline" : 51,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 53,
+    "char" : 6,
+    "name" : "readLine",
+    "parameters" : [
+     {
+      "name" : "R",
+      "kind" : "type"
+     },
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputRange!(R, ubyte)",
+    "members" : [
+     {
+      "name" : "readLine",
+      "kind" : "function",
+      "line" : 53,
+      "char" : 6,
+      "type" : "void(InputStream stream, ref R dst, size_t max_bytes = size_t.max, string linesep = \"\\x0d\\x0a\")",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "dst",
+        "type" : "R",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "max_bytes",
+        "type" : "size_t",
+        "default" : "size_t.max"
+       },
+       {
+        "name" : "linesep",
+        "type" : "string",
+        "default" : "\"\\x0d\\x0a\""
+       }
+      ],
+      "endline" : 57,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L59_C7",
+    "kind" : "function",
+    "line" : 59,
+    "char" : 7,
+    "endline" : 119,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "line" : 119,
+    "char" : 9,
+    "name" : "readUntil",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "readUntil",
+      "kind" : "function",
+      "line" : 119,
+      "char" : 9,
+      "type" : "ubyte[](InputStream stream, in ubyte[] end_marker, size_t max_bytes = size_t.max, IAllocator alloc = vibeThreadAllocator())",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "end_marker",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "max_bytes",
+        "type" : "size_t",
+        "default" : "size_t.max"
+       },
+       {
+        "name" : "alloc",
+        "type" : "IAllocator",
+        "default" : "vibeThreadAllocator()"
+       }
+      ],
+      "endline" : 126,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 128,
+    "char" : 6,
+    "name" : "readUntil",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     },
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream && isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "readUntil",
+      "kind" : "function",
+      "line" : 128,
+      "char" : 6,
+      "type" : "void(InputStream stream, OutputStream dst, in ubyte[] end_marker, ulong max_bytes = (ulong).max)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "dst",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "end_marker",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "max_bytes",
+        "deco" : "m",
+        "default" : "(ulong).max"
+       }
+      ],
+      "endline" : 134,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 136,
+    "char" : 6,
+    "name" : "readUntil",
+    "parameters" : [
+     {
+      "name" : "R",
+      "kind" : "type"
+     },
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputRange!(R, ubyte) && isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "readUntil",
+      "kind" : "function",
+      "line" : 136,
+      "char" : 6,
+      "type" : "void(InputStream stream, ref R dst, in ubyte[] end_marker, ulong max_bytes = (ulong).max)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "dst",
+        "type" : "R",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "end_marker",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "max_bytes",
+        "deco" : "m",
+        "default" : "(ulong).max"
+       }
+      ],
+      "endline" : 145,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L147_C7",
+    "kind" : "function",
+    "line" : 147,
+    "char" : 7,
+    "endline" : 186,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L186_C7",
+    "kind" : "function",
+    "line" : 186,
+    "char" : 7,
+    "endline" : 219,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "line" : 219,
+    "char" : 9,
+    "name" : "readAll",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "readAll",
+      "kind" : "function",
+      "line" : 219,
+      "char" : 9,
+      "type" : "ubyte[](InputStream stream, size_t max_bytes = size_t.max, size_t reserve_bytes = 0)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "max_bytes",
+        "type" : "size_t",
+        "default" : "size_t.max"
+       },
+       {
+        "name" : "reserve_bytes",
+        "type" : "size_t",
+        "default" : "0"
+       }
+      ],
+      "endline" : 243,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 261,
+    "char" : 8,
+    "name" : "readAllUTF8",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "readAllUTF8",
+      "kind" : "function",
+      "line" : 261,
+      "char" : 8,
+      "type" : "string(InputStream stream, bool sanitize = false, size_t max_bytes = size_t.max)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "sanitize",
+        "deco" : "b",
+        "default" : "false"
+       },
+       {
+        "name" : "max_bytes",
+        "type" : "size_t",
+        "default" : "size_t.max"
+       }
+      ],
+      "endline" : 273,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 288,
+    "char" : 6,
+    "name" : "pipeRealtime",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     },
+     {
+      "name" : "ConnectionStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream && isConnectionStream!ConnectionStream",
+    "members" : [
+     {
+      "name" : "pipeRealtime",
+      "kind" : "function",
+      "line" : 288,
+      "char" : 6,
+      "type" : "void(OutputStream destination, ConnectionStream source, ulong nbytes = 0, Duration max_latency = 0.seconds)",
+      "parameters" : [
+       {
+        "name" : "destination",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "source",
+        "type" : "ConnectionStream"
+       },
+       {
+        "name" : "nbytes",
+        "deco" : "m",
+        "default" : "0"
+       },
+       {
+        "name" : "max_latency",
+        "type" : "Duration",
+        "default" : "0.seconds"
+       }
+      ],
+      "endline" : 332,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L334_C1",
+    "kind" : "function",
+    "line" : 334,
+    "char" : 1,
+    "endline" : 353,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "line" : 353,
+    "char" : 6,
+    "name" : "skipBytes",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "skipBytes",
+      "kind" : "function",
+      "line" : 353,
+      "char" : 6,
+      "type" : "bool(InputStream stream, const(ubyte)[] bytes)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "bytes",
+        "type" : "const(ubyte)[]"
+       }
+      ],
+      "endline" : 365,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "Buffer",
+    "kind" : "struct",
+    "protection" : "private",
+    "line" : 367,
+    "char" : 9,
+    "members" : [
+     {
+      "name" : "bytes",
+      "kind" : "variable",
+      "line" : 367,
+      "char" : 42,
+      "deco" : "G65532h",
+      "originalType" : "ubyte[64 * 1024 - 4]",
+      "init" : "void",
+      "offset" : 0
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 369,
+    "char" : 14,
+    "name" : "readUntilSmall",
+    "parameters" : [
+     {
+      "name" : "R",
+      "kind" : "type"
+     },
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "readUntilSmall",
+      "kind" : "function",
+      "line" : 369,
+      "char" : 14,
+      "type" : "void(InputStream stream, ref R dst, in ubyte[] end_marker, ulong max_bytes = (ulong).max)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "dst",
+        "type" : "R",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "end_marker",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "max_bytes",
+        "deco" : "m",
+        "default" : "(ulong).max"
+       }
+      ],
+      "endline" : 423,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L425_C7",
+    "kind" : "function",
+    "line" : 425,
+    "char" : 7,
+    "endline" : 458,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 458,
+    "char" : 14,
+    "name" : "readUntilGeneric",
+    "parameters" : [
+     {
+      "name" : "R",
+      "kind" : "type"
+     },
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputRange!(R, ubyte) && isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "readUntilGeneric",
+      "kind" : "function",
+      "line" : 458,
+      "char" : 14,
+      "type" : "void(InputStream stream, ref R dst, in ubyte[] end_marker, ulong max_bytes = (ulong).max)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "dst",
+        "type" : "R",
+        "storageClass" : [
+         "ref"
+        ]
+       },
+       {
+        "name" : "end_marker",
+        "type" : "ubyte[]",
+        "storageClass" : [
+         "in"
+        ]
+       },
+       {
+        "name" : "max_bytes",
+        "deco" : "m",
+        "default" : "(ulong).max"
+       }
+      ],
+      "endline" : 560,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 562,
+    "char" : 14,
+    "name" : "skip",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "skip",
+      "kind" : "function",
+      "line" : 562,
+      "char" : 14,
+      "type" : "void(InputStream str, ulong count)",
+      "parameters" : [
+       {
+        "name" : "str",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "count",
+        "deco" : "m"
+       }
+      ],
+      "endline" : 571,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 573,
+    "char" : 9,
+    "name" : "NoPeekProxy",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "NoPeekProxy",
+      "kind" : "class",
+      "line" : 573,
+      "char" : 9,
+      "members" : [
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 576,
+        "char" : 2,
+        "type" : "(InputStream stream)",
+        "parameters" : [
+         {
+          "name" : "stream",
+          "type" : "InputStream"
+         }
+        ],
+        "endline" : 580,
+        "endchar" : 2
+       },
+       {
+        "name" : "peek",
+        "kind" : "function",
+        "line" : 582,
+        "char" : 26,
+        "storageClass" : [
+         "override"
+        ],
+        "type" : "const(ubyte)[]()",
+        "endline" : 582,
+        "endchar" : 48
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.stdio",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\stdio.d",
+  "members" : [
+   {
+    "name" : "vibe.core.core",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.stream.taskpipe",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.thread",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "StdFileStream",
+    "kind" : "class",
+    "line" : 19,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.ConnectionStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_file",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 21,
+      "char" : 18,
+      "deco" : "S3std5stdio4File",
+      "originalType" : "std.stdio.File",
+      "offset" : 16
+     },
+     {
+      "name" : "m_readPipe",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 22,
+      "char" : 12,
+      "deco" : "C4vibe6stream8taskpipe8TaskPipe",
+      "originalType" : "TaskPipe",
+      "offset" : 28
+     },
+     {
+      "name" : "m_writePipe",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 23,
+      "char" : 12,
+      "deco" : "C4vibe6stream8taskpipe8TaskPipe",
+      "originalType" : "TaskPipe",
+      "offset" : 32
+     },
+     {
+      "name" : "m_readThread",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 24,
+      "char" : 10,
+      "deco" : "C4core6thread6Thread",
+      "originalType" : "Thread",
+      "offset" : 36
+     },
+     {
+      "name" : "m_writeThread",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 25,
+      "char" : 10,
+      "deco" : "C4core6thread6Thread",
+      "originalType" : "Thread",
+      "offset" : 40
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 28,
+      "char" : 2,
+      "deco" : "FbbZC4vibe6stream5stdio13StdFileStream",
+      "originalType" : "(bool read, bool write)",
+      "parameters" : [
+       {
+        "name" : "read",
+        "deco" : "b"
+       },
+       {
+        "name" : "write",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 32,
+      "endchar" : 2
+     },
+     {
+      "name" : "setup",
+      "kind" : "function",
+      "line" : 34,
+      "char" : 7,
+      "deco" : "FS3std5stdio4FileZv",
+      "originalType" : "void(std.stdio.File file)",
+      "parameters" : [
+       {
+        "name" : "file",
+        "deco" : "S3std5stdio4File"
+       }
+      ],
+      "endline" : 49,
+      "endchar" : 2
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 51,
+      "char" : 26,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNdNfZb",
+      "originalType" : "@property bool()",
+      "endline" : 51,
+      "endchar" : 80,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 53,
+      "char" : 27,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNdNfZm",
+      "originalType" : "@property ulong()",
+      "endline" : 57,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 59,
+      "char" : 26,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNdNfZb",
+      "originalType" : "@property bool()",
+      "endline" : 63,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "connected",
+      "kind" : "function",
+      "line" : 65,
+      "char" : 26,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "xFNdNfZb",
+      "originalType" : "const @property bool()",
+      "endline" : 65,
+      "endchar" : 75,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.connected"
+      ]
+     },
+     {
+      "name" : "close",
+      "kind" : "function",
+      "line" : 67,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 67,
+      "endchar" : 47,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.close"
+      ]
+     },
+     {
+      "name" : "waitForData",
+      "kind" : "function",
+      "line" : 69,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNfS4core4time8DurationZb",
+      "originalType" : "bool(Duration timeout)",
+      "parameters" : [
+       {
+        "name" : "timeout",
+        "deco" : "S4core4time8Duration"
+       }
+      ],
+      "endline" : 69,
+      "endchar" : 88,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.waitForData"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 71,
+      "char" : 26,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNfZAxh",
+      "originalType" : "const(ubyte)[]()",
+      "endline" : 75,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 77,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 81,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 83,
+      "char" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 85,
+      "char" : 18,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "size_t(in ubyte[] bytes_, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes_",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 89,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 91,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 93,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 97,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 99,
+      "char" : 16,
+      "storageClass" : [
+       "override"
+      ],
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 105,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     },
+     {
+      "name" : "enforceReadable",
+      "kind" : "function",
+      "line" : 107,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 107,
+      "endchar" : 81
+     },
+     {
+      "name" : "enforceWritable",
+      "kind" : "function",
+      "line" : 108,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 108,
+      "endchar" : 82
+     },
+     {
+      "name" : "readThreadFunc",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 110,
+      "char" : 15,
+      "deco" : "FZv",
+      "endline" : 132,
+      "endchar" : 2
+     },
+     {
+      "name" : "writeThreadFunc",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 134,
+      "char" : 15,
+      "deco" : "FZv",
+      "endline" : 158,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 19,
+      "char" : 1,
+      "deco" : "FNeZv"
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "StdoutStream",
+    "kind" : "class",
+    "line" : 164,
+    "char" : 7,
+    "base" : "vibe.stream.stdio.StdFileStream",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 165,
+      "char" : 2,
+      "deco" : "FZC4vibe6stream5stdio12StdoutStream",
+      "originalType" : "()",
+      "endline" : 168,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "StderrStream",
+    "kind" : "class",
+    "line" : 174,
+    "char" : 7,
+    "base" : "vibe.stream.stdio.StdFileStream",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 175,
+      "char" : 2,
+      "deco" : "FZC4vibe6stream5stdio12StderrStream",
+      "originalType" : "()",
+      "endline" : 178,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "StdinStream",
+    "kind" : "class",
+    "line" : 184,
+    "char" : 7,
+    "base" : "vibe.stream.stdio.StdFileStream",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 185,
+      "char" : 2,
+      "deco" : "FZC4vibe6stream5stdio11StdinStream",
+      "originalType" : "()",
+      "endline" : 188,
+      "endchar" : 2
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.taskpipe",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\taskpipe.d",
+  "members" : [
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 15
+   },
+   {
+    "name" : "core.sync.mutex",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.time",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "min"
+    ]
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.core",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.sync",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.utils.array",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "TaskPipe",
+    "kind" : "class",
+    "line" : 24,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.core.stream.ConnectionStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_pipe",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 26,
+      "char" : 16,
+      "deco" : "C4vibe6stream8taskpipe12TaskPipeImpl",
+      "originalType" : "TaskPipeImpl",
+      "offset" : 16
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 31,
+      "char" : 2,
+      "deco" : "FbZC4vibe6stream8taskpipe8TaskPipe",
+      "originalType" : "(bool grow_when_full = false)",
+      "parameters" : [
+       {
+        "name" : "grow_when_full",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 34,
+      "endchar" : 2
+     },
+     {
+      "name" : "bufferSize",
+      "kind" : "function",
+      "line" : 37,
+      "char" : 19,
+      "deco" : "xFNdZk",
+      "originalType" : "const @property size_t()",
+      "endline" : 37,
+      "endchar" : 66
+     },
+     {
+      "name" : "bufferSize",
+      "kind" : "function",
+      "line" : 39,
+      "char" : 17,
+      "deco" : "FNdkZv",
+      "originalType" : "@property void(size_t nbytes)",
+      "parameters" : [
+       {
+        "name" : "nbytes",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 39,
+      "endchar" : 73
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 41,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "originalType" : "@property bool()",
+      "endline" : 41,
+      "endchar" : 52,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 42,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "originalType" : "@property ulong()",
+      "endline" : 42,
+      "endchar" : 74,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 43,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "originalType" : "@property bool()",
+      "endline" : 43,
+      "endchar" : 66,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "connected",
+      "kind" : "function",
+      "line" : 44,
+      "char" : 17,
+      "deco" : "xFNdNfZb",
+      "originalType" : "const @property bool()",
+      "endline" : 44,
+      "endchar" : 57,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.connected"
+      ]
+     },
+     {
+      "name" : "close",
+      "kind" : "function",
+      "line" : 46,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 46,
+      "endchar" : 33,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.close"
+      ]
+     },
+     {
+      "name" : "waitForData",
+      "kind" : "function",
+      "line" : 47,
+      "char" : 7,
+      "deco" : "FNfS4core4time8DurationZb",
+      "originalType" : "bool(Duration timeout)",
+      "parameters" : [
+       {
+        "name" : "timeout",
+        "deco" : "S4core4time8Duration"
+       }
+      ],
+      "endline" : 52,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.waitForData"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 53,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "originalType" : "const(ubyte)[]()",
+      "endline" : 53,
+      "endchar" : 46,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 54,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 54,
+      "endchar" : 79,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 55,
+      "char" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 56,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "size_t(in ubyte[] bytes, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 56,
+      "endchar" : 82,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 57,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 58,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 58,
+      "endchar" : 16,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 59,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "originalType" : "void()",
+      "endline" : 59,
+      "endchar" : 36,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "TaskPipeImpl",
+    "kind" : "class",
+    "protection" : "private",
+    "line" : 66,
+    "char" : 15,
+    "members" : [
+     {
+      "name" : "m_mutex",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 70,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4core4sync5mutex5Mutex",
+      "originalType" : "Mutex",
+      "offset" : 8
+     },
+     {
+      "name" : "m_condition",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 71,
+      "char" : 30,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core4sync26InterruptibleTaskCondition",
+      "originalType" : "InterruptibleTaskCondition",
+      "offset" : 12
+     },
+     {
+      "name" : "m_buffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 72,
+      "char" : 42,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S4vibe5utils5array__T15FixedRingBufferThVki0Vbi1ZQBc",
+      "originalType" : "vibe.utils.array.FixedRingBuffer!ubyte",
+      "offset" : 16
+     },
+     {
+      "name" : "m_closed",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 73,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 32
+     },
+     {
+      "name" : "m_growWhenFull",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 74,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "b",
+      "offset" : 33
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 79,
+      "char" : 2,
+      "deco" : "FNfbZC4vibe6stream8taskpipe12TaskPipeImpl",
+      "originalType" : "@safe (bool grow_when_full = false)",
+      "parameters" : [
+       {
+        "name" : "grow_when_full",
+        "deco" : "b",
+        "default" : "false"
+       }
+      ],
+      "endline" : 85,
+      "endchar" : 2
+     },
+     {
+      "name" : "bufferSize",
+      "kind" : "function",
+      "line" : 88,
+      "char" : 19,
+      "deco" : "xFNdNfZk",
+      "originalType" : "const @property @safe size_t()",
+      "endline" : 88,
+      "endchar" : 66
+     },
+     {
+      "name" : "bufferSize",
+      "kind" : "function",
+      "line" : 90,
+      "char" : 17,
+      "deco" : "FNdNfkZv",
+      "originalType" : "@property @safe void(size_t nbytes)",
+      "parameters" : [
+       {
+        "name" : "nbytes",
+        "deco" : "k"
+       }
+      ],
+      "endline" : 90,
+      "endchar" : 73
+     },
+     {
+      "name" : "fill",
+      "kind" : "function",
+      "line" : 93,
+      "char" : 19,
+      "deco" : "xFNdNfZk",
+      "originalType" : "const @property @safe size_t()",
+      "endline" : 98,
+      "endchar" : 2
+     },
+     {
+      "name" : "open",
+      "kind" : "function",
+      "line" : 100,
+      "char" : 17,
+      "deco" : "xFNdNfZb",
+      "endline" : 100,
+      "endchar" : 50
+     },
+     {
+      "name" : "close",
+      "kind" : "function",
+      "line" : 104,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 108,
+      "endchar" : 2
+     },
+     {
+      "name" : "waitForData",
+      "kind" : "function",
+      "line" : 112,
+      "char" : 7,
+      "deco" : "FNfS4core4time8DurationZv",
+      "originalType" : "@safe void(Duration timeout = Duration.max)",
+      "parameters" : [
+       {
+        "name" : "timeout",
+        "deco" : "S4core4time8Duration",
+        "default" : "max()"
+       }
+      ],
+      "endline" : 128,
+      "endchar" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 132,
+      "char" : 9,
+      "deco" : "FNfAxhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(const(ubyte)[] data, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "data",
+        "deco" : "Axh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 162,
+      "endchar" : 2
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 169,
+      "char" : 17,
+      "deco" : "FNfZxAh",
+      "endline" : 174,
+      "endchar" : 2
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 180,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 206,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L209_C1",
+    "kind" : "function",
+    "line" : 209,
+    "char" : 1,
+    "endline" : 235,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L235_C1",
+    "kind" : "function",
+    "line" : 235,
+    "char" : 1,
+    "endline" : 247,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.wrapper",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\wrapper.d",
+  "members" : [
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 15
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "min"
+    ]
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.time",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.freelistref",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "FreeListRef"
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 19,
+    "char" : 13,
+    "name" : "createProxyStream",
+    "parameters" : [
+     {
+      "name" : "Stream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isStream!Stream",
+    "members" : [
+     {
+      "name" : "createProxyStream",
+      "kind" : "function",
+      "line" : 19,
+      "char" : 13,
+      "type" : "ProxyStream(Stream stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "Stream"
+       }
+      ],
+      "endline" : 23,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 25,
+    "char" : 13,
+    "name" : "createProxyStream",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     },
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream && isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createProxyStream",
+      "kind" : "function",
+      "line" : 25,
+      "char" : 13,
+      "type" : "ProxyStream(InputStream input, OutputStream output)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "output",
+        "type" : "OutputStream"
+       }
+      ],
+      "endline" : 29,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 31,
+    "char" : 23,
+    "name" : "createConnectionProxyStream",
+    "parameters" : [
+     {
+      "name" : "Stream",
+      "kind" : "type"
+     },
+     {
+      "name" : "ConnectionStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isStream!Stream && isConnectionStream!ConnectionStream",
+    "members" : [
+     {
+      "name" : "createConnectionProxyStream",
+      "kind" : "function",
+      "line" : 31,
+      "char" : 23,
+      "type" : "ConnectionProxyStream(Stream stream, ConnectionStream connection_stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "Stream"
+       },
+       {
+        "name" : "connection_stream",
+        "type" : "ConnectionStream"
+       }
+      ],
+      "endline" : 37,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 40,
+    "char" : 35,
+    "name" : "createConnectionProxyStreamFL",
+    "parameters" : [
+     {
+      "name" : "Stream",
+      "kind" : "type"
+     },
+     {
+      "name" : "ConnectionStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isStream!Stream && isConnectionStream!ConnectionStream",
+    "members" : [
+     {
+      "name" : "createConnectionProxyStreamFL",
+      "kind" : "function",
+      "line" : 40,
+      "char" : 35,
+      "type" : "FreeListRef!ConnectionProxyStream(Stream stream, ConnectionStream connection_stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "Stream"
+       },
+       {
+        "name" : "connection_stream",
+        "type" : "ConnectionStream"
+       }
+      ],
+      "endline" : 46,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 48,
+    "char" : 23,
+    "name" : "createConnectionProxyStream",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     },
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     },
+     {
+      "name" : "ConnectionStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream && isOutputStream!OutputStream && isConnectionStream!ConnectionStream",
+    "members" : [
+     {
+      "name" : "createConnectionProxyStream",
+      "kind" : "function",
+      "line" : 48,
+      "char" : 23,
+      "type" : "ConnectionProxyStream(InputStream input, OutputStream output, ConnectionStream connection_stream)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "output",
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "connection_stream",
+        "type" : "ConnectionStream"
+       }
+      ],
+      "endline" : 52,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "ProxyStream",
+    "kind" : "class",
+    "line" : 58,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.Stream"
+    ],
+    "members" : [
+     {
+      "name" : "m_input",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 61,
+      "char" : 33,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream11InputStream",
+      "originalType" : "InterfaceProxy!(.InputStream)",
+      "offset" : 16
+     },
+     {
+      "name" : "m_output",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 62,
+      "char" : 34,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream12OutputStream",
+      "originalType" : "InterfaceProxy!(.OutputStream)",
+      "offset" : 20
+     },
+     {
+      "name" : "m_underlying",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 63,
+      "char" : 28,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream6Stream",
+      "originalType" : "InterfaceProxy!(.Stream)",
+      "offset" : 24
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 67,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream6StreamZCQBaQt7wrapper11ProxyStream",
+      "originalType" : "@safe (Stream stream = null)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream6Stream",
+        "default" : "null"
+       }
+      ],
+      "endline" : 72,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 75,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream11InputStreamCQBfQBdQBb12OutputStreamZCQCeQBx7wrapper11ProxyStream",
+      "originalType" : "@safe (InputStream input, OutputStream output)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "output",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       }
+      ],
+      "endline" : 79,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 82,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream6StreambZCQBbQu7wrapper11ProxyStream",
+      "originalType" : "@safe (InterfaceProxy!Stream stream, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 87,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 90,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream11InputStreamCQBfQBdQBb12OutputStreambZCQCfQBy7wrapper11ProxyStream",
+      "originalType" : "@safe (InterfaceProxy!InputStream input, InterfaceProxy!OutputStream output, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "output",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 94,
+      "endchar" : 2
+     },
+     {
+      "name" : "underlying",
+      "kind" : "function",
+      "line" : 97,
+      "char" : 41,
+      "deco" : "NgFNdNfZNgC4vibe4core6stream6Stream",
+      "originalType" : "inout @property @safe inout(InterfaceProxy!Stream)()",
+      "endline" : 97,
+      "endchar" : 83
+     },
+     {
+      "name" : "underlying",
+      "kind" : "function",
+      "line" : 99,
+      "char" : 17,
+      "deco" : "FNdNfC4vibe4core6stream6StreamZv",
+      "originalType" : "@property @safe void(InterfaceProxy!Stream value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "deco" : "C4vibe4core6stream6Stream"
+       }
+      ],
+      "endline" : 99,
+      "endchar" : 116
+     },
+     {
+      "name" : "underlying",
+      "kind" : "function",
+      "line" : 102,
+      "char" : 18,
+      "type" : "@property void(Stream value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "Stream"
+       }
+      ],
+      "endline" : 102,
+      "endchar" : 93
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 104,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 104,
+      "endchar" : 66,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 106,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 106,
+      "endchar" : 72,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 108,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 108,
+      "endchar" : 97,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 110,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 110,
+      "endchar" : 49,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 112,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 112,
+      "endchar" : 80,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 114,
+      "char" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 116,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] bytes, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 116,
+      "endchar" : 84,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 118,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 120,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 120,
+      "endchar" : 35,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 122,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 122,
+      "endchar" : 41,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "ConnectionProxyStream",
+    "kind" : "class",
+    "line" : 134,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.ConnectionStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_connection",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 138,
+      "char" : 35,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream16ConnectionStream",
+      "originalType" : "InterfaceProxy!ConnectionStream",
+      "offset" : 16
+     },
+     {
+      "name" : "m_underlying",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 139,
+      "char" : 25,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream6Stream",
+      "originalType" : "InterfaceProxy!Stream",
+      "offset" : 20
+     },
+     {
+      "name" : "m_input",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 140,
+      "char" : 30,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream11InputStream",
+      "originalType" : "InterfaceProxy!InputStream",
+      "offset" : 24
+     },
+     {
+      "name" : "m_output",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 141,
+      "char" : 31,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream12OutputStream",
+      "originalType" : "InterfaceProxy!OutputStream",
+      "offset" : 28
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 145,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream6StreamCQzQwQt16ConnectionStreamZCQBzQBs7wrapper21ConnectionProxyStream",
+      "originalType" : "@safe (Stream stream, ConnectionStream connection_stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "connection_stream",
+        "deco" : "C4vibe4core6stream16ConnectionStream"
+       }
+      ],
+      "endline" : 148,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 151,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream11InputStreamCQBfQBdQBb12OutputStreamCQCdQCbQBz16ConnectionStreamZCQDgQCz7wrapper21ConnectionProxyStream",
+      "originalType" : "@safe (InputStream input, OutputStream output, ConnectionStream connection_stream)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "output",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       },
+       {
+        "name" : "connection_stream",
+        "deco" : "C4vibe4core6stream16ConnectionStream"
+       }
+      ],
+      "endline" : 154,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 157,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream6StreamCQzQwQt16ConnectionStreambZCQCaQBt7wrapper21ConnectionProxyStream",
+      "originalType" : "@safe (InterfaceProxy!Stream stream, InterfaceProxy!ConnectionStream connection_stream, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream6Stream"
+       },
+       {
+        "name" : "connection_stream",
+        "deco" : "C4vibe4core6stream16ConnectionStream"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 164,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 167,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream11InputStreamCQBfQBdQBb12OutputStreamCQCdQCbQBz16ConnectionStreambZCQDhQDa7wrapper21ConnectionProxyStream",
+      "originalType" : "@safe (InterfaceProxy!InputStream input, InterfaceProxy!OutputStream output, InterfaceProxy!ConnectionStream connection_stream, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "input",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "output",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       },
+       {
+        "name" : "connection_stream",
+        "deco" : "C4vibe4core6stream16ConnectionStream"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 172,
+      "endchar" : 2
+     },
+     {
+      "name" : "connected",
+      "kind" : "function",
+      "line" : 174,
+      "char" : 17,
+      "deco" : "xFNdNfZb",
+      "endline" : 180,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.connected"
+      ]
+     },
+     {
+      "name" : "close",
+      "kind" : "function",
+      "line" : 182,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 189,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.close"
+      ]
+     },
+     {
+      "name" : "waitForData",
+      "kind" : "function",
+      "line" : 191,
+      "char" : 7,
+      "deco" : "FNfS4core4time8DurationZb",
+      "originalType" : "@safe bool(Duration timeout = 0.seconds)",
+      "parameters" : [
+       {
+        "name" : "timeout",
+        "deco" : "S4core4time8Duration",
+        "default" : "dur(0L)"
+       }
+      ],
+      "endline" : 199,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.ConnectionStream.waitForData"
+      ]
+     },
+     {
+      "name" : "underlying",
+      "kind" : "function",
+      "line" : 202,
+      "char" : 41,
+      "deco" : "NgFNdNfZNgC4vibe4core6stream6Stream",
+      "originalType" : "inout @property @safe inout(InterfaceProxy!Stream)()",
+      "endline" : 202,
+      "endchar" : 83
+     },
+     {
+      "name" : "underlying",
+      "kind" : "function",
+      "line" : 204,
+      "char" : 17,
+      "deco" : "FNdNfC4vibe4core6stream6StreamZv",
+      "originalType" : "@property @safe void(InterfaceProxy!Stream value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "deco" : "C4vibe4core6stream6Stream"
+       }
+      ],
+      "endline" : 204,
+      "endchar" : 116
+     },
+     {
+      "name" : "underlying",
+      "kind" : "function",
+      "line" : 207,
+      "char" : 18,
+      "type" : "@property void(Stream value)",
+      "parameters" : [
+       {
+        "name" : "value",
+        "type" : "Stream"
+       }
+      ],
+      "endline" : 207,
+      "endchar" : 93
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 209,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 209,
+      "endchar" : 66,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 211,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 211,
+      "endchar" : 72,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 213,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 213,
+      "endchar" : 97,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 215,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 215,
+      "endchar" : 49,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 217,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 217,
+      "endchar" : 80,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 219,
+      "char" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 221,
+      "char" : 9,
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] bytes, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "bytes",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 221,
+      "endchar" : 84,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 223,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 225,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 225,
+      "endchar" : 35,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 227,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 227,
+      "endchar" : 41,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "StreamInputRange",
+    "kind" : "struct",
+    "line" : 245,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "Buffer",
+      "kind" : "struct",
+      "protection" : "private",
+      "line" : 249,
+      "char" : 3,
+      "members" : [
+       {
+        "name" : "data",
+        "kind" : "variable",
+        "line" : 250,
+        "char" : 15,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "G256h",
+        "init" : "void",
+        "offset" : 0
+       },
+       {
+        "name" : "fill",
+        "kind" : "variable",
+        "line" : 251,
+        "char" : 11,
+        "storageClass" : [
+         "@safe"
+        ],
+        "deco" : "k",
+        "originalType" : "size_t",
+        "init" : "0u",
+        "offset" : 256
+       }
+      ]
+     },
+     {
+      "name" : "m_stream",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 253,
+      "char" : 15,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream11InputStream",
+      "originalType" : "InputStream",
+      "offset" : 0
+     },
+     {
+      "name" : "m_buffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 254,
+      "char" : 11,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "PS4vibe6stream7wrapper16StreamInputRange6Buffer",
+      "offset" : 4
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 257,
+      "char" : 2,
+      "deco" : "FNcNfC4vibe4core6stream11InputStreamZSQBgQz7wrapper16StreamInputRange",
+      "originalType" : "ref @safe (InputStream stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "deco" : "C4vibe4core6stream11InputStream"
+       }
+      ],
+      "endline" : 261,
+      "endchar" : 2
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 263,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 263,
+      "endchar" : 68
+     },
+     {
+      "name" : "front",
+      "kind" : "function",
+      "line" : 265,
+      "char" : 8,
+      "deco" : "FNfZh",
+      "endline" : 269,
+      "endchar" : 2
+     },
+     {
+      "name" : "popFront",
+      "kind" : "function",
+      "line" : 270,
+      "char" : 7,
+      "deco" : "FNfZv",
+      "endline" : 275,
+      "endchar" : 2
+     },
+     {
+      "name" : "readChunk",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 277,
+      "char" : 15,
+      "deco" : "FNfZv",
+      "endline" : 283,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 290,
+    "char" : 32,
+    "name" : "StreamOutputRange",
+    "parameters" : [],
+    "members" : [
+     {
+      "name" : "StreamOutputRange",
+      "kind" : "function",
+      "line" : 290,
+      "char" : 32,
+      "type" : "StreamOutputRange!OutputStream(OutputStream stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "OutputStream"
+       }
+      ],
+      "endline" : 290,
+      "endchar" : 122
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 292,
+    "char" : 1,
+    "name" : "StreamOutputRange",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     },
+     {
+      "name" : "buffer_size",
+      "kind" : "value",
+      "deco" : "k",
+      "defaultValue" : "256"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "StreamOutputRange",
+      "kind" : "struct",
+      "line" : 292,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "m_stream",
+        "kind" : "variable",
+        "line" : 298,
+        "char" : 16,
+        "type" : "OutputStream"
+       },
+       {
+        "name" : "m_fill",
+        "kind" : "variable",
+        "line" : 299,
+        "char" : 10,
+        "type" : "size_t",
+        "init" : "0"
+       },
+       {
+        "name" : "m_data",
+        "kind" : "variable",
+        "line" : 300,
+        "char" : 22,
+        "type" : "ubyte[buffer_size]",
+        "init" : "void"
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 305,
+        "char" : 2,
+        "type" : "(OutputStream stream)",
+        "parameters" : [
+         {
+          "name" : "stream",
+          "type" : "OutputStream"
+         }
+        ],
+        "endline" : 308,
+        "endchar" : 2
+       },
+       {
+        "name" : "~this",
+        "kind" : "destructor",
+        "line" : 310,
+        "char" : 2,
+        "endline" : 313,
+        "endchar" : 2
+       },
+       {
+        "name" : "flush",
+        "kind" : "function",
+        "line" : 315,
+        "char" : 7,
+        "type" : "void()",
+        "endline" : 320,
+        "endchar" : 2
+       },
+       {
+        "name" : "drop",
+        "kind" : "function",
+        "line" : 322,
+        "char" : 7,
+        "type" : "void()",
+        "endline" : 325,
+        "endchar" : 2
+       },
+       {
+        "name" : "put",
+        "kind" : "function",
+        "line" : 327,
+        "char" : 7,
+        "type" : "void(ubyte bt)",
+        "parameters" : [
+         {
+          "name" : "bt",
+          "deco" : "h"
+         }
+        ],
+        "endline" : 331,
+        "endchar" : 2
+       },
+       {
+        "name" : "put",
+        "kind" : "function",
+        "line" : 333,
+        "char" : 7,
+        "type" : "void(const(ubyte)[] bts)",
+        "parameters" : [
+         {
+          "name" : "bts",
+          "type" : "const(ubyte)[]"
+         }
+        ],
+        "endline" : 349,
+        "endchar" : 2
+       },
+       {
+        "name" : "put",
+        "kind" : "function",
+        "line" : 351,
+        "char" : 7,
+        "type" : "void(char elem)",
+        "parameters" : [
+         {
+          "name" : "elem",
+          "deco" : "a"
+         }
+        ],
+        "endline" : 351,
+        "endchar" : 46
+       },
+       {
+        "name" : "put",
+        "kind" : "function",
+        "line" : 352,
+        "char" : 7,
+        "type" : "void(const(char)[] elems)",
+        "parameters" : [
+         {
+          "name" : "elems",
+          "type" : "const(char)[]"
+         }
+        ],
+        "endline" : 352,
+        "endchar" : 66
+       },
+       {
+        "name" : "put",
+        "kind" : "function",
+        "line" : 354,
+        "char" : 7,
+        "type" : "void(dchar elem)",
+        "parameters" : [
+         {
+          "name" : "elem",
+          "deco" : "w"
+         }
+        ],
+        "endline" : 360,
+        "endchar" : 2
+       },
+       {
+        "name" : "put",
+        "kind" : "function",
+        "line" : 362,
+        "char" : 7,
+        "type" : "void(const(dchar)[] elems)",
+        "parameters" : [
+         {
+          "name" : "elems",
+          "type" : "const(dchar)[]"
+         }
+        ],
+        "endline" : 362,
+        "endchar" : 65
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 365,
+    "char" : 6,
+    "name" : "streamOutputRange",
+    "parameters" : [
+     {
+      "name" : "buffer_size",
+      "kind" : "value",
+      "deco" : "k",
+      "defaultValue" : "256"
+     },
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "streamOutputRange",
+      "kind" : "function",
+      "line" : 365,
+      "char" : 6,
+      "storageClass" : [
+       "auto"
+      ],
+      "type" : "(OutputStream stream)",
+      "parameters" : [
+       {
+        "name" : "stream",
+        "type" : "OutputStream"
+       }
+      ],
+      "endline" : 369,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L371_C1",
+    "kind" : "function",
+    "line" : 371,
+    "char" : 1,
+    "endline" : 389,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "vibe.stream.zlib",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\stream\\vibe\\stream\\zlib.d",
+  "members" : [
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.utils.array",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.freelistref",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "InterfaceProxy",
+     "interfaceProxy"
+    ]
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "etc.c.zlib",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.log",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "line" : 24,
+    "char" : 17,
+    "name" : "createDeflateInputStream",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createDeflateInputStream",
+      "kind" : "function",
+      "line" : 24,
+      "char" : 17,
+      "type" : "@safe ZlibInputStream(InputStream source)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "InputStream"
+       }
+      ],
+      "endline" : 28,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 31,
+    "char" : 29,
+    "name" : "createDeflateInputStreamFL",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createDeflateInputStreamFL",
+      "kind" : "function",
+      "line" : 31,
+      "char" : 29,
+      "type" : "@safe FreeListRef!ZlibInputStream(InputStream source)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "InputStream"
+       }
+      ],
+      "endline" : 35,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 39,
+    "char" : 18,
+    "name" : "createDeflateOutputStream",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createDeflateOutputStream",
+      "kind" : "function",
+      "line" : 39,
+      "char" : 18,
+      "type" : "@safe ZlibOutputStream(OutputStream destination)",
+      "parameters" : [
+       {
+        "name" : "destination",
+        "type" : "OutputStream"
+       }
+      ],
+      "endline" : 43,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 46,
+    "char" : 30,
+    "name" : "createDeflateOutputStreamFL",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createDeflateOutputStreamFL",
+      "kind" : "function",
+      "line" : 46,
+      "char" : 30,
+      "type" : "@safe FreeListRef!ZlibOutputStream(OutputStream destination)",
+      "parameters" : [
+       {
+        "name" : "destination",
+        "type" : "OutputStream"
+       }
+      ],
+      "endline" : 50,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 54,
+    "char" : 17,
+    "name" : "createGzipInputStream",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createGzipInputStream",
+      "kind" : "function",
+      "line" : 54,
+      "char" : 17,
+      "type" : "@safe ZlibInputStream(InputStream source)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "InputStream"
+       }
+      ],
+      "endline" : 58,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 61,
+    "char" : 29,
+    "name" : "createGzipInputStreamFL",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "createGzipInputStreamFL",
+      "kind" : "function",
+      "line" : 61,
+      "char" : 29,
+      "type" : "@safe FreeListRef!ZlibInputStream(InputStream source)",
+      "parameters" : [
+       {
+        "name" : "source",
+        "type" : "InputStream"
+       }
+      ],
+      "endline" : 65,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 69,
+    "char" : 18,
+    "name" : "createGzipOutputStream",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createGzipOutputStream",
+      "kind" : "function",
+      "line" : 69,
+      "char" : 18,
+      "type" : "@safe ZlibOutputStream(OutputStream destination)",
+      "parameters" : [
+       {
+        "name" : "destination",
+        "type" : "OutputStream"
+       }
+      ],
+      "endline" : 73,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "line" : 76,
+    "char" : 30,
+    "name" : "createGzipOutputStreamFL",
+    "parameters" : [
+     {
+      "name" : "OutputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isOutputStream!OutputStream",
+    "members" : [
+     {
+      "name" : "createGzipOutputStreamFL",
+      "kind" : "function",
+      "line" : 76,
+      "char" : 30,
+      "type" : "@safe FreeListRef!ZlibOutputStream(OutputStream destination)",
+      "parameters" : [
+       {
+        "name" : "destination",
+        "type" : "OutputStream"
+       }
+      ],
+      "endline" : 80,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "DeflateOutputStream",
+    "kind" : "class",
+    "line" : 87,
+    "char" : 7,
+    "base" : "vibe.stream.zlib.ZlibOutputStream",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 88,
+      "char" : 8,
+      "deco" : "FNfC4vibe4core6stream12OutputStreamZCQBhQBa4zlib19DeflateOutputStream",
+      "originalType" : "@safe (OutputStream dst)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       }
+      ],
+      "endline" : 91,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "GzipOutputStream",
+    "kind" : "class",
+    "line" : 99,
+    "char" : 7,
+    "base" : "vibe.stream.zlib.ZlibOutputStream",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 100,
+      "char" : 8,
+      "deco" : "FNfC4vibe4core6stream12OutputStreamZCQBhQBa4zlib16GzipOutputStream",
+      "originalType" : "@safe (OutputStream dst)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       }
+      ],
+      "endline" : 103,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "ZlibOutputStream",
+    "kind" : "class",
+    "line" : 109,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.OutputStream"
+    ],
+    "members" : [
+     {
+      "name" : "m_out",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 113,
+      "char" : 31,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream12OutputStream",
+      "originalType" : "InterfaceProxy!OutputStream",
+      "offset" : 12
+     },
+     {
+      "name" : "m_zstream",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 114,
+      "char" : 12,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S3etc1c4zlib8z_stream",
+      "offset" : 16
+     },
+     {
+      "name" : "m_outbuffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 115,
+      "char" : 15,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "G1024h",
+      "offset" : 72
+     },
+     {
+      "name" : "m_finalized",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 117,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 1096
+     },
+     {
+      "name" : "HeaderFormat",
+      "kind" : "enum",
+      "line" : 120,
+      "char" : 2,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "gzip",
+        "kind" : "enum member",
+        "value" : "0",
+        "line" : 121,
+        "char" : 3
+       },
+       {
+        "name" : "deflate",
+        "kind" : "enum member",
+        "value" : "1",
+        "line" : 122,
+        "char" : 3
+       }
+      ]
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 126,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream12OutputStreamEQBgQz4zlib16ZlibOutputStream12HeaderFormatiZCQCzQCsQBuQBs",
+      "originalType" : "@safe (OutputStream dst, HeaderFormat type, int level = Z_DEFAULT_COMPRESSION)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       },
+       {
+        "name" : "type",
+        "deco" : "E4vibe6stream4zlib16ZlibOutputStream12HeaderFormat"
+       },
+       {
+        "name" : "level",
+        "deco" : "i",
+        "default" : "-1"
+       }
+      ],
+      "endline" : 129,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 132,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream12OutputStreamEQBgQz4zlib16ZlibOutputStream12HeaderFormatibZCQDaQCtQBvQBt",
+      "originalType" : "@safe (InterfaceProxy!OutputStream dst, HeaderFormat type, int level, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "C4vibe4core6stream12OutputStream"
+       },
+       {
+        "name" : "type",
+        "deco" : "E4vibe6stream4zlib16ZlibOutputStream12HeaderFormat"
+       },
+       {
+        "name" : "level",
+        "deco" : "i"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 136,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 138,
+      "char" : 2,
+      "deco" : "FNfZv",
+      "endline" : 141,
+      "endchar" : 2
+     },
+     {
+      "name" : "write",
+      "kind" : "function",
+      "line" : 143,
+      "char" : 15,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNfxAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(in ubyte[] data, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "data",
+        "deco" : "xAh"
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 156,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.write"
+      ]
+     },
+     {
+      "name" : "write",
+      "kind" : "alias",
+      "line" : 158,
+      "char" : 2
+     },
+     {
+      "name" : "flush",
+      "kind" : "function",
+      "line" : 160,
+      "char" : 13,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNfZv",
+      "endline" : 165,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.flush"
+      ]
+     },
+     {
+      "name" : "finalize",
+      "kind" : "function",
+      "line" : 167,
+      "char" : 13,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNfZv",
+      "endline" : 174,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.OutputStream.finalize"
+      ]
+     },
+     {
+      "name" : "doFlush",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 176,
+      "char" : 21,
+      "storageClass" : [
+       "final"
+      ],
+      "deco" : "FNfiZv",
+      "parameters" : [
+       {
+        "name" : "how",
+        "deco" : "i"
+       }
+      ],
+      "endline" : 201,
+      "endchar" : 2
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "DeflateInputStream",
+    "kind" : "class",
+    "line" : 210,
+    "char" : 1,
+    "base" : "vibe.stream.zlib.ZlibInputStream",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 211,
+      "char" : 8,
+      "deco" : "FNfC4vibe4core6stream11InputStreamZCQBgQz4zlib18DeflateInputStream",
+      "originalType" : "@safe (InputStream dst)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "C4vibe4core6stream11InputStream"
+       }
+      ],
+      "endline" : 214,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "GzipInputStream",
+    "kind" : "class",
+    "line" : 223,
+    "char" : 1,
+    "base" : "vibe.stream.zlib.ZlibInputStream",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 224,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream11InputStreamZCQBgQz4zlib15GzipInputStream",
+      "originalType" : "@safe (InputStream dst)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "C4vibe4core6stream11InputStream"
+       }
+      ],
+      "endline" : 227,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L230_C1",
+    "kind" : "function",
+    "line" : 230,
+    "char" : 1,
+    "endline" : 244,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L244_C1",
+    "kind" : "function",
+    "line" : 244,
+    "char" : 1,
+    "endline" : 264,
+    "endchar" : 1
+   },
+   {
+    "name" : "ZlibInputStream",
+    "kind" : "class",
+    "line" : 264,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.InputStream"
+    ],
+    "members" : [
+     {
+      "name" : "std.zlib",
+      "kind" : "import",
+      "line" : 267,
+      "char" : 9,
+      "protection" : "private"
+     },
+     {
+      "name" : "m_in",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 269,
+      "char" : 30,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "C4vibe4core6stream11InputStream",
+      "originalType" : "InterfaceProxy!InputStream",
+      "offset" : 12
+     },
+     {
+      "name" : "m_zstream",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 270,
+      "char" : 12,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S3etc1c4zlib8z_stream",
+      "offset" : 16
+     },
+     {
+      "name" : "m_outbuffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 271,
+      "char" : 33,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S4vibe5utils5array__T15FixedRingBufferThVki4096Vbi1ZQBf",
+      "originalType" : "FixedRingBuffer!(ubyte, 4096)",
+      "offset" : 72
+     },
+     {
+      "name" : "m_inbuffer",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 272,
+      "char" : 15,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "G1024h",
+      "offset" : 4176
+     },
+     {
+      "name" : "m_finished",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 273,
+      "char" : 8,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "b",
+      "init" : "false",
+      "offset" : 5200
+     },
+     {
+      "name" : "m_ninflated",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 274,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "m",
+      "offset" : 5208
+     },
+     {
+      "name" : "n_read",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 274,
+      "char" : 22,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "m",
+      "offset" : 5216
+     },
+     {
+      "name" : "HeaderFormat",
+      "kind" : "enum",
+      "line" : 277,
+      "char" : 2,
+      "baseDeco" : "i",
+      "members" : [
+       {
+        "name" : "gzip",
+        "kind" : "enum member",
+        "value" : "0",
+        "line" : 278,
+        "char" : 3
+       },
+       {
+        "name" : "deflate",
+        "kind" : "enum member",
+        "value" : "1",
+        "line" : 279,
+        "char" : 3
+       },
+       {
+        "name" : "automatic",
+        "kind" : "enum member",
+        "value" : "2",
+        "line" : 280,
+        "char" : 3
+       }
+      ]
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 284,
+      "char" : 2,
+      "storageClass" : [
+       "deprecated"
+      ],
+      "deco" : "FNfC4vibe4core6stream11InputStreamEQBfQy4zlib15ZlibInputStream12HeaderFormatZCQCwQCpQBsQBq",
+      "originalType" : "@safe (InputStream src, HeaderFormat type)",
+      "parameters" : [
+       {
+        "name" : "src",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "type",
+        "deco" : "E4vibe6stream4zlib15ZlibInputStream12HeaderFormat"
+       }
+      ],
+      "endline" : 287,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 290,
+      "char" : 2,
+      "deco" : "FNfC4vibe4core6stream11InputStreamEQBfQy4zlib15ZlibInputStream12HeaderFormatbZCQCxQCqQBtQBr",
+      "originalType" : "@safe (InterfaceProxy!InputStream src, HeaderFormat type, bool dummy)",
+      "parameters" : [
+       {
+        "name" : "src",
+        "deco" : "C4vibe4core6stream11InputStream"
+       },
+       {
+        "name" : "type",
+        "deco" : "E4vibe6stream4zlib15ZlibInputStream12HeaderFormat"
+       },
+       {
+        "name" : "dummy",
+        "deco" : "b"
+       }
+      ],
+      "endline" : 302,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 304,
+      "char" : 2,
+      "deco" : "FNfZv",
+      "endline" : 307,
+      "endchar" : 2
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 309,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 309,
+      "endchar" : 55,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 311,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 320,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 322,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 325,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 327,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 327,
+      "endchar" : 53,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 329,
+      "char" : 9,
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 351,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 353,
+      "char" : 2
+     },
+     {
+      "name" : "readChunk",
+      "kind" : "function",
+      "protection" : "private",
+      "line" : 355,
+      "char" : 15,
+      "deco" : "FNfZv",
+      "endline" : 392,
+      "endchar" : 2
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L395_C1",
+    "kind" : "function",
+    "line" : 395,
+    "char" : 1,
+    "endline" : 413,
+    "endchar" : 1
+   },
+   {
+    "name" : "zlibEnforce",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 413,
+    "char" : 13,
+    "deco" : "FNfiZi",
+    "parameters" : [
+     {
+      "name" : "result",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 426,
+    "endchar" : 1
+   }
+  ]
+ }
+]

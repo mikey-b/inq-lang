@@ -1,8 +1,8 @@
-import inqobject;
-import httpobject;
+//import httpobject;
+import consoleobject;
 
 void main()
 {
-	auto root = createRoot!HTTPObject;
+	auto root = new ConsoleObject("environment");
 	root.start();
 }

@@ -1,0 +1,847 @@
+[
+ {
+  "kind" : "module",
+  "file" : "..\\source\\app.d",
+  "members" : [
+   {
+    "name" : "consoleobject",
+    "kind" : "import",
+    "line" : 2,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "main",
+    "kind" : "function",
+    "line" : 4,
+    "char" : 6,
+    "deco" : "FZv",
+    "endline" : 8,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "consoleobject",
+  "kind" : "module",
+  "file" : "..\\source\\consoleobject.d",
+  "members" : [
+   {
+    "name" : "inqobject",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.json",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.concurrency",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 7,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "ConsoleObject",
+    "kind" : "class",
+    "line" : 10,
+    "char" : 1,
+    "base" : "inqobject.physical_object",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 11,
+      "char" : 2,
+      "deco" : "FAyaZC13consoleobject13ConsoleObject",
+      "originalType" : "(string id)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 14,
+      "endchar" : 2
+     },
+     {
+      "name" : "ConsoleController",
+      "kind" : "class",
+      "line" : 16,
+      "char" : 2,
+      "base" : "inqobject.physical_object.DefaultController",
+      "members" : [
+       {
+        "name" : "start",
+        "kind" : "function",
+        "line" : 17,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FZv",
+        "endline" : 28,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.DefaultController.start"
+        ]
+       },
+       {
+        "name" : "send",
+        "kind" : "function",
+        "line" : 30,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FS3std4json9JSONValueZv",
+        "parameters" : [
+         {
+          "name" : "msg",
+          "deco" : "S3std4json9JSONValue"
+         }
+        ],
+        "endline" : 36,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.send"
+        ]
+       },
+       {
+        "name" : "receive",
+        "kind" : "function",
+        "line" : 38,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FS3std4json9JSONValueZv",
+        "parameters" : [
+         {
+          "name" : "msg",
+          "deco" : "S3std4json9JSONValue"
+         }
+        ],
+        "endline" : 52,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.receive"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "httpobject",
+  "kind" : "module",
+  "file" : "..\\source\\htppobject.d",
+  "members" : [
+   {
+    "name" : "inqobject",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.json",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.d",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "WebInterface",
+    "kind" : "class",
+    "line" : 7,
+    "char" : 7,
+    "members" : [
+     {
+      "name" : "messages",
+      "kind" : "variable",
+      "line" : 8,
+      "char" : 11,
+      "deco" : "AAya",
+      "offset" : 8
+     },
+     {
+      "name" : "messageEvent",
+      "kind" : "variable",
+      "line" : 9,
+      "char" : 19,
+      "deco" : "C4vibe4core4sync11ManualEvent",
+      "originalType" : "LocalManualEvent",
+      "offset" : 16
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 11,
+      "char" : 2,
+      "deco" : "FZC10httpobject12WebInterface",
+      "originalType" : "()",
+      "endline" : 14,
+      "endchar" : 2
+     },
+     {
+      "name" : "get",
+      "kind" : "function",
+      "line" : 16,
+      "char" : 7,
+      "deco" : "FZv",
+      "endline" : 18,
+      "endchar" : 2
+     },
+     {
+      "name" : "getWS",
+      "kind" : "function",
+      "line" : 19,
+      "char" : 7,
+      "deco" : "FMC4vibe4http10websockets9WebSocketZv",
+      "parameters" : [
+       {
+        "name" : "socket",
+        "deco" : "C4vibe4http10websockets9WebSocket",
+        "storageClass" : [
+         "scope"
+        ]
+       }
+      ],
+      "endline" : 38,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "HTTPObject",
+    "kind" : "class",
+    "line" : 41,
+    "char" : 1,
+    "base" : "inqobject.physical_object",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 43,
+      "char" : 2,
+      "deco" : "FAyaZC10httpobject10HTTPObject",
+      "originalType" : "(string id)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 46,
+      "endchar" : 2
+     },
+     {
+      "name" : "HTTPController",
+      "kind" : "class",
+      "line" : 48,
+      "char" : 2,
+      "base" : "inqobject.physical_object.DefaultController",
+      "members" : [
+       {
+        "name" : "start",
+        "kind" : "function",
+        "line" : 49,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FZv",
+        "endline" : 66,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.DefaultController.start"
+        ]
+       },
+       {
+        "name" : "send",
+        "kind" : "function",
+        "line" : 68,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FS3std4json9JSONValueZv",
+        "parameters" : [
+         {
+          "name" : "msg",
+          "deco" : "S3std4json9JSONValue"
+         }
+        ],
+        "endline" : 74,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.send"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "inqobject",
+  "kind" : "module",
+  "file" : "..\\source\\inqobject.d",
+  "members" : [
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.concurrency",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.json",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.uuid",
+    "kind" : "import",
+    "line" : 7,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "phyobjs",
+    "kind" : "variable",
+    "line" : 10,
+    "char" : 13,
+    "deco" : "HAyaS3std11concurrency3Tid"
+   },
+   {
+    "name" : "lookup",
+    "kind" : "function",
+    "line" : 11,
+    "char" : 5,
+    "deco" : "FS9inqobject9address_tZS3std11concurrency3Tid",
+    "parameters" : [
+     {
+      "name" : "m",
+      "deco" : "S9inqobject9address_t"
+     }
+    ],
+    "endline" : 13,
+    "endchar" : 1
+   },
+   {
+    "name" : "register",
+    "kind" : "function",
+    "line" : 14,
+    "char" : 6,
+    "deco" : "FAyaS3std11concurrency3TidZv",
+    "parameters" : [
+     {
+      "name" : "name",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "id",
+      "deco" : "S3std11concurrency3Tid"
+     }
+    ],
+    "endline" : 16,
+    "endchar" : 1
+   },
+   {
+    "name" : "createp",
+    "kind" : "function",
+    "line" : 18,
+    "char" : 11,
+    "deco" : "FZS9inqobject9address_t",
+    "endline" : 28,
+    "endchar" : 1
+   },
+   {
+    "name" : "generateId",
+    "kind" : "function",
+    "line" : 31,
+    "char" : 8,
+    "deco" : "FZAya",
+    "endline" : 34,
+    "endchar" : 1
+   },
+   {
+    "name" : "address_t",
+    "kind" : "struct",
+    "line" : 36,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "physical",
+      "kind" : "variable",
+      "line" : 37,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 0
+     },
+     {
+      "name" : "logical",
+      "kind" : "variable",
+      "line" : 38,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 8
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 40,
+      "char" : 2,
+      "deco" : "FNcAyaZS9inqobject9address_t",
+      "originalType" : "ref (string i)",
+      "parameters" : [
+       {
+        "name" : "i",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 44,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 46,
+      "char" : 2,
+      "deco" : "FNcAyaQdZS9inqobject9address_t",
+      "originalType" : "ref (string p, string l)",
+      "parameters" : [
+       {
+        "name" : "p",
+        "deco" : "Aya"
+       },
+       {
+        "name" : "l",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 49,
+      "endchar" : 2
+     },
+     {
+      "name" : "toString",
+      "kind" : "function",
+      "line" : 51,
+      "char" : 9,
+      "deco" : "FZAya",
+      "endline" : 53,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "physical_object",
+    "kind" : "class",
+    "line" : 56,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "objs",
+      "kind" : "variable",
+      "line" : 57,
+      "char" : 25,
+      "deco" : "HAyaC9inqobject15physical_object14logical_object",
+      "offset" : 8
+     },
+     {
+      "name" : "thisAddr",
+      "kind" : "variable",
+      "line" : 58,
+      "char" : 9,
+      "deco" : "Aya",
+      "offset" : 12
+     },
+     {
+      "name" : "getTid",
+      "kind" : "function",
+      "line" : 60,
+      "char" : 6,
+      "deco" : "FZS3std11concurrency3Tid",
+      "endline" : 62,
+      "endchar" : 2
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 64,
+      "char" : 2,
+      "deco" : "FAyaZC9inqobject15physical_object",
+      "originalType" : "(string id)",
+      "parameters" : [
+       {
+        "name" : "id",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 68,
+      "endchar" : 2
+     },
+     {
+      "name" : "create",
+      "kind" : "function",
+      "line" : 70,
+      "char" : 12,
+      "deco" : "FZS9inqobject9address_t",
+      "endline" : 74,
+      "endchar" : 2
+     },
+     {
+      "name" : "start",
+      "kind" : "function",
+      "line" : 76,
+      "char" : 7,
+      "deco" : "FZv",
+      "endline" : 79,
+      "endchar" : 2
+     },
+     {
+      "name" : "send",
+      "kind" : "function",
+      "line" : 82,
+      "char" : 7,
+      "deco" : "FS3std4json9JSONValueZv",
+      "parameters" : [
+       {
+        "name" : "msg",
+        "deco" : "S3std4json9JSONValue"
+       }
+      ],
+      "endline" : 96,
+      "endchar" : 2,
+      "in" : {
+       "name" : "__require",
+       "kind" : "function",
+       "line" : 83,
+       "char" : 5,
+       "deco" : "FNaNfZv",
+       "originalType" : "void()",
+       "endline" : 83,
+       "endchar" : 5
+      }
+     },
+     {
+      "name" : "receive",
+      "kind" : "function",
+      "line" : 98,
+      "char" : 12,
+      "deco" : "FZS3std4json9JSONValue",
+      "endline" : 106,
+      "endchar" : 2
+     },
+     {
+      "name" : "logical_object",
+      "kind" : "class",
+      "line" : 108,
+      "char" : 2,
+      "members" : [
+       {
+        "name" : "addressbook",
+        "kind" : "variable",
+        "line" : 109,
+        "char" : 21,
+        "deco" : "HAyaS9inqobject9address_t",
+        "offset" : 8
+       },
+       {
+        "name" : "create",
+        "kind" : "function",
+        "line" : 111,
+        "char" : 8,
+        "deco" : "FAyaZv",
+        "parameters" : [
+         {
+          "name" : "localname",
+          "deco" : "Aya"
+         }
+        ],
+        "endline" : 113,
+        "endchar" : 3
+       },
+       {
+        "name" : "start",
+        "kind" : "function",
+        "line" : 115,
+        "char" : 8,
+        "deco" : "FZv",
+        "endline" : 115,
+        "endchar" : 17
+       },
+       {
+        "name" : "send",
+        "kind" : "function",
+        "line" : 117,
+        "char" : 8,
+        "deco" : "FS3std4json9JSONValueZv",
+        "parameters" : [
+         {
+          "name" : "msg",
+          "deco" : "S3std4json9JSONValue"
+         }
+        ],
+        "endline" : 119,
+        "endchar" : 3
+       },
+       {
+        "name" : "receive",
+        "kind" : "function",
+        "line" : 121,
+        "char" : 8,
+        "deco" : "FS3std4json9JSONValueZv",
+        "parameters" : [
+         {
+          "name" : "msg",
+          "deco" : "S3std4json9JSONValue"
+         }
+        ],
+        "endline" : 123,
+        "endchar" : 3
+       },
+       {
+        "name" : "this",
+        "kind" : "variable",
+        "line" : 108,
+        "char" : 2,
+        "deco" : "C9inqobject15physical_object",
+        "offset" : 12
+       }
+      ]
+     },
+     {
+      "name" : "DefaultModel",
+      "kind" : "class",
+      "line" : 127,
+      "char" : 2,
+      "base" : "inqobject.physical_object.logical_object",
+      "members" : [
+       {
+        "name" : "create",
+        "kind" : "function",
+        "line" : 128,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FAyaZv",
+        "parameters" : [
+         {
+          "name" : "localname",
+          "deco" : "Aya"
+         }
+        ],
+        "endline" : 130,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.create"
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "DefaultController",
+      "kind" : "class",
+      "line" : 133,
+      "char" : 2,
+      "base" : "inqobject.physical_object.logical_object",
+      "members" : [
+       {
+        "name" : "start",
+        "kind" : "function",
+        "line" : 134,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FZv",
+        "endline" : 146,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.start"
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "Number",
+      "kind" : "class",
+      "line" : 149,
+      "char" : 2,
+      "base" : "inqobject.physical_object.logical_object",
+      "members" : [
+       {
+        "name" : "std.bigint",
+        "kind" : "import",
+        "line" : 150,
+        "char" : 10,
+        "protection" : "private"
+       },
+       {
+        "name" : "data",
+        "kind" : "variable",
+        "line" : 151,
+        "char" : 10,
+        "deco" : "S3std6bigint6BigInt",
+        "offset" : 16
+       },
+       {
+        "name" : "start",
+        "kind" : "function",
+        "line" : 153,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FZv",
+        "endline" : 155,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.start"
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "Boolean",
+      "kind" : "class",
+      "line" : 158,
+      "char" : 2,
+      "base" : "inqobject.physical_object.logical_object",
+      "members" : [
+       {
+        "name" : "data",
+        "kind" : "variable",
+        "line" : 159,
+        "char" : 8,
+        "deco" : "b",
+        "offset" : 16
+       },
+       {
+        "name" : "start",
+        "kind" : "function",
+        "line" : 160,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FZv",
+        "endline" : 162,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.start"
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "String",
+      "kind" : "class",
+      "line" : 165,
+      "char" : 2,
+      "base" : "inqobject.physical_object.logical_object",
+      "members" : [
+       {
+        "name" : "data",
+        "kind" : "variable",
+        "line" : 166,
+        "char" : 10,
+        "deco" : "Aya",
+        "offset" : 16
+       },
+       {
+        "name" : "start",
+        "kind" : "function",
+        "line" : 167,
+        "char" : 17,
+        "storageClass" : [
+         "override"
+        ],
+        "deco" : "FZv",
+        "endline" : 169,
+        "endchar" : 3,
+        "overrides" : [
+         "inqobject.physical_object.logical_object.start"
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "inqClass",
+      "kind" : "class",
+      "line" : 172,
+      "char" : 2,
+      "base" : "inqobject.physical_object.logical_object",
+      "members" : []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "vibe.appmain",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\core\\vibe\\appmain.d",
+  "members" : [
+   {
+    "name" : "main",
+    "kind" : "function",
+    "line" : 37,
+    "char" : 5,
+    "type" : "int()",
+    "endline" : 46,
+    "endchar" : 1
+   }
+  ]
+ }
+]

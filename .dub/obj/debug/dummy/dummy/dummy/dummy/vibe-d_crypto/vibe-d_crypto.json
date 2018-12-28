@@ -1,0 +1,959 @@
+[
+ {
+  "name" : "vibe.crypto.cryptorand",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\crypto\\vibe\\crypto\\cryptorand.d",
+  "members" : [
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "text"
+    ]
+   },
+   {
+    "name" : "std.digest.sha",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.stream",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "secureRNG",
+    "kind" : "function",
+    "line" : 21,
+    "char" : 20,
+    "deco" : "FNfZC4vibe6crypto10cryptorand18RandomNumberStream",
+    "endline" : 26,
+    "endchar" : 1
+   },
+   {
+    "name" : "RandomNumberStream",
+    "kind" : "interface",
+    "line" : 32,
+    "char" : 1,
+    "interfaces" : [
+     "vibe.core.stream.InputStream"
+    ],
+    "members" : [
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 44,
+      "char" : 18,
+      "storageClass" : [
+       "abstract",
+       "override"
+      ],
+      "deco" : "FNfMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@safe size_t(scope ubyte[] dst, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "dst",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "overrides" : [
+       "vibe.core.stream.InputStream.read"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 46,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "LinuxMaybeHasGetrandom",
+    "kind" : "variable",
+    "line" : 52,
+    "char" : 12,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "LinuxMaybeHasGetrandom",
+    "kind" : "variable",
+    "line" : 50,
+    "char" : 12,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "b",
+    "init" : "__traits(compiles, ()\r\n{\r\nimport mir.linux._asm.unistd : NR_getrandom;\r\n}\r\n)"
+   },
+   {
+    "name" : "GET_RANDOM",
+    "kind" : "enum",
+    "line" : 57,
+    "char" : 13,
+    "members" : [
+     {
+      "name" : "UNINITIALIZED",
+      "kind" : "enum member",
+      "line" : 58,
+      "char" : 9
+     },
+     {
+      "name" : "NOT_AVAILABLE",
+      "kind" : "enum member",
+      "line" : 59,
+      "char" : 9
+     },
+     {
+      "name" : "AVAILABLE",
+      "kind" : "enum member",
+      "line" : 60,
+      "char" : 9
+     }
+    ]
+   },
+   {
+    "name" : "hasGetRandom",
+    "kind" : "variable",
+    "line" : 62,
+    "char" : 31,
+    "storageClass" : [
+     "__gshared"
+    ],
+    "type" : "GET_RANDOM",
+    "init" : "GET_RANDOM.UNINITIALIZED"
+   },
+   {
+    "name" : "core.sys.posix.sys.utsname",
+    "kind" : "import",
+    "line" : 63,
+    "char" : 17,
+    "protection" : "private",
+    "selective" : [
+     "utsname"
+    ]
+   },
+   {
+    "name" : "uname",
+    "kind" : "function",
+    "line" : 65,
+    "char" : 24,
+    "type" : "nothrow @nogc extern (C) int(scope utsname* __name)",
+    "parameters" : [
+     {
+      "name" : "__name",
+      "type" : "utsname*",
+      "storageClass" : [
+       "scope"
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "initHasGetRandom",
+    "kind" : "function",
+    "line" : 68,
+    "char" : 15,
+    "type" : "nothrow @nogc @trusted bool()",
+    "endline" : 89,
+    "endchar" : 2
+   },
+   {
+    "name" : "syscall",
+    "kind" : "function",
+    "line" : 90,
+    "char" : 24,
+    "type" : "nothrow @nogc extern (C) int(size_t ident, size_t n, size_t arg1, size_t arg2)",
+    "parameters" : [
+     {
+      "name" : "ident",
+      "type" : "size_t"
+     },
+     {
+      "name" : "n",
+      "type" : "size_t"
+     },
+     {
+      "name" : "arg1",
+      "type" : "size_t"
+     },
+     {
+      "name" : "arg2",
+      "type" : "size_t"
+     }
+    ]
+   },
+   {
+    "name" : "arc4random_buf",
+    "kind" : "function",
+    "line" : 104,
+    "char" : 7,
+    "type" : "extern (C) void(scope void* buf, size_t nbytes)",
+    "parameters" : [
+     {
+      "name" : "buf",
+      "type" : "void*",
+      "storageClass" : [
+       "scope"
+      ]
+     },
+     {
+      "name" : "nbytes",
+      "type" : "size_t"
+     }
+    ]
+   },
+   {
+    "name" : "SystemRNG",
+    "kind" : "class",
+    "line" : 124,
+    "char" : 7,
+    "interfaces" : [
+     "vibe.crypto.cryptorand.RandomNumberStream"
+    ],
+    "members" : [
+     {
+      "name" : "std.exception",
+      "kind" : "import",
+      "line" : 126,
+      "char" : 9,
+      "protection" : "private"
+     },
+     {
+      "name" : "hCryptProv",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 131,
+      "char" : 22,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "k",
+      "originalType" : "HCRYPTPROV",
+      "offset" : 12
+     },
+     {
+      "name" : "hCryptProv",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 131,
+      "char" : 22,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "k",
+      "originalType" : "HCRYPTPROV",
+      "offset" : 12
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 153,
+      "char" : 2,
+      "deco" : "FNeZC4vibe6crypto10cryptorand9SystemRNG",
+      "originalType" : "@trusted ()",
+      "endline" : 189,
+      "endchar" : 2
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 191,
+      "char" : 2,
+      "deco" : "FNeZv",
+      "endline" : 209,
+      "endchar" : 2
+     },
+     {
+      "name" : "empty",
+      "kind" : "function",
+      "line" : 211,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 211,
+      "endchar" : 41,
+      "overrides" : [
+       "vibe.core.stream.InputStream.empty"
+      ]
+     },
+     {
+      "name" : "leastSize",
+      "kind" : "function",
+      "line" : 212,
+      "char" : 18,
+      "deco" : "FNdNfZm",
+      "endline" : 212,
+      "endchar" : 50,
+      "overrides" : [
+       "vibe.core.stream.InputStream.leastSize"
+      ]
+     },
+     {
+      "name" : "dataAvailableForRead",
+      "kind" : "function",
+      "line" : 213,
+      "char" : 17,
+      "deco" : "FNdNfZb",
+      "endline" : 213,
+      "endchar" : 55,
+      "overrides" : [
+       "vibe.core.stream.InputStream.dataAvailableForRead"
+      ]
+     },
+     {
+      "name" : "peek",
+      "kind" : "function",
+      "line" : 214,
+      "char" : 17,
+      "deco" : "FNfZAxh",
+      "endline" : 214,
+      "endchar" : 39,
+      "overrides" : [
+       "vibe.core.stream.InputStream.peek"
+      ]
+     },
+     {
+      "name" : "read",
+      "kind" : "function",
+      "line" : 216,
+      "char" : 9,
+      "deco" : "FNeMAhE4vibe4core6stream6IOModeZk",
+      "originalType" : "@trusted size_t(scope ubyte[] buffer, IOMode mode)",
+      "parameters" : [
+       {
+        "name" : "buffer",
+        "deco" : "Ah",
+        "storageClass" : [
+         "scope"
+        ]
+       },
+       {
+        "name" : "mode",
+        "deco" : "E4vibe4core6stream6IOMode"
+       }
+      ],
+      "endline" : 272,
+      "endchar" : 2,
+      "overrides" : [
+       "vibe.crypto.cryptorand.RandomNumberStream.read"
+      ],
+      "in" : {
+       "name" : "__require",
+       "kind" : "function",
+       "line" : 218,
+       "char" : 2,
+       "type" : "@trusted void()",
+       "endline" : 218,
+       "endchar" : 2
+      }
+     },
+     {
+      "name" : "read",
+      "kind" : "alias",
+      "line" : 274,
+      "char" : 2
+     },
+     {
+      "name" : "__xdtor",
+      "kind" : "alias"
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L278_C1",
+    "kind" : "function",
+    "line" : 278,
+    "char" : 1,
+    "endline" : 318,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L318_C1",
+    "kind" : "function",
+    "line" : 318,
+    "char" : 1,
+    "endline" : 377,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "line" : 377,
+    "char" : 7,
+    "name" : "HashMixerRNG",
+    "parameters" : [
+     {
+      "name" : "Hash",
+      "kind" : "type"
+     },
+     {
+      "name" : "factor",
+      "kind" : "value",
+      "deco" : "k"
+     }
+    ],
+    "constraint" : "isDigest!Hash",
+    "members" : [
+     {
+      "name" : "HashMixerRNG",
+      "kind" : "class",
+      "line" : 377,
+      "char" : 7,
+      "members" : [
+       {
+        "name" : "rng",
+        "kind" : "variable",
+        "line" : 383,
+        "char" : 12,
+        "type" : "SystemRNG"
+       },
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "line" : 388,
+        "char" : 2,
+        "type" : "()",
+        "endline" : 392,
+        "endchar" : 2
+       },
+       {
+        "name" : "empty",
+        "kind" : "function",
+        "line" : 394,
+        "char" : 17,
+        "type" : "@property bool()",
+        "endline" : 394,
+        "endchar" : 41
+       },
+       {
+        "name" : "leastSize",
+        "kind" : "function",
+        "line" : 395,
+        "char" : 18,
+        "type" : "@property ulong()",
+        "endline" : 395,
+        "endchar" : 50
+       },
+       {
+        "name" : "dataAvailableForRead",
+        "kind" : "function",
+        "line" : 396,
+        "char" : 17,
+        "type" : "@property bool()",
+        "endline" : 396,
+        "endchar" : 55
+       },
+       {
+        "name" : "peek",
+        "kind" : "function",
+        "line" : 397,
+        "char" : 17,
+        "type" : "const(ubyte)[]()",
+        "endline" : 397,
+        "endchar" : 39
+       },
+       {
+        "name" : "read",
+        "kind" : "function",
+        "line" : 399,
+        "char" : 9,
+        "type" : "size_t(scope ubyte[] buffer, IOMode mode)",
+        "parameters" : [
+         {
+          "name" : "buffer",
+          "type" : "ubyte[]",
+          "storageClass" : [
+           "scope"
+          ]
+         },
+         {
+          "name" : "mode",
+          "type" : "IOMode"
+         }
+        ],
+        "endline" : 438,
+        "endchar" : 2
+       },
+       {
+        "name" : "read",
+        "kind" : "alias",
+        "line" : 440,
+        "char" : 2,
+        "type" : "RandomNumberStream.read"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "SHA1HashMixerRNG",
+    "kind" : "alias",
+    "line" : 444,
+    "char" : 1,
+    "deco" : "C4vibe6crypto10cryptorand__T12HashMixerRNGTS3std6digest3sha__T3SHAVki512Vki160ZQrVki5ZQCg"
+   },
+   {
+    "name" : "__unittest_L447_C1",
+    "kind" : "function",
+    "line" : 447,
+    "char" : 1,
+    "endline" : 514,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L514_C1",
+    "kind" : "function",
+    "line" : 514,
+    "char" : 1,
+    "endline" : 589,
+    "endchar" : 1
+   },
+   {
+    "name" : "CryptoException",
+    "kind" : "class",
+    "line" : 589,
+    "char" : 1,
+    "base" : "object.Exception",
+    "members" : [
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 591,
+      "char" : 2,
+      "deco" : "FNaNbNfAyaQdkC6object9ThrowableZC4vibe6crypto10cryptorand15CryptoException",
+      "originalType" : "pure nothrow @safe (string msg, string file = __FILE__, size_t line = __LINE__, Throwable next = null)",
+      "parameters" : [
+       {
+        "name" : "msg",
+        "deco" : "Aya"
+       },
+       {
+        "name" : "file",
+        "deco" : "Aya",
+        "default" : "__FILE__"
+       },
+       {
+        "name" : "line",
+        "deco" : "k",
+        "default" : "cast(uint)__LINE__"
+       },
+       {
+        "name" : "next",
+        "deco" : "C6object9Throwable",
+        "default" : "null"
+       }
+      ],
+      "endline" : 594,
+      "endchar" : 2
+     }
+    ]
+   },
+   {
+    "name" : "core.sys.windows.windows",
+    "kind" : "import",
+    "line" : 600,
+    "char" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "HCRYPTPROV",
+    "kind" : "alias",
+    "line" : 604,
+    "char" : 3,
+    "deco" : "k"
+   },
+   {
+    "name" : "NULL",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 606,
+    "char" : 16,
+    "storageClass" : [
+     "enum",
+     "nothrow"
+    ],
+    "linkage" : "windows",
+    "deco" : "Pxu",
+    "originalType" : "LPCTSTR",
+    "init" : "cast(const(wchar)*)0u"
+   },
+   {
+    "name" : "PROV_RSA_FULL",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 607,
+    "char" : 14,
+    "storageClass" : [
+     "enum",
+     "nothrow"
+    ],
+    "linkage" : "windows",
+    "deco" : "k",
+    "originalType" : "DWORD",
+    "init" : "1u"
+   },
+   {
+    "name" : "CRYPT_VERIFYCONTEXT",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 608,
+    "char" : 14,
+    "storageClass" : [
+     "enum",
+     "nothrow"
+    ],
+    "linkage" : "windows",
+    "deco" : "k",
+    "originalType" : "DWORD",
+    "init" : "4026531840u"
+   },
+   {
+    "name" : "CryptAcquireContextA",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 610,
+    "char" : 8,
+    "linkage" : "windows",
+    "deco" : "WNbPkPxuQdkkZi",
+    "originalType" : "nothrow extern (Windows) BOOL(HCRYPTPROV* phProv, LPCTSTR pszContainer, LPCTSTR pszProvider, DWORD dwProvType, DWORD dwFlags)",
+    "parameters" : [
+     {
+      "name" : "phProv",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pszContainer",
+      "deco" : "Pxu"
+     },
+     {
+      "name" : "pszProvider",
+      "deco" : "Pxu"
+     },
+     {
+      "name" : "dwProvType",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwFlags",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "CryptAcquireContext",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 611,
+    "char" : 3
+   },
+   {
+    "name" : "CryptReleaseContext",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 613,
+    "char" : 8,
+    "linkage" : "windows",
+    "deco" : "WNbkkZi",
+    "originalType" : "nothrow extern (Windows) BOOL(HCRYPTPROV hProv, DWORD dwFlags)",
+    "parameters" : [
+     {
+      "name" : "hProv",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwFlags",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "CryptGenRandom",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 615,
+    "char" : 8,
+    "linkage" : "windows",
+    "deco" : "WNbkkPhZi",
+    "originalType" : "nothrow extern (Windows) BOOL(HCRYPTPROV hProv, DWORD dwLen, BYTE* pbBuffer)",
+    "parameters" : [
+     {
+      "name" : "hProv",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwLen",
+      "deco" : "k"
+     },
+     {
+      "name" : "pbBuffer",
+      "deco" : "Ph"
+     }
+    ]
+   },
+   {
+    "name" : "core.sys.windows.windows",
+    "kind" : "import",
+    "line" : 600,
+    "char" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "HCRYPTPROV",
+    "kind" : "alias",
+    "line" : 604,
+    "char" : 3,
+    "deco" : "k"
+   },
+   {
+    "name" : "NULL",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 606,
+    "char" : 16,
+    "storageClass" : [
+     "enum",
+     "nothrow"
+    ],
+    "linkage" : "windows",
+    "deco" : "Pxu",
+    "originalType" : "LPCTSTR",
+    "init" : "cast(const(wchar)*)0u"
+   },
+   {
+    "name" : "PROV_RSA_FULL",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 607,
+    "char" : 14,
+    "storageClass" : [
+     "enum",
+     "nothrow"
+    ],
+    "linkage" : "windows",
+    "deco" : "k",
+    "originalType" : "DWORD",
+    "init" : "1u"
+   },
+   {
+    "name" : "CRYPT_VERIFYCONTEXT",
+    "kind" : "variable",
+    "protection" : "private",
+    "line" : 608,
+    "char" : 14,
+    "storageClass" : [
+     "enum",
+     "nothrow"
+    ],
+    "linkage" : "windows",
+    "deco" : "k",
+    "originalType" : "DWORD",
+    "init" : "4026531840u"
+   },
+   {
+    "name" : "CryptAcquireContextA",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 610,
+    "char" : 8,
+    "linkage" : "windows",
+    "deco" : "WNbPkPxuQdkkZi",
+    "originalType" : "nothrow extern (Windows) BOOL(HCRYPTPROV* phProv, LPCTSTR pszContainer, LPCTSTR pszProvider, DWORD dwProvType, DWORD dwFlags)",
+    "parameters" : [
+     {
+      "name" : "phProv",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "pszContainer",
+      "deco" : "Pxu"
+     },
+     {
+      "name" : "pszProvider",
+      "deco" : "Pxu"
+     },
+     {
+      "name" : "dwProvType",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwFlags",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "CryptAcquireContext",
+    "kind" : "alias",
+    "protection" : "private",
+    "line" : 611,
+    "char" : 3
+   },
+   {
+    "name" : "CryptReleaseContext",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 613,
+    "char" : 8,
+    "linkage" : "windows",
+    "deco" : "WNbkkZi",
+    "originalType" : "nothrow extern (Windows) BOOL(HCRYPTPROV hProv, DWORD dwFlags)",
+    "parameters" : [
+     {
+      "name" : "hProv",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwFlags",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "CryptGenRandom",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 615,
+    "char" : 8,
+    "linkage" : "windows",
+    "deco" : "WNbkkPhZi",
+    "originalType" : "nothrow extern (Windows) BOOL(HCRYPTPROV hProv, DWORD dwLen, BYTE* pbBuffer)",
+    "parameters" : [
+     {
+      "name" : "hProv",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwLen",
+      "deco" : "k"
+     },
+     {
+      "name" : "pbBuffer",
+      "deco" : "Ph"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "vibe.crypto.passwordhash",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\crypto\\vibe\\crypto\\passwordhash.d",
+  "members" : [
+   {
+    "name" : "std.base64",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.compiler",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.random",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "generateSimplePasswordHash",
+    "kind" : "function",
+    "line" : 38,
+    "char" : 8,
+    "storageClass" : [
+     "deprecated"
+    ],
+    "deco" : "FAyaQdZQg",
+    "parameters" : [
+     {
+      "name" : "password",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "additional_salt",
+      "deco" : "Aya",
+      "default" : "null"
+     }
+    ],
+    "endline" : 44,
+    "endchar" : 1
+   },
+   {
+    "name" : "testSimplePasswordHash",
+    "kind" : "function",
+    "line" : 63,
+    "char" : 6,
+    "storageClass" : [
+     "deprecated"
+    ],
+    "deco" : "FAyaQdQfZb",
+    "parameters" : [
+     {
+      "name" : "hashstring",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "password",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "additional_salt",
+      "deco" : "Aya",
+      "default" : "null"
+     }
+    ],
+    "endline" : 72,
+    "endchar" : 1
+   },
+   {
+    "name" : "md5hash",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 74,
+    "char" : 19,
+    "deco" : "FAhAAyaXG16h",
+    "parameters" : [
+     {
+      "name" : "salt",
+      "deco" : "Ah"
+     },
+     {
+      "name" : "strs",
+      "deco" : "AAya"
+     }
+    ],
+    "endline" : 93,
+    "endchar" : 1
+   }
+  ]
+ }
+]

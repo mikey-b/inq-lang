@@ -1,0 +1,87 @@
+<html><head><meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head><body><pre>
+<table width=100% bgcolor=#CFCFE5><tr><td>
+	<font face=arial size=+3>Build Log</font>
+</table>
+<table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Building lib\vibe-d_utils.lib
+</font></table>
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Command Line
+</font></table>
+set PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Windows Kits\10\bin;C:\D\dmd2\windows\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86;%PATH%
+
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\all.d &gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\codegen.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\funcattr.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\traits.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\typetuple.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\uda.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\exception.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\memory_legacy.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\rangeutil.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\utilallocator.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\win32.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\array.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\dictionarylist.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\hashmap.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\memory.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\string.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\validation.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+
+&quot;C:\Program Files (x86)\VisualD\pipedmd.exe&quot; -deps obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.dep dmd -g -gf -debug -w -op -X -Xf&quot;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.json&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source&quot; -version=VibeWin32Driver -version=Have_vibe_d_utils -version=Have_stdx_allocator -c -odobj/debug/dummy/dummy/dummy/dummy/vibe-d_utils @obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.build.rsp
+if %errorlevel% neq 0 goto reportError
+
+goto noError
+
+:reportError
+echo Building lib\vibe-d_utils.lib failed!
+
+:noError
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Output
+</font></table>
+
+<table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Building lib\vibe-d_utils.lib
+</font></table>
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Command Line
+</font></table>
+set PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Windows Kits\10\bin;C:\D\dmd2\windows\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86;%PATH%
+if %errorlevel% neq 0 goto reportError
+
+
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\all.obj &gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\codegen.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\funcattr.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\traits.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\typetuple.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\meta\uda.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\exception.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\memory_legacy.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\rangeutil.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\utilallocator.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\internal\win32.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\array.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\dictionarylist.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\hashmap.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\memory.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\string.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_utils\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils\vibe\utils\validation.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+
+&quot;C:\Program Files (x86)\VisualD\pipedmd.exe&quot; -deps obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.lnkdep dmd -g -gf -debug -w -lib -op -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source&quot; -version=VibeWin32Driver -version=Have_vibe_d_utils -version=Have_stdx_allocator -oflib\vibe-d_utils.lib -map &quot;obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.map&quot; -L/NOMAP @obj\debug\dummy\dummy\dummy\dummy\vibe-d_utils\vibe-d_utils.link.rsp
+if %errorlevel% neq 0 goto reportError
+if not exist lib\vibe-d_utils.lib (echo lib\vibe-d_utils.lib not created! &amp;&amp; goto reportError)
+
+goto noError
+
+:reportError
+echo Building lib\vibe-d_utils.lib failed!
+
+:noError
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Output
+</font></table>
+
+</body></html>

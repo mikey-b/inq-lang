@@ -1,0 +1,627 @@
+[
+ {
+  "name" : "vibe.mail.smtp",
+  "kind" : "module",
+  "file" : "..\\..\\..\\..\\AppData\\Local\\dub\\packages\\vibe-d-0.8.4\\vibe-d\\mail\\vibe\\mail\\smtp.d",
+  "members" : [
+   {
+    "name" : "vibe.core.log",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.core.net",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.inet.message",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.stream.operations",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.stream.tls",
+    "kind" : "import",
+    "line" : 14,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "vibe.internal.interfaceproxy",
+    "kind" : "import",
+    "line" : 15,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.algorithm",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "map",
+     "splitter"
+    ]
+   },
+   {
+    "name" : "std.base64",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 20,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 21,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "SMTPConnectionType",
+    "kind" : "enum",
+    "line" : 29,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "plain",
+      "kind" : "enum member",
+      "value" : "0",
+      "line" : 30,
+      "char" : 2
+     },
+     {
+      "name" : "tls",
+      "kind" : "enum member",
+      "value" : "1",
+      "line" : 31,
+      "char" : 2
+     },
+     {
+      "name" : "startTLS",
+      "kind" : "enum member",
+      "value" : "2",
+      "line" : 32,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "SMTPStatus",
+    "kind" : "enum",
+    "line" : 38,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "_success",
+      "kind" : "enum member",
+      "value" : "200",
+      "line" : 39,
+      "char" : 2
+     },
+     {
+      "name" : "systemStatus",
+      "kind" : "enum member",
+      "value" : "211",
+      "line" : 40,
+      "char" : 2
+     },
+     {
+      "name" : "helpMessage",
+      "kind" : "enum member",
+      "value" : "214",
+      "line" : 41,
+      "char" : 2
+     },
+     {
+      "name" : "serviceReady",
+      "kind" : "enum member",
+      "value" : "220",
+      "line" : 42,
+      "char" : 2
+     },
+     {
+      "name" : "serviceClosing",
+      "kind" : "enum member",
+      "value" : "221",
+      "line" : 43,
+      "char" : 2
+     },
+     {
+      "name" : "success",
+      "kind" : "enum member",
+      "value" : "250",
+      "line" : 44,
+      "char" : 2
+     },
+     {
+      "name" : "forwarding",
+      "kind" : "enum member",
+      "value" : "251",
+      "line" : 45,
+      "char" : 2
+     },
+     {
+      "name" : "serverAuthReady",
+      "kind" : "enum member",
+      "value" : "334",
+      "line" : 46,
+      "char" : 2
+     },
+     {
+      "name" : "startMailInput",
+      "kind" : "enum member",
+      "value" : "354",
+      "line" : 47,
+      "char" : 2
+     },
+     {
+      "name" : "serviceUnavailable",
+      "kind" : "enum member",
+      "value" : "421",
+      "line" : 48,
+      "char" : 2
+     },
+     {
+      "name" : "mailboxTemporarilyUnavailable",
+      "kind" : "enum member",
+      "value" : "450",
+      "line" : 49,
+      "char" : 2
+     },
+     {
+      "name" : "processingError",
+      "kind" : "enum member",
+      "value" : "451",
+      "line" : 50,
+      "char" : 2
+     },
+     {
+      "name" : "outOfDiskSpace",
+      "kind" : "enum member",
+      "value" : "452",
+      "line" : 51,
+      "char" : 2
+     },
+     {
+      "name" : "commandUnrecognized",
+      "kind" : "enum member",
+      "value" : "500",
+      "line" : 52,
+      "char" : 2
+     },
+     {
+      "name" : "invalidParameters",
+      "kind" : "enum member",
+      "value" : "501",
+      "line" : 53,
+      "char" : 2
+     },
+     {
+      "name" : "commandNotImplemented",
+      "kind" : "enum member",
+      "value" : "502",
+      "line" : 54,
+      "char" : 2
+     },
+     {
+      "name" : "badCommandSequence",
+      "kind" : "enum member",
+      "value" : "503",
+      "line" : 55,
+      "char" : 2
+     },
+     {
+      "name" : "commandParameterNotImplemented",
+      "kind" : "enum member",
+      "value" : "504",
+      "line" : 56,
+      "char" : 2
+     },
+     {
+      "name" : "domainAcceptsNoMail",
+      "kind" : "enum member",
+      "value" : "521",
+      "line" : 57,
+      "char" : 2
+     },
+     {
+      "name" : "accessDenied",
+      "kind" : "enum member",
+      "value" : "530",
+      "line" : 58,
+      "char" : 2
+     },
+     {
+      "name" : "mailboxUnavailable",
+      "kind" : "enum member",
+      "value" : "550",
+      "line" : 59,
+      "char" : 2
+     },
+     {
+      "name" : "userNotLocal",
+      "kind" : "enum member",
+      "value" : "551",
+      "line" : 60,
+      "char" : 2
+     },
+     {
+      "name" : "exceededStorageAllocation",
+      "kind" : "enum member",
+      "value" : "552",
+      "line" : 61,
+      "char" : 2
+     },
+     {
+      "name" : "mailboxNameNotAllowed",
+      "kind" : "enum member",
+      "value" : "553",
+      "line" : 62,
+      "char" : 2
+     },
+     {
+      "name" : "transactionFailed",
+      "kind" : "enum member",
+      "value" : "554",
+      "line" : 63,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "SMTPAuthType",
+    "kind" : "enum",
+    "line" : 70,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "none",
+      "kind" : "enum member",
+      "value" : "0",
+      "line" : 71,
+      "char" : 2
+     },
+     {
+      "name" : "plain",
+      "kind" : "enum member",
+      "value" : "1",
+      "line" : 72,
+      "char" : 2
+     },
+     {
+      "name" : "login",
+      "kind" : "enum member",
+      "value" : "2",
+      "line" : 73,
+      "char" : 2
+     },
+     {
+      "name" : "cramMd5",
+      "kind" : "enum member",
+      "value" : "3",
+      "line" : 74,
+      "char" : 2
+     }
+    ]
+   },
+   {
+    "name" : "SMTPClientSettings",
+    "kind" : "class",
+    "line" : 81,
+    "char" : 7,
+    "members" : [
+     {
+      "name" : "host",
+      "kind" : "variable",
+      "line" : 83,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Aya",
+      "init" : "\"127.0.0.1\"",
+      "offset" : 8
+     },
+     {
+      "name" : "port",
+      "kind" : "variable",
+      "line" : 85,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "t",
+      "init" : "cast(ushort)25u",
+      "offset" : 16
+     },
+     {
+      "name" : "localname",
+      "kind" : "variable",
+      "line" : 87,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Aya",
+      "init" : "\"localhost\"",
+      "offset" : 20
+     },
+     {
+      "name" : "connectionType",
+      "kind" : "variable",
+      "line" : 89,
+      "char" : 21,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe4mail4smtp18SMTPConnectionType",
+      "init" : "cast(SMTPConnectionType)0",
+      "offset" : 28
+     },
+     {
+      "name" : "authType",
+      "kind" : "variable",
+      "line" : 91,
+      "char" : 15,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe4mail4smtp12SMTPAuthType",
+      "init" : "cast(SMTPAuthType)0",
+      "offset" : 32
+     },
+     {
+      "name" : "tlsValidationMode",
+      "kind" : "variable",
+      "line" : 94,
+      "char" : 24,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls21TLSPeerValidationMode",
+      "init" : "cast(TLSPeerValidationMode)15",
+      "offset" : 36
+     },
+     {
+      "name" : "tlsVersion",
+      "kind" : "variable",
+      "line" : 96,
+      "char" : 13,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "E4vibe6stream3tls10TLSVersion",
+      "init" : "cast(TLSVersion)0",
+      "offset" : 40
+     },
+     {
+      "name" : "tlsContextSetup",
+      "kind" : "variable",
+      "line" : 98,
+      "char" : 34,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "DFNfMC4vibe6stream3tls10TLSContextZv",
+      "originalType" : "void delegate(scope TLSContext)",
+      "offset" : 44
+     },
+     {
+      "name" : "username",
+      "kind" : "variable",
+      "line" : 101,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Aya",
+      "offset" : 52
+     },
+     {
+      "name" : "password",
+      "kind" : "variable",
+      "line" : 103,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Aya",
+      "offset" : 60
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 105,
+      "char" : 2,
+      "deco" : "FNfZC4vibe4mail4smtp18SMTPClientSettings",
+      "originalType" : "@safe ()",
+      "endline" : 105,
+      "endchar" : 10
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 106,
+      "char" : 2,
+      "deco" : "FNfAyatZC4vibe4mail4smtp18SMTPClientSettings",
+      "originalType" : "@safe (string host, ushort port)",
+      "parameters" : [
+       {
+        "name" : "host",
+        "deco" : "Aya"
+       },
+       {
+        "name" : "port",
+        "deco" : "t"
+       }
+      ],
+      "endline" : 106,
+      "endchar" : 71
+     }
+    ]
+   },
+   {
+    "name" : "Mail",
+    "kind" : "class",
+    "line" : 113,
+    "char" : 7,
+    "members" : [
+     {
+      "name" : "headers",
+      "kind" : "variable",
+      "line" : 114,
+      "char" : 16,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "S4vibe5utils14dictionarylist__T14DictionaryListTAyaVbi0Vki12Vbi0ZQBi",
+      "originalType" : "InetHeaderMap",
+      "offset" : 8
+     },
+     {
+      "name" : "bodyText",
+      "kind" : "variable",
+      "line" : 115,
+      "char" : 9,
+      "storageClass" : [
+       "@safe"
+      ],
+      "deco" : "Aya",
+      "offset" : 212
+     }
+    ]
+   },
+   {
+    "name" : "sendMail",
+    "kind" : "function",
+    "line" : 126,
+    "char" : 6,
+    "deco" : "FNfxC4vibe4mail4smtp18SMTPClientSettingsCQBkQBiQBg4MailZv",
+    "originalType" : "@safe void(in SMTPClientSettings settings, Mail mail)",
+    "parameters" : [
+     {
+      "name" : "settings",
+      "deco" : "xC4vibe4mail4smtp18SMTPClientSettings"
+     },
+     {
+      "name" : "mail",
+      "deco" : "C4vibe4mail4smtp4Mail"
+     }
+    ],
+    "endline" : 224,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L232_C1",
+    "kind" : "function",
+    "line" : 232,
+    "char" : 1,
+    "endline" : 251,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 251,
+    "char" : 14,
+    "name" : "expectStatus",
+    "parameters" : [
+     {
+      "name" : "InputStream",
+      "kind" : "type"
+     }
+    ],
+    "constraint" : "isInputStream!InputStream",
+    "members" : [
+     {
+      "name" : "expectStatus",
+      "kind" : "function",
+      "line" : 251,
+      "char" : 14,
+      "type" : "void(InputStream conn, int expected_status, string in_response_to)",
+      "parameters" : [
+       {
+        "name" : "conn",
+        "type" : "InputStream"
+       },
+       {
+        "name" : "expected_status",
+        "deco" : "i"
+       },
+       {
+        "name" : "in_response_to",
+        "type" : "string"
+       }
+      ],
+      "endline" : 267,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "recvStatus",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 269,
+    "char" : 13,
+    "deco" : "FNfC4vibe4core6stream11InputStreamZi",
+    "parameters" : [
+     {
+      "name" : "conn",
+      "deco" : "C4vibe4core6stream11InputStream"
+     }
+    ],
+    "endline" : 275,
+    "endchar" : 1
+   },
+   {
+    "name" : "addressMailPart",
+    "kind" : "function",
+    "protection" : "private",
+    "line" : 277,
+    "char" : 16,
+    "deco" : "FNfAyaZQe",
+    "parameters" : [
+     {
+      "name" : "str",
+      "deco" : "Aya"
+     }
+    ],
+    "endline" : 284,
+    "endchar" : 1
+   }
+  ]
+ }
+]

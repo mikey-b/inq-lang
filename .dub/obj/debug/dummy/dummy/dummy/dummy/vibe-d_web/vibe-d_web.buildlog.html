@@ -1,0 +1,69 @@
+<html><head><meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head><body><pre>
+<table width=100% bgcolor=#CFCFE5><tr><td>
+	<font face=arial size=+3>Build Log</font>
+</table>
+<table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Building lib\vibe-d_web.lib
+</font></table>
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Command Line
+</font></table>
+set PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Windows Kits\10\bin;C:\D\dmd2\windows\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86;%PATH%
+
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\internal\rest\common.d &gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\internal\rest\jsclient.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\auth.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\common.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\i18n.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\rest.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\validation.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+echo ..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\web.d &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+
+&quot;C:\Program Files (x86)\VisualD\pipedmd.exe&quot; -deps obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.dep dmd -g -gf -debug -w -op -X -Xf&quot;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.json&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\crypto&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\mir-linux-kernel-1.0.1\mir-linux-kernel\source&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\core&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\data&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\inet&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\stream&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\textfilter&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\tls&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl&quot; -version=Have_vibe_d_web -version=Have_vibe_d_http -version=Have_diet_ng -version=Have_vibe_d_crypto -version=Have_vibe_d_inet -version=Have_vibe_d_textfilter -version=Have_vibe_d_tls -version=Have_mir_linux_kernel -version=Have_vibe_d_core -version=VibeWin32Driver -version=Have_vibe_d_data -version=Have_vibe_d_utils -version=Have_stdx_allocator -version=Have_vibe_d_stream -version=Have_openssl -c -odobj/debug/dummy/dummy/dummy/dummy/vibe-d_web @obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.build.rsp
+if %errorlevel% neq 0 goto reportError
+
+goto noError
+
+:reportError
+echo Building lib\vibe-d_web.lib failed!
+
+:noError
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Output
+</font></table>
+
+<table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Building lib\vibe-d_web.lib
+</font></table>
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Command Line
+</font></table>
+set PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE;C:\Program Files (x86)\Windows Kits\10\bin;C:\D\dmd2\windows\bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86;%PATH%
+if %errorlevel% neq 0 goto reportError
+
+
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\internal\rest\common.obj &gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\internal\rest\jsclient.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\auth.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\common.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\i18n.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\rest.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\validation.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+echo obj/debug/dummy/dummy/dummy/dummy/vibe-d_web\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web\vibe\web\web.obj &gt;&gt;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+
+&quot;C:\Program Files (x86)\VisualD\pipedmd.exe&quot; -deps obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.lnkdep dmd -g -gf -debug -w -lib -op -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\web&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\http&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\diet-ng-1.5.0\diet-ng\source&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\crypto&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\mir-linux-kernel-1.0.1\mir-linux-kernel\source&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\core&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\data&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\inet&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\stream&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\textfilter&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\tls&quot; -I&quot;..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl&quot; -version=Have_vibe_d_web -version=Have_vibe_d_http -version=Have_diet_ng -version=Have_vibe_d_crypto -version=Have_vibe_d_inet -version=Have_vibe_d_textfilter -version=Have_vibe_d_tls -version=Have_mir_linux_kernel -version=Have_vibe_d_core -version=VibeWin32Driver -version=Have_vibe_d_data -version=Have_vibe_d_utils -version=Have_stdx_allocator -version=Have_vibe_d_stream -version=Have_openssl -oflib\vibe-d_web.lib -map &quot;obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.map&quot; -L/NOMAP @obj\debug\dummy\dummy\dummy\dummy\vibe-d_web\vibe-d_web.link.rsp
+if %errorlevel% neq 0 goto reportError
+if not exist lib\vibe-d_web.lib (echo lib\vibe-d_web.lib not created! &amp;&amp; goto reportError)
+
+goto noError
+
+:reportError
+echo Building lib\vibe-d_web.lib failed!
+
+:noError
+<table width=100% bgcolor=#EFEFE5><tr><td><font face=arial size=+1>
+Output
+</font></table>
+
+</body></html>

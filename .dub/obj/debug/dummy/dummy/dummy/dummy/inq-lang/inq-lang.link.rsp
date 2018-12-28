@@ -1,0 +1,30 @@
+ 
+obj\debug\dummy\dummy\dummy\dummy\inq-lang\..\source\app.obj+ 
+obj\debug\dummy\dummy\dummy\dummy\inq-lang\..\source\consoleobject.obj+ 
+obj\debug\dummy\dummy\dummy\dummy\inq-lang\..\source\htppobject.obj+ 
+obj\debug\dummy\dummy\dummy\dummy\inq-lang\..\source\inqobject.obj+ 
+obj\debug\dummy\dummy\dummy\dummy\inq-lang\..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\core\vibe\appmain.obj,"C:\Users\Mike Brown\Documents\Projects\inq-lang\inq-lang.exe","obj\debug\dummy\dummy\dummy\dummy\inq-lang\inq-lang.map","C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibed.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_mail.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_mongodb.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_redis.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_web.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_http.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\diet-ng.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_crypto.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\mir-linux-kernel.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_inet.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_textfilter.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_tls.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_stream.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_core.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_data.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\vibe-d_utils.lib"+ 
+"C:\Users\Mike Brown\Documents\Projects\inq-lang\.dub\lib\stdx-allocator.lib"+ 
+wsock32.lib+ 
+ws2_32.lib+ 
+advapi32.lib+ 
+user32.lib+ 
+Brown\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\lib\win-i386\eay.lib+ 
+Brown\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\lib\win-i386\ssl.lib+ 
+user32.lib+ 
+kernel32.lib/NOMAP/CO/NOI/DELEXE 

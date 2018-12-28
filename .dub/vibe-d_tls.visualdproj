@@ -1,0 +1,191 @@
+<DProject>
+  <ProjectGuid>{0144CA17-5DED-4929-95E2-80867AD9D1A6}</ProjectGuid>
+  <Config name="debug" platform="Win32">
+    <symdebug>1</symdebug>
+    <optimize>0</optimize>
+    <useInline>0</useInline>
+    <release>0</release>
+    <lib>1</lib>
+    <exefile>lib\vibe-d_tls.lib</exefile>
+    <imppath>"..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\tls" "..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl" "..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\stream" "..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\core" "..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\data" "..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\utils" "..\..\..\..\AppData\Local\dub\packages\stdx-allocator-2.77.4\stdx-allocator\source"</imppath>
+    <fileImppath></fileImppath>
+    <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+    <additionalOptions></additionalOptions>
+    <versionids>Have_vibe_d_tls Have_openssl Have_vibe_d_stream Have_vibe_d_core VibeWin32Driver Have_vibe_d_data Have_vibe_d_utils Have_stdx_allocator</versionids>
+    <useUnitTests>0</useUnitTests>
+    <obj>0</obj>
+    <link>0</link>
+    <subsystem>0</subsystem>
+    <multiobj>0</multiobj>
+    <singleFileCompilation>2</singleFileCompilation>
+    <mscoff>0</mscoff>    <oneobj>0</oneobj>
+    <trace>0</trace>
+    <quiet>0</quiet>
+    <verbose>0</verbose>
+    <vtls>0</vtls>
+    <cpu>0</cpu>
+    <isX86_64>0</isX86_64>
+    <isLinux>0</isLinux>
+    <isOSX>0</isOSX>
+    <isWindows>0</isWindows>
+    <isFreeBSD>0</isFreeBSD>
+    <isSolaris>0</isSolaris>
+    <isDragonFlyBSD>0</isDragonFlyBSD>
+    <scheduler>0</scheduler>
+    <useDeprecated>0</useDeprecated>
+    <useAssert>0</useAssert>
+    <useInvariants>0</useInvariants>
+    <useIn>0</useIn>
+    <useOut>0</useOut>
+    <useArrayBounds>0</useArrayBounds>
+    <noboundscheck>0</noboundscheck>
+    <useSwitchError>0</useSwitchError>
+    <preservePaths>1</preservePaths>
+    <warnings>1</warnings>
+    <infowarnings>0</infowarnings>
+    <checkProperty>0</checkProperty>
+    <genStackFrame>0</genStackFrame>
+    <pic>0</pic>
+    <cov>0</cov>
+    <nofloat>0</nofloat>
+    <Dversion>2</Dversion>
+    <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+    <compiler>0</compiler>
+    <otherDMD>0</otherDMD>
+    <outdir>lib\</outdir>
+    <objdir>obj/debug/dummy/dummy/dummy/dummy/vibe-d_tls</objdir>
+    <objname />
+    <libname />
+    <doDocComments>0</doDocComments>
+    <docdir />
+    <docname />
+    <modules_ddoc />
+    <ddocfiles />
+    <doHdrGeneration>0</doHdrGeneration>
+    <hdrdir />
+    <hdrname />
+    <doXGeneration>1</doXGeneration>
+    <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+    <debuglevel>0</debuglevel>
+    <versionlevel>0</versionlevel>
+    <debugids />
+    <dump_source>0</dump_source>
+    <mapverbosity>0</mapverbosity>
+    <createImplib>0</createImplib>
+    <defaultlibname />
+    <debuglibname />
+    <moduleDepsFile />
+    <run>0</run>
+    <runargs />
+    <runCv2pdb>1</runCv2pdb>
+    <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+    <cv2pdbPre2043>0</cv2pdbPre2043>
+    <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+    <cv2pdbEnumType>0</cv2pdbEnumType>
+    <cv2pdbOptions />
+    <objfiles />
+    <linkswitches />
+    <libpaths />
+    <deffile />
+    <resfile />
+    <debugworkingdir>..</debugworkingdir>
+    <preBuildCommand />
+    <postBuildCommand />
+    <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
+  </Config>
+  <Folder name="vibe-d_tls">
+    <Folder name="openssl">
+    <Folder name="deimos">
+    <Folder name="openssl">
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\_d_util.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\aes.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\asn1.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\asn1_mac.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\asn1t.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\bio.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\blowfish.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\bn.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\buffer.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\camellia.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\cast_.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\cmac.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\cms.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\comp.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\conf.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\conf_api.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\crypto.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\des.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\des_old.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\dh.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\dsa.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\dso.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\dtls1.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\e_os2.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ebcdic.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ec.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ecdh.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ecdsa.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\engine.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\err.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\evp.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\hmac.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\idea.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\krb5_asn.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\kssl.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\lhash.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\md4.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\md5.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\mdc2.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\modes.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\obj_mac.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\objects.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ocsp.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\opensslconf.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\opensslv.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ossl_typ.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\pem.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\pem2.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\pkcs12.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\pkcs7.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\pqueue.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\rand.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\rc2.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\rc4.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ripemd.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\rsa.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\safestack.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\seed.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\sha.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\srp.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\srtp.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ssl.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ssl2.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ssl23.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ssl3.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\stack.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\symhacks.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\tls1.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ts.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\txt_db.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ui.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\ui_compat.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\whrlpool.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\x509.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\x509_vfy.d" />
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\deimos\openssl\x509v3.d" />
+    </Folder>
+    </Folder>
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\openssl-1.1.6_1.0.1g\openssl\dub.json" />
+    </Folder>
+    <Folder name="vibe-d_tls">
+    <Folder name="vibe">
+    <Folder name="stream">
+      <File path="..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\tls\vibe\stream\botan.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\tls\vibe\stream\openssl.d" />
+      <File path="..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\tls\vibe\stream\tls.d" />
+    </Folder>
+    </Folder>
+      <File tool="None" path="..\..\..\..\AppData\Local\dub\packages\vibe-d-0.8.4\vibe-d\tls\dub.sdl" />
+    </Folder>
+  </Folder>
+</DProject>

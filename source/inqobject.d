@@ -28,20 +28,17 @@ address_t createp() { // Create - VM level
 }
 // end CLASS VM
 
-physical_object createRoot(T)() {
-	auto res = new T("root");
-	register("root", res.getTid);
-	return res;
-}
-
 string generateId() {
 	auto uuid = randomUUID;
 	return uuid.toString;
 }
 
+alias physicaladdress_t = string;
+alias logicaladdress_t = string;
+
 struct address_t {
-	string physical;
-	string logical;
+	physicaladdress_t physical;
+	logicaladdress_t logical;
 	
 	this (string i) {
 		auto tmp = i.split("/");
@@ -60,25 +57,37 @@ struct address_t {
 }
 
 class physical_object {
-	logical_object[string] objs;
-	string thisAddr;
+	physicaladdress_t myAddr;
+	logical_object[logicaladdress_t] objs;
+	
+	void destruct_logical_object(address_t who) {
+		assert(who.physical == myAddr);
+		assert(who.logical in objs);
+		objs.remove(who.logical);
+	}
 	
 	Tid getTid() {
 		return thisTid;
 	}
 		
-	this(string id) {
+	this(physicaladdress_t id) {
 		objs["Controller"] = new DefaultController;
-		objs["Model"] = new model_logical_object;
-		thisAddr = id;
+		objs["Model"] = new DefaultModel;
+		myAddr = id;
 	}
 	
 	address_t create() { // Create - Physical Level
 		auto id = generateId;
 		objs[id] = new logical_object;
-		return address_t(this.thisAddr, id);
+		return address_t(myAddr, id);
 	}
 	
+	void start() {
+		// Pass thread control to the Controller (Logical) Object.
+		objs["Controller"].start();
+	}
+	
+	// Messaging Mechanisms.
 	void send(JSONValue msg)
 	in {
 		assert("to" in msg);
@@ -86,7 +95,7 @@ class physical_object {
 	do {
 		auto reci = address_t(msg["to"].str);
 		
-		if ((reci.physical == thisAddr) || (reci.physical == ".")) {
+		if ((reci.physical == myAddr) || (reci.physical == ".")) {
 			// Sending to myself.
 			objs[reci.logical].receive(msg);
 		} else {
@@ -105,14 +114,19 @@ class physical_object {
 		}
 	}
 	
-	void start() {
-		objs["Controller"].start();
-	}
-	
-	class logical_object {
+	class logical_object { // AKA Nil Class, Initial Object State.
+		// TODO: Where should this go?
+		alias ctx_t = address_t[string];
+		alias method_t = void delegate( logical_object self, ctx_t ctx);
+		alias bytecode_t = string;
+
+		
+		address_t myAddr;
 		address_t[string] addressbook;
+		method_t[string] methods;
 		
 		void create(string localname) {
+			// This is polymorphic, Sometimes it will call this.outer.create() (physical level), sometimes it will call pcreate() (vm level).
 			addressbook[localname] = this.outer.create();
 		}
 		
@@ -123,27 +137,105 @@ class physical_object {
 		}
 		
 		void receive(JSONValue msg) {
-			
+			// If Role Method,
+			// build_method, and execute.
+			// auto role_method = build_method(msg.body);
+			// role_method(this, msg.ctx);
+		}
+		
+		// Internal Code
+		auto build_method(bytecode_t bytecode) {
+			// Returns a callable object.
+			// Interpreter Code Here
+			return delegate(logical_object self, ctx_t context) => {
+				
+				writeln(bytecode);
+				writeln("calling a method");
+								
+				ctx_t current_ctx;
+				
+				
+				// CREATE
+				{
+					auto newobjname = "";
+					self.create(newobjname);
+				}
+				
+				// DESTROY
+				{
+					// Send a "Destruct" message to the receiver
+					auto reciever = "";
+					JSONValue msg;
+					msg.object["to"] = reciever;
+					self.send(msg);
+					addressbook.remove(reciever);
+					current_ctx = null;
+				}
+				
+				// CALL
+				{
+					auto methodname = "";
+					// Built in Methods Here...
+					if (methodname == "destruct") {
+						self.outer.destruct_logical_object(myAddr);
+						return; // END OF OBJECT, GOODBYE CRUEL WORLD.
+					} else {
+						assert(methodname in methods);
+						methods[methodname](self, current_ctx);
+					}
+					
+					// Clear the current context
+					current_ctx = null;
+				}
+				// PUSH
+				{
+					auto rolename = "";
+					auto objectname = "";
+					assert(objectname in addressbook);
+					current_ctx[rolename] = addressbook[objectname];
+				}
+				// SEND
+				{
+					auto reciever = "";
+					JSONValue msg;
+					msg.object["to"] = reciever;
+					self.send(msg);
+					current_ctx = null;
+				}
+				
+				
+				
+			};
+		}
+		
+		unittest {
+		/*
+			auto t = new logical_object();
+			auto x = t.build_method("test");
+			x("self", "ctx");
+		*/
 		}
 	}
 	
-	class model_logical_object: logical_object {
+	// Primary Classes
+	class DefaultModel: logical_object {
 		override void create(string localname) {
 			addressbook[localname] = createp();
 		}
-	}
-	
-	
-	// Primary Classes
+	}	
+
 	class DefaultController: logical_object {
 		override void start() {
 			bool running = true;
 			
 			while (running) {
 				auto msg = this.outer.receive();
-				
 				auto reci = address_t(msg["to"].str);
-				this.outer.objs[reci.logical].receive(msg);
+				if (reci.logical in this.outer.objs) {
+					this.outer.objs[reci.logical].receive(msg);
+				} else {
+					writeln("Unknown Object!");
+				}
 			}
 		}
 	}
